@@ -1,0 +1,163 @@
+# restore wallpaper when i3 starts
+exec --no-startup-id nitrogen --restore
+
+# start dunst (notifications)
+exec --no-startup-id dunst
+
+# super key as mod key
+set $mod Mod4
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# program variables
+set $term exec --no-startup-id xterm -rv -bd black -fs 18
+set $brightnesscommand exec --no-startup-id xrandr --output eDP-1 --brightness
+set $primaryaction exec --no-startup-id $HOME/.scripts/primaryaction.sh
+set $shutdownoptions exec --no-startup-id $HOME/.scripts/shutdownoptions.sh
+set $padtypingtoggle exec --no-startup-id $HOME/.scripts/padtyping.sh
+set $lock exec --no-startup-id $HOME/.scripts/lock.sh
+set $screenshot exec --no-startup-id import -window root $HOME/latest-screenshot.png
+set $mounthelper exec --no-startup-id $HOME/.scripts/mountdrives.sh
+set $umounthelper exec --no-startup-id $HOME/.scripts/umountdrives.sh
+
+font pango:monospace 8
+
+# windows properties
+for_window [class="^.*"] border pixel 2
+for_window [title="GIMP Startup"] move workspace $ws5
+for_window [class="Gimp"] move workspace $ws5
+for_window [class="love"] floating enable
+for_window [title="Discord Updater"] border pixel 0
+for_window [class="Firefox"] border pixel 0
+
+# rofi (runner, apt://rofi)
+bindsym $mod+space exec rofi -show drun
+
+# programs bindings
+bindsym $mod+Return $term
+bindsym $mod+Shift+w exec --no-startup-id firefox
+bindsym $mod+Shift+f $term -e nnn 
+bindsym $mod+Shift+i $term -e htop
+bindsym $mod+F2 $screenshot 
+bindsym $mod+F1 $lock 
+bindsym $mod+F11 $brightnesscommand 0.5
+bindsym $mod+F12 $brightnesscommand 1
+bindsym $mod+Shift+n $term -e nmtui
+bindsym $mod+Shift+x $shutdownoptions
+bindsym $mod+Shift+s $term -e alsamixer
+bindsym $mod+Shift+t $padtypingtoggle
+bindsym $mod+Shift+a $primaryaction
+bindsym $mod+Shift+m $mounthelper
+bindsym $mod+Shift+u $umounthelper
+
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+# workspaces definition
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+#
+#	DEFAULT BINDINGS
+#
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focused window
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+#bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# bar
+bar {
+        status_command i3blocks
+	position top
+}
+
+gaps inner 10
