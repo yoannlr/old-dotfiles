@@ -1,3 +1,5 @@
+#!/bin/bash
+
 [ -z $SUDO_ASKPASS ] && export SUDO_ASKPASS="${HOME}/.scripts/sudoaskpass.sh"
 
 nbMounts=$(lsblk -nro type,mountpoint | awk '{if($1=="part" && $2!=""){print $2}}' | grep '^/media' | wc -l)

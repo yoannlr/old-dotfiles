@@ -1,4 +1,6 @@
-res=$(echo "Lock\\nShutdown\\nReboot\\nSuspend\\nQuit i3" | dmenu -p "Options")
+#!/bin/bash
+
+res=$(echo -e "Lock\\nShutdown\\nReboot\\nSuspend\\nQuit i3" | dmenu -p "Options")
 case $res in
 	"Lock")
 		$HOME/.scripts/lock.sh
