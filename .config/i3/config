@@ -11,7 +11,7 @@ set $mod Mod4
 floating_modifier $mod
 
 # program variables
-set $term exec --no-startup-id xterm -rv -bd black -fs 18
+set $term exec --no-startup-id xterm
 set $brightnesscommand exec --no-startup-id xrandr --output eDP-1 --brightness
 set $primaryaction exec --no-startup-id $HOME/.scripts/primaryaction.sh
 set $shutdownoptions exec --no-startup-id $HOME/.scripts/shutdownoptions.sh

@@ -15,8 +15,8 @@ actions="Search\\nFile"
 action=$(echo -e $actions | dmenu -p "Clipboard content")
 case $action in
 	"Search")
-		search=$(echo -e "DDG\\nWikipedia\\nWikitionary" | dmenu -p "With")
-		firefox --url $(cat $HOME/.scripts/urls | awk -v s="$search" '{if($1==s){print $2}}' | sed -e s/'_search_'/"$content"/g)
+		search=$(cat $HOME/.scripts/urls | awk '{print $1}' | dmenu -p "With")
+		[ ! -z $search ] && firefox --url $(cat $HOME/.scripts/urls | awk -v s="$search" -v what="$content" '{if($1==s){gsub("_search_", what, $2); gsub(" ", "+", $2); print $2}}')
 		;;
 	"File")
 		name=$(echo "clipboard-output" | dmenu -p "Output: ")
@@ -30,5 +30,3 @@ case $action in
 	"*")
 		exit 0
 esac
-
-

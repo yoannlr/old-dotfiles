@@ -56,4 +56,6 @@ fi
 
 export EDITOR="vim"
 export BROWSER="firefox"
+export FILEBROWSER="nnn"
+export TERMINAL="xterm"
 export PS1='\[\033[0;36m\]$(date +%H:%M) ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u \[\033[00m\]in \[\033[01;34m\]\w\[\033[00m\]\n$ '
