@@ -1,5 +1,5 @@
 # restore wallpaper when i3 starts
-exec --no-startup-id nitrogen --restore
+exec --no-startup-id feh --bg-fill $(du -a $HOME/Pictures/Backgrounds/ | sort -R | head -1 | awk '{print $2}')
 
 # start dunst (notifications)
 exec --no-startup-id dunst
@@ -11,28 +11,31 @@ set $mod Mod4
 floating_modifier $mod
 
 # program variables
-set $term exec --no-startup-id xterm
+set $term exec --no-startup-id st 
 set $brightnesscommand exec --no-startup-id xrandr --output eDP-1 --brightness
 set $primaryaction exec --no-startup-id $HOME/.scripts/primaryaction.sh
 set $shutdownoptions exec --no-startup-id $HOME/.scripts/shutdownoptions.sh
 set $padtypingtoggle exec --no-startup-id $HOME/.scripts/padtyping.sh
 set $lock exec --no-startup-id $HOME/.scripts/lock.sh
-set $screenshot exec --no-startup-id import -window root $HOME/latest-screenshot.png
+set $screenshot exec --no-startup-id scrot $HOME/latest-screenshot.png
 set $mounthelper exec --no-startup-id $HOME/.scripts/mountdrives.sh
 set $umounthelper exec --no-startup-id $HOME/.scripts/umountdrives.sh
 
 font pango:monospace 8
 
 # windows properties
-for_window [class="^.*"] border pixel 2
-for_window [title="GIMP Startup"] move workspace $ws5
-for_window [class="Gimp"] move workspace $ws5
+for_window [class="^.*"] border pixel 0
+for_window [class="st-256color"] border pixel 20
+for_window [window_role="GtkFileChooserDialog"] border pixel 2, resize set 800 600, move position center
+
+for_window [title="GIMP Startup"] move workspace $ws10
+for_window [class="Gimp"] move workspace $ws10, workspace $ws10, gaps inner current set 0
+for_window [class="Blender"] move workspace $ws9, workspace $ws9, gaps inner current set 0
 for_window [class="love"] floating enable
 for_window [title="Discord Updater"] border pixel 0
-for_window [class="Firefox"] border pixel 0
 
-# rofi (runner, apt://rofi)
-bindsym $mod+space exec rofi -show drun
+# rofi
+bindsym $mod+space exec rofi -show drun -theme $HOME/.config/rofi/theme.rasi -location 2 -yoffset 20
 
 # programs bindings
 bindsym $mod+Return $term
@@ -53,6 +56,11 @@ bindsym $mod+Shift+u $umounthelper
 
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
+
+# gaps binding
+# bindsym $mod+g gaps inner current plus 5
+# bindsym $mod+Shift+g gaps inner current minus 5
+# bindsym $mod+Control+g gaps inner current set 10
 
 # workspaces definition
 set $ws1 "1"
@@ -160,4 +168,12 @@ bar {
 	position top
 }
 
-gaps inner 10
+# colors
+client.focused	#000000	#000000	#ffffff	#000000	#000000
+client.focused_inactive	#000000	#000000	#ffffff	#000000	#000000
+client.unfocused	#000000	#000000	#ffffff	#000000	#000000
+client.urgent	#000000	#000000	#ffffff	#000000	#000000
+client.placeholder	#000000	#000000	#ffffff	#000000	#000000
+client.background	#000000
+
+# gaps inner 10

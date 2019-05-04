@@ -22,6 +22,7 @@ do
 	then
 		sudo -A mount "$identifier" "$f"
 		notify-send "Mounted $identifier on $f"
+		$TERMINAL -e "nnn $f; bash" &
 		exit 0
 	fi
 done

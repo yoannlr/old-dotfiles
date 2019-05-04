@@ -1,3 +1,3 @@
 #!/bin/bash
 
-i3lock -i $(cat $HOME/.config/nitrogen/bg-saved.cfg | awk -F '=' '/^file/{print $2}')
+i3lock -i $(cat $HOME/.fehbg | tail -1 | awk '{print $3}' | tr -d "'") 
