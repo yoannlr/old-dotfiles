@@ -11,22 +11,29 @@ set $mod Mod4
 floating_modifier $mod
 
 # program variables
-set $term exec --no-startup-id st 
-set $brightnesscommand exec --no-startup-id xrandr --output eDP-1 --brightness
-set $primaryaction exec --no-startup-id $HOME/.scripts/primaryaction.sh
-set $shutdownoptions exec --no-startup-id $HOME/.scripts/shutdownoptions.sh
-set $padtypingtoggle exec --no-startup-id $HOME/.scripts/padtyping.sh
-set $lock exec --no-startup-id $HOME/.scripts/lock.sh
+set $term exec --no-startup-id st -f 'Liberation Mono:pixelsize=18'
+set $brightnesscontrol exec --no-startup-id xrandr --output eDP-1 --brightness
+set $primaryaction exec --no-startup-id $SCRIPTSDIR/primaryaction.sh
+set $shutdownoptions exec --no-startup-id $SCRIPTSDIR/shutdownoptions.sh
+set $lock exec --no-startup-id $SCRIPTSDIR/lock.sh
 set $screenshot exec --no-startup-id scrot $HOME/latest-screenshot.png
-set $mounthelper exec --no-startup-id $HOME/.scripts/mountdrives.sh
-set $umounthelper exec --no-startup-id $HOME/.scripts/umountdrives.sh
+set $mounthelper exec --no-startup-id $SCRIPTSDIR/mountdrives.sh
+set $umounthelper exec --no-startup-id $SCRIPTSDIR/umountdrives.sh
+set $musiccontrol exec --no-startup-id $SCRIPTSDIR/musiccontrol.sh
+set $pipette exec --no-startup-id $SCRIPTSDIR/pipette.sh
 
 font pango:monospace 8
 
 # windows properties
-for_window [class="^.*"] border pixel 0
+
+default_border none
+default_floating_border normal
+
+#for_window [class="^.*"] border pixel 0
 for_window [class="st-256color"] border pixel 20
-for_window [window_role="GtkFileChooserDialog"] border pixel 2, resize set 800 600, move position center
+for_window [window_role="GtkFileChooserDialog"] resize set 800 600, move position center
+for_window [class="pavucontrol"] floating enable
+for_window [class="Minecraft*"] move workspace $ws6
 
 for_window [title="GIMP Startup"] move workspace $ws10
 for_window [class="Gimp"] move workspace $ws10, workspace $ws10, gaps inner current set 0
@@ -35,24 +42,32 @@ for_window [class="love"] floating enable
 for_window [title="Discord Updater"] border pixel 0
 
 # rofi
-bindsym $mod+space exec rofi -show drun -theme $HOME/.config/rofi/theme.rasi -location 2 -yoffset 20
+bindsym $mod+space exec rofi -show drun -theme $HOME/.config/rofi/theme.rasi -location 2 -yoffset 30
 
 # programs bindings
 bindsym $mod+Return $term
-bindsym $mod+Shift+w exec --no-startup-id firefox
-bindsym $mod+Shift+f $term -e nnn 
+bindsym $mod+Shift+w exec --no-startup-id $BROWSER
+bindsym $mod+Shift+b exec --no-startup-id feh --bg-fill $(du -a $HOME/Pictures/Backgrounds/ | sort -R | head -1 | awk '{print $2}')
+bindsym $mod+Shift+f exec --no-startup-id $FILEBROWSER
 bindsym $mod+Shift+i $term -e htop
 bindsym $mod+F2 $screenshot 
 bindsym $mod+F1 $lock 
-bindsym $mod+F11 $brightnesscommand 0.5
-bindsym $mod+F12 $brightnesscommand 1
+bindsym $mod+F11 $brightnesscontrol 0.5
+bindsym $mod+F12 $brightnesscontrol 1
 bindsym $mod+Shift+n $term -e nmtui
 bindsym $mod+Shift+x $shutdownoptions
 bindsym $mod+Shift+s $term -e alsamixer
-bindsym $mod+Shift+t $padtypingtoggle
 bindsym $mod+Shift+a $primaryaction
 bindsym $mod+Shift+m $mounthelper
 bindsym $mod+Shift+u $umounthelper
+bindsym $mod+Shift+F11 exec --no-startup-id redshift -O 2500 -b 0.7
+bindsym $mod+Shift+F12 exec --no-startup-id redshift -x
+bindsym $mod+p $pipette
+bindsym $mod+Shift+p $pipette rgb
+
+bindsym XF86AudioPlay $musiccontrol t
+bindsym XF86AudioNext $musiccontrol n
+bindsym XF86AudioPrev $musiccontrol p
 
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev

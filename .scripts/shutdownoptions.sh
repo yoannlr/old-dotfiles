@@ -1,6 +1,6 @@
 #!/bin/bash
 
-res=$(echo -e "Lock\\nShutdown\\nReboot\\nSuspend\\nQuit i3" | dmenu -p "Options")
+res=$(echo -e "Lock\\nShutdown\\nQuit i3\\nReboot\\nSuspend" | dmenu -p "Options")
 case $res in
 	"Lock")
 		$HOME/.scripts/lock.sh
