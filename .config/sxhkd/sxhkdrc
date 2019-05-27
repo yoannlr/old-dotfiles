@@ -1,0 +1,47 @@
+# basic bindings
+super + Return
+	$TERMINAL
+super + space
+	dmenu_run
+super + shift + w
+	$BROWSER
+super + shift + f
+	$FILEBROWSER
+super + F2
+	scrot $HOME/latest-screenshot.png
+super + shift + b
+	$SCRIPTSDIR/randomwallpaper.sh
+super + shift + m
+	$SCRIPTSDIR/mountdrives.sh
+super + shift + u
+	$SCRIPTSDIR/umountdrives.sh
+super + shift + i
+	$TERMINAL -e htop
+super + F1
+	$SCRIPTSDIR/lock.sh
+super + F11
+	xrandr --output eDP-1 --brightness 0.5
+super + F12
+	xrandr --output eDP-1 --brightness 1
+super + shift + F11
+	redshift -O 2500
+super + shift + F12
+	redshift -x
+super + shift + x
+	$SCRIPTSDIR/shutdownoptions.sh
+super + shift + n
+	$TERMINAL -e nmtui
+super + shift + s
+	$TERMINAL -e alsamixer
+super + shift + a
+	$SCRIPTSDIR/primaryaction.sh
+super + p
+	$SCRIPTSDIR/pipette.sh
+super + shift + p
+	$SCRIPTSDIR/pipette.sh rgb
+XF86AudioPlay
+	$SCRIPTSDIR/musiccontrol.sh t
+XF86AudioPrev
+	$SCRIPTSDIR/musiccontrol.sh p
+XF86AudioNext
+	$SCRIPTSDIR/musiccontrol.sh n

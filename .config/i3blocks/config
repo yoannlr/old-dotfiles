@@ -126,7 +126,7 @@ interval=5
 # This displays "ARTIST - SONG" if a music is playing.
 # Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
 #[mediaplayer]
-#instance=spotify
+#instance=audacious
 #interval=5
 #signal=10
 

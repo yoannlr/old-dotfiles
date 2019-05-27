@@ -4,6 +4,10 @@ set listchars=extends:$
 set listchars+=precedes:$
 set noswapfile
 set noerrorbells novisualbell
-map <F2> :tabp<Enter>
-map <F3> :tabn<Enter>
-map <Tab> :tabn<Enter>
+set ignorecase
+set smartcase
+map tp :tabp<Enter>
+map tn :tabn<Enter>
+map te :tabe<Space>
+
+autocmd FileType markdown set wrap

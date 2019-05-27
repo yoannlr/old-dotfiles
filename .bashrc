@@ -27,3 +27,6 @@ alias lua='lua5.3'
 alias f=$FILEBROWSER
 alias e=$EDITOR
 alias bm="source $HOME/.scripts/bookmarks.sh"
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias surf="surf -dgm"

@@ -1,26 +1,11 @@
 # restore wallpaper when i3 starts
-exec --no-startup-id feh --bg-fill $(du -a $HOME/Pictures/Backgrounds/ | sort -R | head -1 | awk '{print $2}')
-
-# start dunst (notifications)
-exec --no-startup-id dunst
+exec --no-startup-id $SCRIPTSDIR/randomwallpaper.sh 
 
 # super key as mod key
 set $mod Mod4
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
-# program variables
-set $term exec --no-startup-id st -f 'Liberation Mono:pixelsize=18'
-set $brightnesscontrol exec --no-startup-id xrandr --output eDP-1 --brightness
-set $primaryaction exec --no-startup-id $SCRIPTSDIR/primaryaction.sh
-set $shutdownoptions exec --no-startup-id $SCRIPTSDIR/shutdownoptions.sh
-set $lock exec --no-startup-id $SCRIPTSDIR/lock.sh
-set $screenshot exec --no-startup-id scrot $HOME/latest-screenshot.png
-set $mounthelper exec --no-startup-id $SCRIPTSDIR/mountdrives.sh
-set $umounthelper exec --no-startup-id $SCRIPTSDIR/umountdrives.sh
-set $musiccontrol exec --no-startup-id $SCRIPTSDIR/musiccontrol.sh
-set $pipette exec --no-startup-id $SCRIPTSDIR/pipette.sh
 
 font pango:monospace 8
 
@@ -29,7 +14,6 @@ font pango:monospace 8
 default_border none
 default_floating_border normal
 
-#for_window [class="^.*"] border pixel 0
 for_window [class="st-256color"] border pixel 20
 for_window [window_role="GtkFileChooserDialog"] resize set 800 600, move position center
 for_window [class="pavucontrol"] floating enable
@@ -40,34 +24,6 @@ for_window [class="Gimp"] move workspace $ws10, workspace $ws10, gaps inner curr
 for_window [class="Blender"] move workspace $ws9, workspace $ws9, gaps inner current set 0
 for_window [class="love"] floating enable
 for_window [title="Discord Updater"] border pixel 0
-
-# rofi
-bindsym $mod+space exec rofi -show drun -theme $HOME/.config/rofi/theme.rasi -location 2 -yoffset 30
-
-# programs bindings
-bindsym $mod+Return $term
-bindsym $mod+Shift+w exec --no-startup-id $BROWSER
-bindsym $mod+Shift+b exec --no-startup-id feh --bg-fill $(du -a $HOME/Pictures/Backgrounds/ | sort -R | head -1 | awk '{print $2}')
-bindsym $mod+Shift+f exec --no-startup-id $FILEBROWSER
-bindsym $mod+Shift+i $term -e htop
-bindsym $mod+F2 $screenshot 
-bindsym $mod+F1 $lock 
-bindsym $mod+F11 $brightnesscontrol 0.5
-bindsym $mod+F12 $brightnesscontrol 1
-bindsym $mod+Shift+n $term -e nmtui
-bindsym $mod+Shift+x $shutdownoptions
-bindsym $mod+Shift+s $term -e alsamixer
-bindsym $mod+Shift+a $primaryaction
-bindsym $mod+Shift+m $mounthelper
-bindsym $mod+Shift+u $umounthelper
-bindsym $mod+Shift+F11 exec --no-startup-id redshift -O 2500 -b 0.7
-bindsym $mod+Shift+F12 exec --no-startup-id redshift -x
-bindsym $mod+p $pipette
-bindsym $mod+Shift+p $pipette rgb
-
-bindsym XF86AudioPlay $musiccontrol t
-bindsym XF86AudioNext $musiccontrol n
-bindsym XF86AudioPrev $musiccontrol p
 
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
@@ -119,8 +75,11 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+
+bindsym $mod+e layout tabbed
+
+# t for tiling
+bindsym $mod+t layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
