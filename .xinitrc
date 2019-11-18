@@ -1,29 +1,16 @@
-# enable typing when simply touching the trackpad
-xinput set-prop 'DELL086F:00 06CB:7E92 Touchpad' 'libinput Tapping Enabled' 1
+export SCRIPTS="$HOME/.scripts"
+export PATH="$PATH:$SCRIPTS"
 
-# numlock on startup
-numlockx &
+export TERMINAL='xfce4-terminal'
+export BROWSER='firefox'
+export FILE='thunar'
 
-#export $(dbus-launch)
+$HOME/.screenlayout/dual.sh
 
-# set some variables
-export SUDO_ASKPASS=$HOME/.scripts/sudoaskpass.sh
-export TERMINAL=st
-export BROWSER=firefox
-export FILEBROWSER=spacefm
-export SCRIPTSDIR=$HOME/.scripts
-
-# compton, X compositor
-exec compton &
-
-# auto lock computer after a minute idle
-exec xautolock -time 1 -locker $SCRIPTSDIR/lock.sh &
-
-# bind keys, '-m 1' because azerty keyboard
+setxkbmap fr
+pgrep redshift || exec redshift -l 48:2 -t 6500:3000 &
+exec nitrogen --restore &
+exec numlockx &
 exec sxhkd -m 1 &
-
-# dunst, for notifications
 exec dunst &
-
-# start i3
 exec i3

@@ -1,32 +1,19 @@
+#
+# ~/.bashrc
+#
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Infinite history
+HISTFILE="$HOME/.cache/bash_history"
 HISTSIZE= HISTFILESIZE=
 
-# Adapt to window when resized
-shopt -s checkwinsize
+# trailing slash after symlink directories
+bind 'set mark-symlinked-directories on'
 
-# Vi mode
-set -o vi
-
-# Custom prompt
-PS1='\[\033[0;36m\]$(date +%H:%M) \[\033[01;32m\]\u@\h \[\033[01;34m\]\w\[\033[00m\]\n$ '
-
-# Program variables
-EDITOR=vim
-BROWSER="firefox"
-FILEBROWSER="nnn"
-TERMINAL="st"
-
-# Aliases
 alias ls='ls --color=auto'
-alias q='exit'
-alias love="$HOME/Software/love-11.2-x86_64.AppImage"
-alias lua='lua5.3'
-alias f=$FILEBROWSER
-alias e=$EDITOR
+alias grep='grep --color=auto'
+
 alias bm="source $HOME/.scripts/bookmarks.sh"
-alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
-alias surf="surf -dgm"
+
+PS1='\u : \W $ '

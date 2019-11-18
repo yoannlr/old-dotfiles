@@ -1,47 +1,36 @@
-# basic bindings
 super + Return
 	$TERMINAL
-super + space
+super + d
 	dmenu_run
-super + shift + w
-	$BROWSER
-super + shift + f
-	$FILEBROWSER
-super + F2
-	scrot $HOME/latest-screenshot.png
-super + shift + b
-	$SCRIPTSDIR/randomwallpaper.sh
-super + shift + m
-	$SCRIPTSDIR/mountdrives.sh
+super + b
+	$SCRIPTS/bookmarks_dmenu.sh
+super + u
+	$SCRIPTS/mountdrives.sh
 super + shift + u
-	$SCRIPTSDIR/umountdrives.sh
-super + shift + i
-	$TERMINAL -e htop
-super + F1
-	$SCRIPTSDIR/lock.sh
-super + F11
-	xrandr --output eDP-1 --brightness 0.5
-super + F12
-	xrandr --output eDP-1 --brightness 1
-super + shift + F11
-	redshift -O 2500
-super + shift + F12
-	redshift -x
-super + shift + x
-	$SCRIPTSDIR/shutdownoptions.sh
-super + shift + n
-	$TERMINAL -e nmtui
+	$SCRIPTS/umountdrives.sh
 super + shift + s
-	$TERMINAL -e alsamixer
+	pavucontrol
 super + shift + a
-	$SCRIPTSDIR/primaryaction.sh
+	arandr
 super + p
-	$SCRIPTSDIR/pipette.sh
+	import -window root "$HOME/pics/screens/root_$(date +%s).png"
 super + shift + p
-	$SCRIPTSDIR/pipette.sh rgb
+	import "$HOME/pics/screens/area_$(date +%s).png"
+super + F1
+	i3lock --color '#000000'
+super + shift + q
+	$SCRIPTS/poweroff.sh
+super + w
+	$BROWSER
+super + shift + w
+	$BROWSER --private
+super + x
+	$FILE
 XF86AudioPlay
-	$SCRIPTSDIR/musiccontrol.sh t
+	audacious -t
 XF86AudioPrev
-	$SCRIPTSDIR/musiccontrol.sh p
+	audacious -r
 XF86AudioNext
-	$SCRIPTSDIR/musiccontrol.sh n
+	audacious -f
+shift + XF86AudioPlay
+	audacious -j

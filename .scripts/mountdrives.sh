@@ -1,28 +1,24 @@
 #!/bin/bash
 
-[ -z $SUDO_ASKPASS ] && export SUDO_ASKPASS="${HOME}/.scripts/sudoaskpass.sh"
+[ -z $SUDO_ASKPASS ] && export SUDO_ASKPASS="${SCRIPTS}/sudoaskpass.sh"
 
-blacklist='(^sdb)'
+drives=$(lsblk -nro name,type,size,mountpoint | awk '{if($2=="part" && $4==""){print $1 " (" $3 ") "}}')
 
-nbDrives=$(lsblk -ro name,type,size,mountpoint | awk '{if($2=="part" && $4==""){print $1 " (" $3 ")"}}' | egrep -v $blacklist | wc -l)
-if test $nbDrives -eq 0
+if [ ! $(echo "$drives" | wc -l) -gt 0 ]
 then
 	notify-send 'Nothing to mount'
 	exit 0
 fi
 
-chosenDisk=$(lsblk -ro name,type,size,mountpoint | awk '{if($2=="part" && $4==""){print $1 " (" $3 ")"}}' | egrep -v $blacklist | dmenu -p "Mount")
-[ -z $chosenDisk ] && exit 0
+drive=$(echo "$drives" | dmenu -p 'Mount' | awk '{print $1}')
+echo $drive
+[ -z $drive ] && exit 0
 
-identifier=$(echo $chosenDisk | awk '{print "/dev/"$1}')
+[ ! -e "${HOME}/mnt/$drive" ] && mkdir -p "${HOME}/mnt/$drive"
 
-for f in $(find /media -type d -name '*usb*' | sort)
-do
-	if ! mountpoint -q "$f";
-	then
-		sudo -A mount "$identifier" "$f"
-		notify-send "Mounted $identifier on $f"
-		$TERMINAL -e "nnn $f; bash" &
-		exit 0
-	fi
-done
+if ! mountpoint -q "${HOME}/mnt/$drive"
+then
+	sudo -A mount "/dev/$drive" "${HOME}/mnt/$drive"
+	notify-send "Mounted /dev/$drive to ${HOME}/mnt/$drive"
+	exit 0
+fi

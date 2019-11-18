@@ -1,13 +1,18 @@
 #!/bin/bash
 
-[ -z $SUDO_ASKPASS ] && export SUDO_ASKPASS="${HOME}/.scripts/sudoaskpass.sh"
+[ -z $SUDO_ASKPASS ] && export SUDO_ASKPASS="${SCRIPTS}/sudoaskpass.sh"
 
-nbMounts=$(lsblk -nro type,mountpoint | awk '{if($1=="part" && $2!=""){print $2}}' | grep '^/media' | wc -l)
-if test $nbMounts -eq 0
+mounts=$(lsblk -nro type,mountpoint | awk '{if($1=="part" && $2!="" && $2!="/" && $2!="/boot"){print $2}}')
+
+if [ ! $(echo "$mounts" | wc -l) -gt 0 ]
 then
-	notify-send 'No mounts'
+	notify-send 'No drives mounted'
 	exit 0
+else
+	mount=$(echo "$mounts" | dmenu -p 'Umount')
+	if [ ! -z $mount ]
+	then
+		sudo -A umount $mount && notify-send "$mount unmounted"
+	fi
 fi
 
-mountpoint=$(lsblk -nro type,mountpoint | awk '{if($1=="part" && $2!=""){print $2}}' | egrep '^/media' | dmenu -p "Umount")
-[ ! -z $mountpoint ] && sudo -A umount $mountpoint

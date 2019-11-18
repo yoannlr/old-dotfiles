@@ -1,0 +1,11 @@
+[Added Associations]
+image/png=sxiv.desktop;gimp.desktop;
+image/jpeg=sxiv.desktop;gimp.desktop;
+application/octet-stream=vim.desktop;
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+audio/mpeg=mpv.desktop;
+application/xml=olive.desktop;
+application/vnd.oasis.opendocument.text=userapp-"office"-E7KWA0.desktop;
+text/plain=userapp-"subl"-78A4A0.desktop;vim.desktop;
+text/html=firefox.desktop;
+application/x-php=vim.desktop;
