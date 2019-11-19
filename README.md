@@ -2,7 +2,7 @@
 
 This repository contains my dotfiles (i.e. configuration files).
 I use these dotfiles on [Arch Linux](https://archlinux.org/).
-My goal is to get things done : no fancy stuff here, just a lightweight yet functional setup.
+My goal is to get things done: no fancy stuff here, just a lightweight yet functional setup.
 
 ## Programs whose config can be found here
 
@@ -11,7 +11,7 @@ My goal is to get things done : no fancy stuff here, just a lightweight yet func
 * bash
 * [sxhkd](https://github.com/baskerville/sxhkd) - simple X hotkey daemon, a program for keybindings
 * dunst - a lightweight notification daemon
-* a few scripts, which can be found in `~./scripts/`
+* a few scripts, which can be found in `~/.scripts/`
 
 ## More on the programs I use
 
@@ -28,6 +28,7 @@ My goal is to get things done : no fancy stuff here, just a lightweight yet func
 * olive - video editor
 * nitrogen - wallpaper setter
 * lutris - gaming platform
+* [simple-mtpfs](https://github.com/phatina/simple-mtpfs) - mount android phones
 
 ## References
 
