@@ -5,10 +5,11 @@ title_align center
 hide_edge_borders smart
 
 for_window [class="mpv"] floating enable
-for_window [class="Minecraft.*"] floating enable
-for_window [title="galculator"] floating enable
-for_window [title="Volume Control"] floating enable
-for_window [title="QEMU"] floating enable
+for_window [class="^Minecraft 1\.[0-9]*$"] floating enable
+for_window [class="Galculator"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Qemu-system-x86_64"] floating enable
+for_window [class="Arandr"] floating enable
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --color '#000000' --nofork
 
@@ -73,10 +74,10 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # focus the child container
-bindsym $mod+c focus child
+# bindsym $mod+c focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.

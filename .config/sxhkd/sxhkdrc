@@ -12,6 +12,8 @@ super + shift + s
 	pavucontrol
 super + shift + a
 	arandr
+super + a
+	$SCRIPTS/primaryactions.sh
 super + p
 	import -window root "$HOME/pics/screens/root_$(date +%s).png"
 super + shift + p
