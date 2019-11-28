@@ -14,12 +14,16 @@ super + shift + a
 	arandr
 super + a
 	$SCRIPTS/primaryactions.sh
-super + p
-	import -window root "$HOME/pics/screens/root_$(date +%s).png"
-super + shift + p
-	import "$HOME/pics/screens/area_$(date +%s).png"
+Print
+	$SCRIPTS/screenshot.sh f &
+shift + Print
+	$SCRIPTS/screenshot.sh a &
+control + Print
+	$SCRIPTS/screenshot.sh fc &
+control + shift + Print
+	$SCRIPTS/screenshot.sh ac &
 super + F1
-	i3lock --color '#000000'
+	$SCRIPTS/lock.sh
 super + shift + q
 	$SCRIPTS/poweroff.sh
 super + w
@@ -36,3 +40,11 @@ XF86AudioNext
 	audacious -f
 shift + XF86AudioPlay
 	audacious -j
+XF86AudioRaiseVolume
+	$SCRIPTS/volume.sh inc
+XF86AudioLowerVolume
+	$SCRIPTS/volume.sh dec
+XF86AudioMute
+	$SCRIPTS/volume.sh mute
+XF86AudioMicMute
+	$SCRIPTS/volume.sh mutemic
