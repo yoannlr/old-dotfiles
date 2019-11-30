@@ -12,6 +12,8 @@ super + shift + s
 	pavucontrol
 super + shift + a
 	arandr
+super + shift + p
+	$SCRIPTS/displays.sh
 super + a
 	$SCRIPTS/primaryactions.sh
 Print

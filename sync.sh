@@ -11,3 +11,4 @@ cp -v ~/.bashrc .bashrc
 cp -v ~/.vimrc .vimrc
 cp -v ~/.xinitrc .xinitrc
 cp -v ~/.profile .profile
+cp -v ~/.screenlayout/* .screenlayout/

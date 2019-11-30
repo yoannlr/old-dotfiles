@@ -1,11 +1,12 @@
 export SCRIPTS="$HOME/.scripts"
 export PATH="$PATH:$SCRIPTS"
+export SCREENLAYOUTS="$HOME/.screenlayout"
 
 export TERMINAL='xfce4-terminal'
 export BROWSER='firefox'
 export FILE='thunar'
 
-$HOME/.screenlayout/dual.sh
+$SCREENLAYOUTS/dual.sh
 
 setxkbmap fr
 pgrep redshift || exec redshift -l 48:2 -t 6500:3000 &
