@@ -1,10 +1,10 @@
 primary=$(xclip -o)
-actions='copy'
+actions=''
 
-[ -z $primary ] && notify-send 'Empty' && exit 0
+[ -z $primary ] && notify-send 'Wola ton presse papier est rempli de vacuité mon con' && exit 0
 
-echo "$primary" | egrep '^(https?:\/\/)?(www\.)?(youtube\.com\/watch|youtu.be)' && actions="$actions\nyoutube-dl\nyoutube-dl (audio)\nyoutube-dl (to music)"
-echo "$primary" | egrep '^(https?:\/\/)?(www\.)?soundcloud\.com' && actions="$actions\nyoutube-dl (audio)\nyoutube-dl (to music)"
+echo "$primary" | egrep '^(https?:\/\/)?(www\.)?(youtube\.com\/watch|youtu.be)' && actions="youtube-dl\nyoutube-dl (audio)\nyoutube-dl (to music)"
+echo "$primary" | egrep '^(https?:\/\/)?(www\.)?soundcloud\.com' && actions="youtube-dl (audio)\nyoutube-dl (to music)"
 
 action=$(echo -e "$actions" | dmenu -i -p "$(echo $primary | colrm 30)")
 case $action in
@@ -24,7 +24,8 @@ case $action in
 		notify-send "An error occured while downloading $primary"
 	;;
 	'youtube-dl (to music)')
-		cd "$HOME/music"
+		[ ! -d "$HOME/music/$(date +%Y_%M)" ] && mkdir "$HOME/music/$(date +%Y_%m)"
+		cd "$HOME/music/$(date +%Y_%m)"
 		notify-send -u low "$(echo -e "Download started to ~/music\n$primary")"
 		youtube-dl -f bestaudio --restrict-filenames "$primary" && notify-send -u low "$(echo -e "Download finished\n$primary")" && exit 0
 		notify-send "An error occured while downloading $primary"

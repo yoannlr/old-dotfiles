@@ -8,6 +8,8 @@ cp -v ~/.config/i3status/config .config/i3status/config
 cp -v ~/.config/sxhkd/sxhkdrc .config/sxhkd/sxhkdrc
 cp -v ~/.config/dunst/dunstrc .config/dunst/dunstrc
 cp -v ~/.bashrc .bashrc
+cp -v ~/.zshrc .zshrc
+cp -v ~/.aliasrc .aliasrc
 cp -v ~/.vimrc .vimrc
 cp -v ~/.xinitrc .xinitrc
 cp -v ~/.profile .profile

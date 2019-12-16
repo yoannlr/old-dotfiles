@@ -41,11 +41,11 @@ load {
 }
 
 memory {
-        format = "RAM %used %available"
+        format = "MEM %used %available"
         threshold_degraded = "1G"
         format_degraded = "MEMORY < %available"
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S "
+        format = "%d %b %Y %H:%M " 
 }

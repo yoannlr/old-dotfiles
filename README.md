@@ -9,6 +9,7 @@ My goal is to get things done: no fancy stuff here, just a lightweight yet funct
 * i3 (i3-gaps) - a tiling window manager
 * vim - a text editor
 * bash
+* zsh
 * [sxhkd](https://github.com/baskerville/sxhkd) - simple X hotkey daemon, a program for keybindings
 * dunst - a lightweight notification daemon
 * a few scripts, which can be found in `~/.scripts/`

@@ -11,9 +11,6 @@ HISTSIZE= HISTFILESIZE=
 # trailing slash after symlink directories
 bind 'set mark-symlinked-directories on'
 
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-
-alias bm="source $HOME/.scripts/bookmarks.sh"
+[ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
 PS1='\u : \W $ '
