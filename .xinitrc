@@ -14,4 +14,9 @@ exec nitrogen --restore &
 exec numlockx &
 exec sxhkd -m 1 &
 exec dunst &
+exec xcompmgr &
+
+# if you have a laptop, uncomment next line to get a low-battery notification
+#exec $SCRIPTS/battery.sh
+
 exec i3

@@ -12,6 +12,8 @@ My goal is to get things done: no fancy stuff here, just a lightweight yet funct
 * zsh
 * [sxhkd](https://github.com/baskerville/sxhkd) - simple X hotkey daemon, a program for keybindings
 * dunst - a lightweight notification daemon
+* [i3lock-color](https://github.com/PandorasFox/i3lock-color) - improved i3 lockscreen
+* xcompmgr - a compositor (allows windows to be transparent)
 * a few scripts, which can be found in `~/.scripts/`
 
 ## More on the programs I use

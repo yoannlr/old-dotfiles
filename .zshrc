@@ -11,5 +11,4 @@ compinit
 # hidden files in completion
 _comp_options+=(globdots)
 
-# aliases
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"

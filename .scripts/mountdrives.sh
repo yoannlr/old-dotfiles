@@ -4,11 +4,7 @@
 
 drives=$(lsblk -nro name,type,size,mountpoint | awk '{if($2=="part" && $4==""){print $1 " (" $3 ") "}}')
 
-if [ ! $(echo "$drives" | wc -l) -gt 0 ]
-then
-	notify-send 'Nothing to mount'
-	exit 0
-fi
+[ -z $drives ] && notify-send 'Nothing to mount' && exit 0
 
 drive=$(echo "$drives" | dmenu -p 'Mount' | awk '{print $1}')
 echo $drive

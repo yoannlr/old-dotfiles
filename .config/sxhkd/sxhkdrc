@@ -26,6 +26,8 @@ control + shift + Print
 	$SCRIPTS/screenshot.sh ac &
 super + l
 	$SCRIPTS/lock.sh
+super + shift + l
+	$SCRIPTS/lock.sh full
 super + shift + q
 	$SCRIPTS/poweroff.sh
 super + w

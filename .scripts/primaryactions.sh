@@ -13,20 +13,20 @@ case $action in
 	;;
 	'youtube-dl')
 		cd "$HOME/vids"
-		notify-send -u low "$(echo -e "Download started to ~/vids\n$primary")"
+		notify-send -u low "$(echo -e "Download started to vids\n$primary")"
 		youtube-dl --restrict-filenames "$primary" && notify-send -u low "$(echo -e "Download finished\n$primary")" && exit 0
 		notify-send "An error occured while downloading $primary"
 	;;
 	'youtube-dl (audio)')
 		cd "$HOME/disk"
-		notify-send -u low "$(echo -e "Download started to ~/disk\n$primary")"
+		notify-send -u low "$(echo -e "Download started to disk\n$primary")"
 		youtube-dl -f bestaudio --restrict-filenames "$primary" && notify-send -u low "$(echo -e "Download finished\n$primary")" && exit 0
 		notify-send "An error occured while downloading $primary"
 	;;
 	'youtube-dl (to music)')
 		[ ! -d "$HOME/music/$(date +%Y_%M)" ] && mkdir "$HOME/music/$(date +%Y_%m)"
 		cd "$HOME/music/$(date +%Y_%m)"
-		notify-send -u low "$(echo -e "Download started to ~/music\n$primary")"
+		notify-send -u low "$(echo -e "Download started to music\n$primary")"
 		youtube-dl -f bestaudio --restrict-filenames "$primary" && notify-send -u low "$(echo -e "Download finished\n$primary")" && exit 0
 		notify-send "An error occured while downloading $primary"
 	;;

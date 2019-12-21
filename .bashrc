@@ -11,6 +11,7 @@ HISTSIZE= HISTFILESIZE=
 # trailing slash after symlink directories
 bind 'set mark-symlinked-directories on'
 
+# aliases
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
 PS1='\u : \W $ '
