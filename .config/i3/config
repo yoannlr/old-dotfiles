@@ -1,10 +1,31 @@
 set $mod Mod4
 
+set $leftkey Left
+set $rightkey Right
+set $upkey Up
+set $downkey Down
+
+
+###	i3 global config
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves layout)
+bindsym $mod+Shift+r restart
+
+# exit i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes, exit' 'i3-msg exit'"
+
+# apperance
 font pango:monospace 8
 title_align center
 hide_edge_borders smart
-#default_border pixel 2
 
+
+###	windows config
+
+# specific windows rules
 for_window [class="mpv"] floating enable
 #for_window [class="^Minecraft 1\..*$"] floating enable
 for_window [class="Galculator"] floating enable
@@ -12,46 +33,33 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Qemu-system-x86_64"] floating enable
 for_window [class="Arandr"] floating enable
 
-#exec --no-startup-id xss-lock --transfer-sleep-lock -- $SCRIPTS/lock.sh
-
-# Use pactl to adjust volume in PulseAudio.
-#set $refresh_i3status killall -SIGUSR1 i3status
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-#bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # kill focused window
 bindsym $mod+q kill
 
-# toggle bar
-bindsym $mod+n bar mode toggle
-
 # change focus
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+$leftkey focus left
+bindsym $mod+$downkey focus down
+bindsym $mod+$upkey focus up
+bindsym $mod+$rightkey focus right
 
 # move focused window
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+$leftkey move left
+bindsym $mod+Shift+$downkey move down
+bindsym $mod+Shift+$upkey move up
+bindsym $mod+Shift+$rightkey move right
 
-# move workspace to output
-bindsym $mod+Control+Left move workspace to output left
-bindsym $mod+Control+Down move workspace to output down
-bindsym $mod+Control+Up move workspace to output up
-bindsym $mod+Control+Right move workspace to output right
+# resize windows
+set $resize_value 20 px
+bindsym $mod+Mod1+$leftkey resize shrink width $resize_value
+bindsym $mod+Mod1+$downkey resize grow height $resize_value
+bindsym $mod+Mod1+$upkey resize shrink height $resize_value
+bindsym $mod+Mod1+$rightkey resize grow width $resize_value
 
-# split in horizontal orientation
+# toggle split orientation (horizontal/verical)
 bindsym $mod+h split h
-
-# split in vertical orientation
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
@@ -62,20 +70,18 @@ bindsym $mod+s layout stacking
 bindsym $mod+z layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+# toggle tiling / floating and toggle focus
 bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
-# bindsym $mod+a focus parent
+# focus parent and child
+#bindsym $mod+a focus parent
+#bindsym $mod+c focus child
 
-# focus the child container
-# bindsym $mod+c focus child
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+###	workspaces config
+
+# workspaces definition (with variables to avoid repeating names in several locations)
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -111,38 +117,20 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# move workspace to output
+bindsym $mod+Control+$leftkey move workspace to output left
+bindsym $mod+Control+$downkey move workspace to output down
+bindsym $mod+Control+$upkey move workspace to output up
+bindsym $mod+Control+$rightkey move workspace to output right
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+###	bar config
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
 	position top
 	tray_output primary
         status_command i3status
 }
+
+# toggle bar
+bindsym $mod+n bar mode toggle

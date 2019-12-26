@@ -16,6 +16,8 @@ super + shift + p
 	$SCRIPTS/displays.sh
 super + a
 	$SCRIPTS/primaryactions.sh
+super + c
+	galculator
 Print
 	$SCRIPTS/screenshot.sh f &
 shift + Print

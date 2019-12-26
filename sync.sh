@@ -7,6 +7,7 @@ cp -v ~/.config/i3/config .config/i3/config
 cp -v ~/.config/i3status/config .config/i3status/config
 cp -v ~/.config/sxhkd/sxhkdrc .config/sxhkd/sxhkdrc
 cp -v ~/.config/dunst/dunstrc .config/dunst/dunstrc
+cp -v ~/.config/zathura/zathurarc .config/zathura/zathurarc
 cp -v ~/.bashrc .bashrc
 cp -v ~/.zshrc .zshrc
 cp -v ~/.aliasrc .aliasrc

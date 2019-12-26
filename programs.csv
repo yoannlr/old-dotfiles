@@ -1,0 +1,51 @@
+xorg-server,X server
+xorg-xinit,tell what to run when X server starts
+xorg-xprop,detect window properties
+xorg-xrandr,query display informations
+xclip,manage X clipboard
+xdotool,window actions from command line
+sxhkd,bind keys
+numlockx,enable numlock
+redshift,reduce amount of blue light
+i3-gaps,window manager
+i3status,status bar
+i3lock,locker
+arandr,screen layout configuration
+xcompmgr,windows transparency
+libnotify,allows desktop notifications
+dunst,notification system
+exfat-utils,use exfat drives
+sxiv,image viewer
+nitrogen,set wallpaper
+ffmpeg,video manipulation program
+mpv,video player
+pavucontrol,pulseaudio volume control
+unrar,extract rar files
+unzip,extract zip files
+zip,create zip files
+p7zip,7z files support
+zathura,pdf reader
+zatura-pdf-mupdf,pdf reader
+fzf,fuzzy finder
+arc-solid-gtk-theme,theme
+audacious,music player
+file-roller,graphical archives manager
+thunar,graphical files manager
+thunar-archive-plugin,manage archives from thunar
+firefox,web browser
+galculator,calculator
+gimp,image manipulation program
+imagemagick,image manipulation from command line
+htop,tasks manager
+iotop,io manager
+lxtask,graphical tasks manager
+lxappearance,theme configuration
+lm_sensors,query sensors informations
+lua,lua
+nnn,command line files manager
+obs-studio,video recording
+qemu,virtualization
+rsync,synchronize files
+texlive-latex-extra,latex
+wget,download from command line
+zsh,zsh
