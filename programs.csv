@@ -1,3 +1,4 @@
+package,description
 xorg-server,X server
 xorg-xinit,tell what to run when X server starts
 xorg-xprop,detect window properties
