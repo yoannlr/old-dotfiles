@@ -38,6 +38,8 @@ super + shift + w
 	$BROWSER --private
 super + x
 	$FILE
+super + m
+	audacious -m
 XF86AudioPlay
 	audacious -t
 XF86AudioPrev
