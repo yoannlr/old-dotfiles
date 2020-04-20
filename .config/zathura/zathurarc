@@ -2,5 +2,6 @@ map r rotate
 map p print
 map i recolor
 map d toggle_page_mode
-map n toggle_statusbar
+map b toggle_statusbar
 map R reload
+map e adjust_window best-fit

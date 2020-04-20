@@ -3,7 +3,9 @@ super + Return
 super + d
 	dmenu_run
 super + b
-	$SCRIPTS/bookmarks_dmenu.sh
+	$SCRIPTS/bookmarks_dmenu.sh $FILE
+super + shift + b
+	$SCRIPTS/bookmarks_dmenu.sh $TERMINAL
 super + u
 	$SCRIPTS/mountdrives.sh
 super + shift + u
@@ -40,6 +42,8 @@ super + x
 	$FILE
 super + m
 	audacious -m
+super + shift + m
+	multimc
 XF86AudioPlay
 	audacious -t
 XF86AudioPrev

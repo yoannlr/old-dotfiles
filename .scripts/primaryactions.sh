@@ -1,3 +1,21 @@
+#!/bin/sh
+
+# $1 : url
+# $2 : path
+# $3 : command options
+ytdl() {
+	cd "$2"
+	notify-send -u low "$(echo -e "Download started to $2\n$1")"
+	youtube-dl --restrict-filenames "$3" "$1"
+	if [ $? -eq 0 ]
+	then
+		notify-send -u low "$(echo -e "Download finished\n$1")"
+		mpv "$SCRIPTS/success.m4a" &
+	else
+		notify-send "Failed to download $1"
+	fi
+}
+
 primary=$(xclip -o)
 actions="copy\nqrencode"
 
@@ -15,41 +33,14 @@ case $action in
 		qrencode "$primary" -s 20 -o /tmp/qr.png && sxiv /tmp/qr.png
 	;;
 	'youtube-dl')
-		cd "$HOME/vids"
-		notify-send -u low "$(echo -e "Download started to vids\n$primary")"
-		youtube-dl --restrict-filenames "$primary"
-		if [ $? -eq 0 ]
-		then
-			notify-send -u low "$(echo -e "Download finished\n$primary")"
-			mpv "$SCRIPTS/success.m4a" &
-		else
-			notify-send "An error occured while downloading $primary"
-		fi
+		ytdl "$primary" "$HOME/vids"
 	;;
 	'youtube-dl (audio)')
-		cd "$HOME/disk"
-		notify-send -u low "$(echo -e "Download started to disk\n$primary")"
-		youtube-dl -f bestaudio --restrict-filenames "$primary"
-		if [ $? -eq 0 ]
-		then
-			notify-send -u low "$(echo -e "Download finished\n$primary")"
-			mpv "$SCRIPTS/success.m4a" &
-		else
-			notify-send "An error occured while downloading $primary"
-		fi
+		ytdl "$primary" "$HOME/disk" "-f bestaudio"
 	;;
 	'youtube-dl (to music)')
 		playlist="$HOME/music/$(date +%Y_%m)"
 		[ ! -d "$playlist" ] && mkdir "$playlist" && notify-send "Created new monthly playlist"
-		cd "$playlist"
-		notify-send -u low "$(echo -e "Download started to music\n$primary")"
-		youtube-dl -f bestaudio --restrict-filenames "$primary"
-		if [ $? -eq 0 ]
-		then
-			notify-send -u low "$(echo -e "Download finished\n$primary")"
-			mpv "$SCRIPTS/success.m4a" &
-		else
-			notify-send "An error occured while downloading $primary"
-		fi
+		ytdl "$primary" "$playlist" "-f bestaudio"
 	;;
 esac

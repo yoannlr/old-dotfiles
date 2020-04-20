@@ -3,7 +3,7 @@ export PATH="$PATH:$SCRIPTS"
 export SCREENLAYOUTS="$HOME/.screenlayout"
 
 export TERMINAL='xfce4-terminal'
-export BROWSER='firefox'
+export BROWSER='brave'
 export FILE='thunar'
 
 $SCREENLAYOUTS/dual.sh

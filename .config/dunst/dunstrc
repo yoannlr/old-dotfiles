@@ -15,11 +15,21 @@
 	stack_duplicate = true
 
 	markup = full
+	show_indicators = yes
+	history_length = 50
+	dmenu = /usr/bin/dmenu -p dunst:
+	browser = /usr/bin/firefox -new-tab
+
+	class = Dunst
+	transparency = 10
+
+	idle_treshold = 120
 
 [shortcuts]
 	close = ctrl+space
 	close_all = ctrl+shift+space
 	history = ctrl+shift+h
+	context = ctrl+shift+c
 
 [urgency_low]
 	background = "#282828"
