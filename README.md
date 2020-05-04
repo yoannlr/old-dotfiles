@@ -22,7 +22,7 @@ My goal is to get things done: no fancy stuff here, just a lightweight yet funct
 
 * xfce4-terminal - terminal emulator
 * thunar - graphical file manager
-* firefox - web browser
+* brave - web browser, extensions : cVim (navigate with vim keys), uBlock Origin
 * zathura - pdf reader
 * mpv - video player
 * audacious - music player

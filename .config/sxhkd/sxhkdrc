@@ -40,6 +40,8 @@ super + shift + w
 	$BROWSER --private
 super + x
 	$FILE
+super + shift + x
+	lxtask
 super + m
 	audacious -m
 super + shift + m

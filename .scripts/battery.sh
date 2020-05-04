@@ -1,11 +1,20 @@
 #!/bin/sh
 
 # $1 : power source (usually BAT0)
-# $2 : demay between each check
+# $2 : delay between each check
 # $3 : low battery treshold
 
-statfile="/sys/class/power_supply/$1/status"
-capfile="/sys/class/power_supply/$1/capacity"
+if [ $# -lt 3 ]
+then
+	echo "Usage: $0 <power source (usually BAT0)> <delay between checks> <low battery treshold>"
+	exit 1
+fi
+
+powersource=$1
+[ ! -d "/sys/class/power_supply/$powersource" ] && powersource='BAT0'
+
+statfile="/sys/class/power_supply/$powersource/status"
+capfile="/sys/class/power_supply/$powersource/capacity"
 
 delay=$2
 treshold=$3

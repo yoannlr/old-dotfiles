@@ -17,6 +17,6 @@ exec dunst &
 exec xcompmgr &
 
 # if you have a laptop, uncomment next line to get a low-battery notification
-#exec $SCRIPTS/battery.sh
+#exec $SCRIPTS/battery.sh BAT0 20 10
 
 exec i3
