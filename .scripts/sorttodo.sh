@@ -1,6 +1,10 @@
 #!/bin/sh
 
-# this script is called by vim when saving a *.todo file (therefore, it requires some config in vimrc)
+# this script is called by vim when saving a *.todo file
+# therefore, it requires some config in vimrc:
+#
+#	autocmd BufWritePost *.todo !sorttodo.sh %
+#
 # it will add the date and time for the completed tasks
 # and put the completed tasks at the end of the file
 

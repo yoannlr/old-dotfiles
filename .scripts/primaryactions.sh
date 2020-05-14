@@ -6,7 +6,12 @@
 ytdl() {
 	cd "$2"
 	notify-send -u low "$(echo -e "Download started to $2\n$1")"
-	youtube-dl --restrict-filenames "$3" "$1"
+	if [ -z $3 ]
+	then
+		youtube-dl --restrict-filenames "$1"
+	else
+		youtube-dl --restrict-filenames "$3" "$1"
+	fi
 	if [ $? -eq 0 ]
 	then
 		notify-send -u low "$(echo -e "Download finished\n$1")"

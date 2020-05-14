@@ -2,6 +2,7 @@ syntax on
 set noswapfile
 set ignorecase smartcase
 set timeoutlen=1000 ttimeoutlen=0
+set nocompatible
 
 map te :tabe<Space>
 map tp :tabp<Return>
