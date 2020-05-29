@@ -6,11 +6,12 @@
 ytdl() {
 	cd "$2"
 	notify-send -u low "$(echo -e "Download started to $2\n$1")"
-	if [ -z $3 ]
+	if [ -z "$3" ]
 	then
 		youtube-dl --restrict-filenames "$1"
 	else
-		youtube-dl --restrict-filenames "$3" "$1"
+		echo "$3"
+		youtube-dl --restrict-filenames $3 "$1"
 	fi
 	if [ $? -eq 0 ]
 	then
@@ -46,6 +47,6 @@ case $action in
 	'youtube-dl (to music)')
 		playlist="$HOME/music/$(date +%Y_%m)"
 		[ ! -d "$playlist" ] && mkdir "$playlist" && notify-send "Created new monthly playlist"
-		ytdl "$primary" "$playlist" "-f bestaudio"
+		ytdl "$primary" "$playlist" "--add-metadata --embed-thumbnail -f bestaudio"
 	;;
 esac
