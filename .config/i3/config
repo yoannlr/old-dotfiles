@@ -36,6 +36,9 @@ for_window [class="Arandr"] floating enable
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# toggle sticky window (on all workspaces)
+bindsym $mod+Mod1+s sticky toggle
+
 # kill focused window
 bindsym $mod+q kill
 

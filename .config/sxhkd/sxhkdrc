@@ -2,6 +2,8 @@ super + Return
 	$TERMINAL
 super + d
 	dmenu_run
+super + shift + d
+	discord
 super + b
 	$SCRIPTS/bookmarks_dmenu.sh $FILE
 super + shift + b

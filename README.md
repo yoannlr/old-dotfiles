@@ -7,7 +7,7 @@ My goal is to get things done: no fancy stuff here, just a lightweight yet funct
 ## Programs whose config can be found here
 
 * i3 (i3-gaps) - a tiling window manager
-* vim - a text editor
+* vim - a text editor, plugins : [goyo.vim (distraction free writing)](https://github.com/junegunn/goyo.vim), [colorizer (hex and rgb color codes)](https://github.com/lilydjwg/colorizer)
 * bash
 * zsh
 * [sxhkd](https://github.com/baskerville/sxhkd) - simple X hotkey daemon, a program for keybindings

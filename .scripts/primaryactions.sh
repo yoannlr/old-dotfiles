@@ -39,7 +39,7 @@ case $action in
 		qrencode "$primary" -s 20 -o /tmp/qr.png && sxiv /tmp/qr.png
 	;;
 	'youtube-dl')
-		ytdl "$primary" "$HOME/vids"
+		ytdl "$primary" "$HOME/vids" "--add-metadata" # --embed-thumbnail
 	;;
 	'youtube-dl (audio)')
 		ytdl "$primary" "$HOME/disk" "-f bestaudio"
@@ -47,6 +47,6 @@ case $action in
 	'youtube-dl (to music)')
 		playlist="$HOME/music/$(date +%Y_%m)"
 		[ ! -d "$playlist" ] && mkdir "$playlist" && notify-send "Created new monthly playlist"
-		ytdl "$primary" "$playlist" "--add-metadata --embed-thumbnail -f bestaudio"
+		ytdl "$primary" "$playlist" "--add-metadata -f bestaudio" # --embed-thumbnail
 	;;
 esac

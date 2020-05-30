@@ -1,8 +1,7 @@
 #!/bin/sh
 
 intf=${1}
-[ -z ${intf} ] && echo "No interface specified" && exit 1
-[ "${intf}" = "auto" ] && intf=$(ip route | grep default | grep -o -e 'dev [a-z0-9]*' | cut -d' ' -f2)
+[ -z ${intf} ] || [ "${intf}" = "auto" ] && intf=$(ip route | grep default | grep -o -e 'dev [a-z0-9]*' | cut -d' ' -f2)
 [ ! -d "/sys/class/net/${intf}" ] && echo "No such interface" && exit 1
 
 received=$(numfmt --to=iec-i $(cat /sys/class/net/${intf}/statistics/rx_bytes))
