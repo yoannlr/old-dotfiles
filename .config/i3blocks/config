@@ -1,0 +1,25 @@
+command=$SCRIPTS/status/$BLOCK_NAME
+separator_block_width=15
+markup=pango
+
+[music]
+interval=5
+
+[volume]
+interval=once
+signal=6
+
+[network]
+interval=once
+
+[disk /]
+interval=60
+
+[disk /mnt/data]
+interval=60
+
+[ram]
+interval=5
+
+[datetime]
+interval=10

@@ -2,7 +2,7 @@
 
 openlink() {
 	url=$(echo $1 | cut -d'@' -f2)
-	brave "$url"
+	$BROWSER "$url"
 }
 
 openfolder() {
