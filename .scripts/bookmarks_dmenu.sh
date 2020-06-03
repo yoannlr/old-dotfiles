@@ -1,3 +1,17 @@
 #!/bin/sh
-loc=$(dmenu -i -l 20 < $SCRIPTS/bookmarks)
-[ ! -z "$loc" ] && cd "$loc" && ${1}
+
+openlink() {
+	url=$(echo $1 | cut -d'@' -f2)
+	brave "$url"
+}
+
+openfolder() {
+	cd $1 && $FILE
+}
+
+openterminal() {
+	cd $1 && $TERMINAL
+}
+
+loc=$(dmenu -i -l 20 -p "$2" < $SCRIPTS/"$1")
+[ ! -z "$loc" ] && "${3}" "$loc"

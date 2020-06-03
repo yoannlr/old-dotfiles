@@ -22,21 +22,32 @@ ytdl() {
 	fi
 }
 
+bookmark() {
+	url="$1"
+	name=$(dmenu -p "Name of this bookmark: " <&- | tr -d ':')
+	echo "${name}@$url" >> "$SCRIPTS/websites"
+	notify-send "Bookmarked $name"
+}
+
 primary=$(xclip -o)
 actions="copy\nqrencode"
 
 [ -z $primary ] && notify-send 'Empty' && exit 0
 
-echo "$primary" | egrep '^(https?:\/\/)?(www\.)?(youtube\.com\/watch|youtu.be)' && actions="$actions\nyoutube-dl\nyoutube-dl (audio)\nyoutube-dl (to music)"
-echo "$primary" | egrep '^(https?:\/\/)?(www\.)?soundcloud\.com' && actions="$actions\nyoutube-dl (audio)\nyoutube-dl (to music)"
+echo "$primary" | egrep '^https?:\/\/' && actions="bookmark\n$actions"
+echo "$primary" | egrep '^(https?:\/\/)?(www\.)?(youtube\.com\/watch|youtu.be)' && actions="youtube-dl\nyoutube-dl (to music)\nyoutube-dl (audio)\n$actions"
+echo "$primary" | egrep '^(https?:\/\/)?(www\.)?soundcloud\.com' && actions="youtube-dl (to music)\nyoutube-dl (audio)\n$actions"
 
-action=$(echo -e "$actions" | dmenu -i -p "$(echo $primary | colrm 30)")
+action=$(echo -e "$actions" | dmenu -i -p "$(echo $primary | colrm 30): ")
 case $action in
 	'copy')
 		echo "$primary" | xclip -i -selection clipboard
 	;;
 	'qrencode')
 		qrencode "$primary" -s 20 -o /tmp/qr.png && sxiv /tmp/qr.png
+	;;
+	'bookmark')
+		bookmark "$primary"
 	;;
 	'youtube-dl')
 		ytdl "$primary" "$HOME/vids" "--add-metadata" # --embed-thumbnail

@@ -14,5 +14,3 @@ case ${1} in
 		pactl set-source-mute @DEFAULT_SOURCE@ toggle
 	;;
 esac
-
-killall -SIGUSR1 i3status

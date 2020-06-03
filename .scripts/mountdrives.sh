@@ -2,7 +2,7 @@
 
 [ -z $SUDO_ASKPASS ] && export SUDO_ASKPASS="${SCRIPTS}/sudoaskpass.sh"
 
-drives=$(lsblk -nro name,type,size,mountpoint | awk '{if($2=="part" && $4==""){print $1 " (" $3 ") "}}')
+drives=$(lsblk -nro name,type,size,mountpoint,label | awk '{if($2=="part" && $4==""){print $1 " (" $5 ", " $3 ") "}}')
 
 [ -z $drives ] && notify-send 'Nothing to mount' && exit 0
 

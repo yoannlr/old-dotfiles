@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# mouse buttons
+# 1 - left
+# 2 - middle
+# 3 - right
+# 4 - scroll up
+# 5 - scroll down
+# 6 - push scroll left
+# 7 - push scroll right
+# 8 - back
+# 9 - forward
+
+case $BLOCK_BUTTON in
+	1) audtool --mainwin-show ;;
+	4) audtool --set-volume +5 ;;
+	5) audtool --set-volume -5 ;;
+	3) audtool --playback-playpause ;;
+	8) audtool --playlist-reverse ;;
+	9) audtool --playlist-advance ;;
+esac
+
+pgrep audacious > /dev/null || (echo "No music" ; exit 0)
+
+song=$(audtool --current-song-tuple-data title)
+artist=$(audtool --current-song-tuple-data artist)
+[ ! -z "$artist" ] && song="$artist - $song"
+song=$(echo "$song" | tr -d '&')
+[ "$(audtool --playback-status)" = "paused" ] && song="<i>$song</i>"
+echo "$song"

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+	1) setsid -f $TERMINAL -e 'calcurse' ;;
+	3) setsid -f $TERMINAL -e "$EDITOR $HOME/${USER}.todo"
+esac
+
+date '+📅 %Y %b %d %H:%M'

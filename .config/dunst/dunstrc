@@ -1,5 +1,5 @@
 [global]
-	geometry = "260x5-20-20"
+	geometry = "260x5-20+40"
 	follow = keyboard
 	font = Monospace 10
 	padding = 2

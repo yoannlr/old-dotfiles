@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+	1) setsid -f $TERMINAL -e 'nmtui' ;;
+esac
+
+state="$(sed "s/down/❎/;s/up/🌐/" /sys/class/net/e*/operstate 2>/dev/null)"
+[ "$state" = "🌐" ] && state="$state $(hostname -i)"
+echo $state

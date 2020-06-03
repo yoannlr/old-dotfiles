@@ -132,7 +132,8 @@ bindsym $mod+Control+$rightkey move workspace to output right
 bar {
 	position top
 	tray_output primary
-        status_command i3status
+        status_command i3blocks
+#        status_command i3status
 }
 
 # toggle bar

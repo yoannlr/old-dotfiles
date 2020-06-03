@@ -1,0 +1,10 @@
+#!/bin/sh
+
+location=${1:-/}
+[ ! -d "$location" ] && exit
+
+case $BLOCK_BUTTON in
+	1) setsid -f $TERMINAL -e "nnn -S $location"
+esac
+
+df -h "$location" | awk '/\//{print "💾 " $4}'
