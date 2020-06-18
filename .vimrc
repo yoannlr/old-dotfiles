@@ -3,7 +3,6 @@ set noswapfile
 set ignorecase smartcase
 set timeoutlen=1000 ttimeoutlen=0
 set nocompatible
-colors torte
 
 map te :tabe<Space>
 map tp :tabp<Return>

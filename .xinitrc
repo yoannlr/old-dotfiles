@@ -2,7 +2,7 @@ export SCRIPTS="$HOME/.scripts"
 export PATH="$PATH:$SCRIPTS"
 export SCREENLAYOUTS="$HOME/.screenlayout"
 
-export TERMINAL='xfce4-terminal'
+export TERMINAL='xfce4-terminal --hide-scrollbar'
 export BROWSER='brave'
 export FILE='thunar'
 
@@ -10,7 +10,7 @@ $SCREENLAYOUTS/dual.sh
 
 setxkbmap fr
 pgrep redshift || exec redshift -l 48:2 -t 6500:3000 &
-exec nitrogen --restore &
+exec xwallpaper --no-randr --zoom $HOME/pics/walls/wall &
 exec numlockx &
 exec sxhkd -m 1 &
 exec dunst &

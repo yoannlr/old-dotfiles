@@ -14,4 +14,7 @@ bind 'set mark-symlinked-directories on'
 # aliases
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
+# restores wal colorscheme
+(cat $HOME/.cache/wal/sequences &)
+
 PS1='\u : \W $ '

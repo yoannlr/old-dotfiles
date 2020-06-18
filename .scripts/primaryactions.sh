@@ -20,6 +20,7 @@ ytdl() {
 	else
 		notify-send "Failed to download $1"
 	fi
+	pkill -SIGRTMIN+8 i3blocks
 }
 
 bookmark() {
@@ -58,6 +59,6 @@ case $action in
 	'youtube-dl (to music)')
 		playlist="$HOME/music/$(date +%Y_%m)"
 		[ ! -d "$playlist" ] && mkdir "$playlist" && notify-send "Created new monthly playlist"
-		ytdl "$primary" "$playlist" "--add-metadata -f bestaudio" # --embed-thumbnail
+		ytdl "$primary" "$playlist" "--add-metadata -f bestaudio --no-playlist" # --embed-thumbnail
 	;;
 esac

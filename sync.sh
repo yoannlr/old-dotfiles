@@ -16,3 +16,4 @@ cp -v ~/.vimrc .vimrc
 cp -v ~/.xinitrc .xinitrc
 cp -v ~/.profile .profile
 cp -v ~/.screenlayout/* .screenlayout/
+cp -v ~/.config/sxiv/exec/key-handler .config/sxiv/exec/

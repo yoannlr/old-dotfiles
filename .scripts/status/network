@@ -2,6 +2,7 @@
 
 case $BLOCK_BUTTON in
 	1) setsid -f $TERMINAL -e 'nmtui' ;;
+	3) setsid -f gnome-system-monitor -r ;;
 esac
 
 state="$(sed "s/down/❎/;s/up/🌐/" /sys/class/net/e*/operstate 2>/dev/null)"

@@ -7,6 +7,7 @@ My goal is to get things done: no fancy stuff here, just a lightweight yet funct
 ## Programs whose config can be found here
 
 * i3 (i3-gaps) - a tiling window manager
+* i3blocks - a status bar for i3
 * vim - a text editor, plugins : [goyo.vim (distraction free writing)](https://github.com/junegunn/goyo.vim), [colorizer (hex and rgb color codes)](https://github.com/lilydjwg/colorizer)
 * bash
 * zsh
@@ -29,7 +30,7 @@ My goal is to get things done: no fancy stuff here, just a lightweight yet funct
 * texlive/pandoc - documents compilers (LaTeX, Markdown, ...)
 * gimp - image editor
 * olive - video editor
-* nitrogen - wallpaper setter
+* xwallpaper - wallpaper setter
 * lutris - gaming platform
 * [simple-mtpfs](https://github.com/phatina/simple-mtpfs) - mount android phones
 

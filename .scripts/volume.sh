@@ -14,3 +14,5 @@ case ${1} in
 		pactl set-source-mute @DEFAULT_SOURCE@ toggle
 	;;
 esac
+
+kill -SIGRTMIN+6 $(pgrep i3blocks)

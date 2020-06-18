@@ -13,18 +13,18 @@
 
 case $BLOCK_BUTTON in
 	1) audtool --mainwin-show ;;
+	3) audtool --playback-playpause ;;
 	4) audtool --set-volume +5 ;;
 	5) audtool --set-volume -5 ;;
-	3) audtool --playback-playpause ;;
 	8) audtool --playlist-reverse ;;
 	9) audtool --playlist-advance ;;
 esac
 
-pgrep audacious > /dev/null || (echo "No music" ; exit 0)
+pgrep audacious > /dev/null || exit
 
 song=$(audtool --current-song-tuple-data title)
 artist=$(audtool --current-song-tuple-data artist)
 [ ! -z "$artist" ] && song="$artist - $song"
 song=$(echo "$song" | tr -d '&')
-[ "$(audtool --playback-status)" = "paused" ] && song="<i>$song</i>"
-echo "$song"
+[ ! "$(audtool --playback-status)" = "playing" ] && song="<i>$song</i>"
+echo "$song 🎸"

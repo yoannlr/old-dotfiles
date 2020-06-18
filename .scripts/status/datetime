@@ -5,4 +5,4 @@ case $BLOCK_BUTTON in
 	3) setsid -f $TERMINAL -e "$EDITOR $HOME/${USER}.todo"
 esac
 
-date '+📅 %Y %b %d %H:%M'
+date '+📅 %Y %b %d %H:%M '

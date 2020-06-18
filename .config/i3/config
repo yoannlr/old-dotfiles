@@ -17,17 +17,21 @@ bindsym $mod+Shift+r restart
 # exit i3
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes, exit' 'i3-msg exit'"
 
-# apperance
+# appearance
 font pango:monospace 8
+gaps inner 5
+#smart_gaps on
+default_border none
 title_align center
-hide_edge_borders smart
+#hide_edge_borders smart
+
 
 
 ###	windows config
 
 # specific windows rules
+for_window [window_type="dialog"] border normal, move position center
 for_window [class="mpv"] floating enable
-#for_window [class="^Minecraft 1\..*$"] floating enable
 for_window [class="Galculator"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Qemu-system-x86_64"] floating enable
@@ -132,8 +136,9 @@ bindsym $mod+Control+$rightkey move workspace to output right
 bar {
 	position top
 	tray_output primary
+	output primary
+	output DVI-D-0
         status_command i3blocks
-#        status_command i3status
 }
 
 # toggle bar

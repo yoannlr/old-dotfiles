@@ -2,10 +2,10 @@
 
 case $BLOCK_BUTTON in
 	1) setsid -f pavucontrol ;;
-	2) $SCRIPTS/volume.sh mutemic && kill -SIGRTMIN+6 $(pgrep i3blocks) ;;
-	3) $SCRIPTS/volume.sh mute && kill -SIGRTMIN+6 $(pgrep i3blocks) ;;
-	4) $SCRIPTS/volume.sh inc && kill -SIGRTMIN+6 $(pgrep i3blocks) ;;
-	5) $SCRIPTS/volume.sh dec && kill -SIGRTMIN+6 $(pgrep i3blocks) ;;
+	2) $SCRIPTS/volume.sh mutemic ;;
+	3) $SCRIPTS/volume.sh mute ;;
+	4) $SCRIPTS/volume.sh inc ;;
+	5) $SCRIPTS/volume.sh dec ;;
 esac
 
 icon='🔊'
