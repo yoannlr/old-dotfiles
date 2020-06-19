@@ -5,7 +5,6 @@ set $rightkey Right
 set $upkey Up
 set $downkey Down
 
-
 ###	i3 global config
 
 # reload the configuration file
@@ -19,18 +18,34 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes, exit' 'i3
 
 # appearance
 font pango:monospace 8
+default_border pixel 2
+title_align center
+
 gaps inner 5
 #smart_gaps on
-default_border none
-title_align center
 #hide_edge_borders smart
 
+bindsym $mod+Prior gaps inner current plus 5
+bindsym $mod+Next gaps inner current minus 5
+bindsym $mod+Home gaps inner current set 5
 
+bindsym $mod+Shift+Prior gaps inner all plus 5
+bindsym $mod+Shift+Next gaps inner all minus 5
+bindsym $mod+Shift+Home gaps inner all set 5
+
+# colors
+set_from_resource $fg i3wm.foreground #ffffff
+set_from_resource $bg i3wm.background #000000
+set_from_resource $color0 i3wm.color0 #000000
+set_from_resource $color1 i3wm.color1 #285577
+
+# class	border		bg	txt	indic	child_border
+client.focused		$color1	$bg	$fg	$color1
+client.background	$bg
 
 ###	windows config
 
 # specific windows rules
-for_window [window_type="dialog"] border normal, move position center
 for_window [class="mpv"] floating enable
 for_window [class="Galculator"] floating enable
 for_window [class="Pavucontrol"] floating enable
@@ -79,7 +94,7 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating and toggle focus
 bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 
 # focus parent and child
 #bindsym $mod+a focus parent
@@ -139,6 +154,9 @@ bar {
 	output primary
 	output DVI-D-0
         status_command i3blocks
+	colors {
+		focused_workspace $color1 $color1 $fg
+	}
 }
 
 # toggle bar

@@ -5,20 +5,16 @@ file="$HOME/pics/screens/"
 case ${1} in
 	"f")
 		file="${file}root_$(date +%s).png"
-		import -window root "$file" && notify-send "$(echo -e "Screenshot saved\n$file")" && exit 0
-		notify-send "Failed to take screenshot"
+		maim > "$file" && notify-send "Captured the whole screen to $file" || notify-send "Failed to take screenshot"
 	;;
 	"a")
 		file="${file}area_$(date +%s).png"
-		import "$file" && notify-send "$(echo -e "Screenshot saved\n$file")" && exit 0
-		notify-send "Failed to take screenshot"
+		maim -s > "$file" && notify-send "Captured the area to $file" || notify-send "Failed to take screenshot"
 	;;
 	"fc")
-		import -window root png:- | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard" && exit 0
-		notify-send "Failed to take screenshot"
+		maim | xclip -selection clipboard -t image/png && notify-send "Captured the whole screen to the clipboard" || notify-send "Failed to take screenshot"
 	;;
 	"ac")
-		import png:- | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard" && exit 0
-		notify-send "Failed to take screenshot"
+		maim -s | xclip -selection clipboard -t image/png && notify-send "Captured the area to the clipboard" || notify-send "Failed to take screenshot"
 	;;
 esac

@@ -20,6 +20,8 @@ super + shift + a
 	arandr
 super + shift + p
 	$SCRIPTS/displays.sh
+super + alt + w
+	$SCRIPTS/setwall.sh
 super + a
 	$SCRIPTS/primaryactions.sh
 super + c

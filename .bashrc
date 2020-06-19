@@ -11,6 +11,9 @@ HISTSIZE= HISTFILESIZE=
 # trailing slash after symlink directories
 bind 'set mark-symlinked-directories on'
 
+# allow cycle through completion
+bind TAB:menu-complete
+
 # aliases
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
