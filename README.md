@@ -4,6 +4,8 @@ This repository contains my dotfiles (i.e. configuration files).
 I use these dotfiles on [Arch Linux](https://archlinux.org/).
 My goal is to get things done: no fancy stuff here, just a lightweight yet functional setup.
 
+![A screenshot of my "rice"](screenshot.png)
+
 ## Programs whose config can be found here
 
 * i3 (i3-gaps) - a tiling window manager

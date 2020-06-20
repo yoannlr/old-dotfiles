@@ -13,6 +13,9 @@ bind 'set mark-symlinked-directories on'
 
 # allow cycle through completion
 bind TAB:menu-complete
+bind 'set show-all-if-ambiguous on'
+#bind 'set show-all-if-unmodified on'
+#bind 'set menu-complete-display-prefix on'
 
 # aliases
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
