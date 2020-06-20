@@ -17,6 +17,9 @@ signal=6
 [network]
 interval=once
 
+[battery]
+interval=10
+
 [disk /]
 interval=60
 

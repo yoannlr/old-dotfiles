@@ -9,7 +9,7 @@ sxhkd,bind keys
 numlockx,enable numlock
 redshift,reduce amount of blue light
 i3-gaps,window manager
-i3status,status bar
+i3blocks,status bar
 i3lock,locker
 arandr,screen layout configuration
 xcompmgr,windows transparency
@@ -33,7 +33,7 @@ audacious,music player
 file-roller,graphical archives manager
 thunar,graphical files manager
 thunar-archive-plugin,manage archives from thunar
-firefox,web browser
+aur:brave-bin,web browser
 galculator,calculator
 gimp,image manipulation program
 imagemagick,image manipulation from command line
@@ -50,3 +50,5 @@ rsync,synchronize files
 texlive-latex-extra,latex
 wget,download from command line
 zsh,zsh
+maim,screenshot tool
+python-pywal,generate colorscheme from wallpaper

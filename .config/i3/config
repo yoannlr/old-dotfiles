@@ -151,8 +151,6 @@ bindsym $mod+Control+$rightkey move workspace to output right
 bar {
 	position top
 	tray_output primary
-	output primary
-	output DVI-D-0
         status_command i3blocks
 	colors {
 		focused_workspace $color1 $color1 $fg
