@@ -10,6 +10,7 @@ $SCREENLAYOUTS/dual.sh
 
 setxkbmap fr
 pgrep redshift || exec redshift -l 48:2 -t 6500:3000 &
+xrdb -merge $HOME/.cache/wal/colors.Xresources
 exec xwallpaper --no-randr --zoom $HOME/pics/walls/wall &
 exec numlockx &
 exec sxhkd -m 1 &

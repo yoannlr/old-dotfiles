@@ -22,6 +22,7 @@ default_border pixel 2
 title_align center
 
 gaps inner 5
+smart_borders no_gaps
 #smart_gaps on
 #hide_edge_borders smart
 

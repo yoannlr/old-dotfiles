@@ -9,4 +9,4 @@ then
 	$SCRIPTS/volume.sh mute
 fi
 
-i3lock-color --clock -t -i "$HOME/pics/walls/lockscreen.png" --datecolor=ffffffff --timecolor=ffffffff --datestr='%d %b %Y' --veriftext=''
+i3lock-color --clock -t -i "$HOME/pics/walls/wall" --datecolor=ffffffff --timecolor=ffffffff --datestr='%d %b %Y' --veriftext=''
