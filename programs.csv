@@ -1,4 +1,4 @@
-package,description
+# package,descriptiosn
 xorg-server,X server
 xorg-xinit,tell what to run when X server starts
 xorg-xprop,detect window properties
@@ -10,29 +10,32 @@ numlockx,enable numlock
 redshift,reduce amount of blue light
 i3-gaps,window manager
 i3blocks,status bar
-i3lock,locker
+i3lock-color,locker
+dmenu,dmenu
 arandr,screen layout configuration
 xcompmgr,windows transparency
 libnotify,allows desktop notifications
 dunst,notification system
 exfat-utils,use exfat drives
 sxiv,image viewer
-nitrogen,set wallpaper
+xwallpaper,set wallpaper
 ffmpeg,video manipulation program
 mpv,video player
 pavucontrol,pulseaudio volume control
 unrar,extract rar files
 unzip,extract zip files
+zip,zip files
 zip,create zip files
 p7zip,7z files support
 zathura,pdf reader
 zatura-pdf-mupdf,pdf reader
 fzf,fuzzy finder
-arc-solid-gtk-theme,theme
 audacious,music player
 file-roller,graphical archives manager
 thunar,graphical files manager
 thunar-archive-plugin,manage archives from thunar
+thunar-media-tags-plugin,audio and video file infos from thunar
+xfce4-terminal,terminal
 aur:brave-bin,web browser
 galculator,calculator
 gimp,image manipulation program
@@ -52,3 +55,19 @@ wget,download from command line
 zsh,zsh
 maim,screenshot tool
 python-pywal,generate colorscheme from wallpaper
+noto-fonts,noto font
+noto-fonts-emoji,noto font
+jack2,jack audio server
+ardour,ardour daw
+gparted,partition editor
+gcolor2,color picker
+inkscape,vector image editor
+hydrogen,drum program
+aur:lingot,guitar tuner
+jdk8-openjdk,openjdk 8 jave development kit
+jre8-openjdk,openjdk 8 jave runtime environment
+lxinput,keyboard and mouse configuration
+network-manager-applet,network manager applet
+pandoc,document converter
+xf86-input-wacom,wacom tablet support
+xournalpp,annotate pdfs and take notes
