@@ -35,6 +35,7 @@ file-roller,graphical archives manager
 thunar,graphical files manager
 thunar-archive-plugin,manage archives from thunar
 thunar-media-tags-plugin,audio and video file infos from thunar
+gvfs,mount virtual filesystems
 xfce4-terminal,terminal
 aur:brave-bin,web browser
 galculator,calculator
@@ -71,3 +72,4 @@ network-manager-applet,network manager applet
 pandoc,document converter
 xf86-input-wacom,wacom tablet support
 xournalpp,annotate pdfs and take notes
+aur:simple-mtpfs,mount android phones
