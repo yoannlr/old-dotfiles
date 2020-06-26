@@ -7,7 +7,7 @@ echo ":: Packages installed"
 
 ./deploy.sh
 
-for pkg in $(cut -d, -f1 'programs.csv' | grep '^aur:')
+for pkg in $(cut -d, -f1 'programs.csv' | grep '^aur:' | cut -d: -f2)
 do
 	git clone "https://aur.archlinux.org/${pkg}.git"
 done

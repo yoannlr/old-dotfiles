@@ -28,7 +28,7 @@ zip,zip files
 zip,create zip files
 p7zip,7z files support
 zathura,pdf reader
-zatura-pdf-mupdf,pdf reader
+zathura-pdf-mupdf,pdf reader
 fzf,fuzzy finder
 audacious,music player
 file-roller,graphical archives manager
@@ -51,9 +51,8 @@ nnn,command line files manager
 obs-studio,video recording
 qemu,virtualization
 rsync,synchronize files
-texlive-latex-extra,latex
+texlive-latexextra,latex
 wget,download from command line
-zsh,zsh
 maim,screenshot tool
 python-pywal,generate colorscheme from wallpaper
 noto-fonts,noto font
@@ -73,3 +72,4 @@ pandoc,document converter
 xf86-input-wacom,wacom tablet support
 xournalpp,annotate pdfs and take notes
 aur:simple-mtpfs,mount android phones
+pulseaudio,pulseaudio
