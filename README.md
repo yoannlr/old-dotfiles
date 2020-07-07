@@ -35,6 +35,7 @@ My goal is to get things done: no fancy stuff here, just a lightweight yet funct
 * xwallpaper - wallpaper setter
 * lutris - gaming platform
 * [simple-mtpfs](https://github.com/phatina/simple-mtpfs) - mount android phones
+* [fontpreview](https://github.com/sdushantha/fontpreview) - view fonts
 
 ## References
 
