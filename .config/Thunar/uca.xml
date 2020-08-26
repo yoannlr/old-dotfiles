@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<unique-id>1572290734863847-1</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Example for a custom action</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>disk-usage-analyzer</icon>
+	<name>Analyse disk usage</name>
+	<unique-id>1597864370339722-1</unique-id>
+	<command>baobab %f</command>
+	<description>Analyse disk usage with Baobab</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>fonts</icon>
+	<name>Install font</name>
+	<unique-id>1597867715145157-1</unique-id>
+	<command>$SCRIPTS/thunar_uca/fontinstall.sh %F</command>
+	<description>Installs the selected font file</description>
+	<patterns>*.ttf;*.otf</patterns>
+	<other-files/>
+</action>
+</actions>
