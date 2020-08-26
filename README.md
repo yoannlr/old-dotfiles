@@ -29,7 +29,7 @@ My goal is to get things done: no fancy stuff here, just a lightweight yet funct
 * zathura - pdf reader
 * mpv - video player
 * audacious - music player
-* texlive/pandoc - documents compilers (LaTeX, Markdown, ...)
+* texlive/lowdown - documents compilers (LaTeX, Markdown, ...)
 * gimp - image editor
 * olive - video editor
 * xwallpaper - wallpaper setter

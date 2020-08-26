@@ -82,16 +82,16 @@ bindsym $mod+Mod1+$upkey resize shrink height $resize_value
 bindsym $mod+Mod1+$rightkey resize grow width $resize_value
 
 # toggle split orientation (horizontal/verical)
-bindsym $mod+h split h
-bindsym $mod+v split v
+bindsym $mod+h split h ; exec notify-send 'Layout : Tile horizontally'
+bindsym $mod+v split v ; exec notify-send 'Layout : Tile vetically'
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+z layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+s layout stacking ; exec notify-send 'Layout : Stacking'
+bindsym $mod+z layout tabbed ; exec notify-send 'Layout : Tabbed'
+bindsym $mod+t layout toggle split 
 
 # toggle tiling / floating and toggle focus
 bindsym $mod+Shift+space floating toggle

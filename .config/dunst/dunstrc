@@ -4,10 +4,8 @@
 	font = Monospace 10
 	padding = 2
 	horizontal_padding = 2
-	frame_width = 1
-	frame_color = "#4c7899"
 	separator_height = 2
-	separator_color = frame
+	separator_color = auto
 
 	ignore_newline = no
 	word_wrap = yes
@@ -34,16 +32,14 @@
 [urgency_low]
 	background = "#282828"
 	foreground = "#eeeeee"
-	frame_color = "#444444"
 	timeout = 5
 
 [urgency_normal]
-	background = "#225577"
+	background = "#000000"
 	foreground = "#eeeeee"
 	timeout = 5
 
 [urgency_critical]
 	background = "#cc2421"
 	foreground = "#eeeeee"
-	frame_color = "#fabd2f"
 	timeout = 0

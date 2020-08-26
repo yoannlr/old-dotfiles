@@ -10,12 +10,12 @@ case ${1} in
 	;;
 	"a")
 		file="${file}region_${now}.png"
-		maim -s > "$file" && notify-send "📷 Captured the area to $file" || notify-send "Failed to take screenshot"
+		maim -su > "$file" && notify-send "📷 Captured the area to $file" || notify-send "Failed to take screenshot"
 	;;
 	"fc")
 		maim | xclip -selection clipboard -t image/png && notify-send "📷 Captured the whole screen to the clipboard" || notify-send "Failed to take screenshot"
 	;;
 	"ac")
-		maim -s | xclip -selection clipboard -t image/png && notify-send "📷 Captured the area to the clipboard" || notify-send "Failed to take screenshot"
+		maim -su | xclip -selection clipboard -t image/png && notify-send "📷 Captured the area to the clipboard" || notify-send "Failed to take screenshot"
 	;;
 esac

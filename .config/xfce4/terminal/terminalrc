@@ -26,8 +26,9 @@ MiscSlimTabs=FALSE
 MiscNewTabAdjacent=FALSE
 MiscSearchDialogOpacity=100
 MiscShowUnsafePasteDialog=TRUE
-BackgroundDarkness=0.900000
+BackgroundDarkness=0.800000
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 FontName=Noto Sans Mono 12
 ScrollingUnlimited=TRUE
+ScrollingBar=TERMINAL_SCROLLBAR_NONE
 

@@ -9,6 +9,7 @@ export FILE='thunar'
 $SCREENLAYOUTS/dual.sh
 
 setxkbmap fr
+xset dpms 0 0 300
 pgrep redshift || exec redshift -l 48:2 -t 6500:3000 &
 xrdb -merge $HOME/.cache/wal/colors.Xresources
 exec xwallpaper --no-randr --zoom $HOME/pics/walls/wall &

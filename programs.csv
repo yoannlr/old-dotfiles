@@ -68,8 +68,8 @@ jdk8-openjdk,openjdk 8 jave development kit
 jre8-openjdk,openjdk 8 jave runtime environment
 lxinput,keyboard and mouse configuration
 network-manager-applet,network manager applet
-pandoc,document converter
 xf86-input-wacom,wacom tablet support
 xournalpp,annotate pdfs and take notes
 aur:simple-mtpfs,mount android phones
 pulseaudio,pulseaudio
+aur:lowdown,markdown compiler

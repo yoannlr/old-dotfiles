@@ -2,31 +2,45 @@
 
 # installs all the programs and deploys the dotfiles on a new arch install
 
+INSTALL_AUR=
+MAKE_HOME=
+
+while getopts 'am' c
+do
+	case $c in
+		'a') INSTALL_AUR=1 ;;
+		'm') MAKE_HOME=1 ;;
+		*)
+			echo "$0 options\n-a  installs AUR packages\n-m  creates folders in home directory"
+	esac
+done
+
+echo ":: Installing packages"
 sudo pacman -S $(cut -d, -f1 'programs.csv' | grep -E -v '(^#|^aur:)' | tr '\n' ' ')
-echo ":: Packages installed" 
+echo ":: Packages installed"
+
+if [ ! -z $INSTALL_AUR ]
+then
+	echo ":: Installing AUR packages"
+	basedir="$PWD"
+	for pkg in $(cut -d, -f1 'programs.csv' | grep '^aur:' | cut -d: -f2)
+	do
+		git clone "https://aur.archlinux.org/${pkg}.git"
+		cd "$pkg"
+		makepkg -sri --noconfirm
+	done
+	echo ":: AUR packages installed"
+fi
 
 ./deploy.sh
 
-for pkg in $(cut -d, -f1 'programs.csv' | grep '^aur:' | cut -d: -f2)
-do
-	git clone "https://aur.archlinux.org/${pkg}.git"
-done
-echo ":: AUR packages cloned"
+# create home structure
 
-# create home structure (specific to my setup, will only execute if $1 is "home")
-
-if [ "$1" = "home" ]
+if [ ! -z $MAKE_HOME ]
 then
-	mkdir -p "$HOME/pics/walls"
-	mkdir "$HOME/dl" "$HOME/bin" "$HOME/phone" "$HOME/mnt"
-	ln -s /mnt/data "$HOME/disk"
-	ln -s /mnt/data/Documents "$HOME/docs"
-	ln -s /mnt/data/Music "$HOME/music"
-	ln -s /mnt/data/Programming "$HOME/prog"
-	ln -s /mnt/data/Videos "$HOME/vids"
-	ln -s /mnt/data/Programming/Repo "$HOME/repo"
-	ln -s /mnt/data/VirtualMachines "$HOME/vm"
-	ln -s /mnt/data/Software "$HOME/soft"
-	# such symlinks wow
+	mkdir -p "$HOME/pics/walls" "$HOME/prog/repo"
+	mkdir "$HOME/dl" "$HOME/bin" "$HOME/phone" "$HOME/mnt" "$HOME/docs" "$HOME/vids" "$HOME/soft" "$HOME/music"
+	ln -s "$HOME/prog/repo" "$HOME/repo"
+	touch "$HOME/${USER}.todo"
 	echo ":: Home structure created"
 fi

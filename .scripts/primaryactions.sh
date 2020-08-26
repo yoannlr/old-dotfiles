@@ -38,6 +38,7 @@ actions="copy\nqrencode"
 echo "$primary" | egrep '^https?:\/\/' && actions="bookmark\n$actions"
 echo "$primary" | egrep '^(https?:\/\/)?(www\.)?(youtube\.com\/watch|youtu.be)' && actions="youtube-dl\nyoutube-dl (to music)\nyoutube-dl (audio)\n$actions"
 echo "$primary" | egrep '^(https?:\/\/)?(www\.)?soundcloud\.com' && actions="youtube-dl (to music)\nyoutube-dl (audio)\n$actions"
+echo "$primary" | egrep '^(https?:\/\/)?(.*\.)?bandcamp.com' && actions="youtube-dl (to music)\nyoutube-dl (audio)\n$actions"
 
 action=$(echo -e "$actions" | dmenu -i -p "$(echo $primary | colrm 30): ")
 case $action in

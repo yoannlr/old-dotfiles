@@ -43,7 +43,7 @@ super + shift + q
 super + w
 	$BROWSER
 super + shift + w
-	$BROWSER --private
+	$BROWSER --incognito
 super + x
 	$FILE
 super + shift + x
@@ -68,3 +68,7 @@ XF86AudioMute
 	$SCRIPTS/volume.sh mute
 XF86AudioMicMute
 	$SCRIPTS/volume.sh mutemic
+super + e
+	$SCRIPTS/emojipick.sh
+super + space
+	rofi -show run -theme gruvbox-dark
