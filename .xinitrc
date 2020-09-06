@@ -18,4 +18,10 @@ exec sxhkd -m 1 &
 exec dunst &
 exec xcompmgr &
 
+# if kdeconnect is installed, start it and add an applet
+which kdeconnect-indicator &> /dev/null && exec kdeconnect-indicator &
+
+# if computer has wifi, start nm-applet
+ls /sys/class/net/w* &> /dev/null && exec nm-applet &
+
 exec i3

@@ -74,3 +74,5 @@ aur:simple-mtpfs,mount android phones
 pulseaudio,pulseaudio
 aur:lowdown,markdown compiler
 baobab,disk usage analyzer
+pulseaudio,pulseaudio
+qrencode,create qr codes
