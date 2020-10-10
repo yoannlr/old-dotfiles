@@ -55,7 +55,7 @@ case $action in
 		ytdl "$primary" "$HOME/vids" "--add-metadata" # --embed-thumbnail
 	;;
 	'youtube-dl (audio)')
-		ytdl "$primary" "$HOME/disk" "-f bestaudio"
+		ytdl "$primary" "$HOME/" "-f bestaudio"
 	;;
 	'youtube-dl (to music)')
 		playlist="$HOME/music/$(date +%Y_%m)"

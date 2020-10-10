@@ -12,7 +12,6 @@ My goal is to get things done: no fancy stuff here, just a lightweight yet funct
 * i3blocks - a status bar for i3
 * vim - a text editor, plugins : [goyo.vim (distraction free writing)](https://github.com/junegunn/goyo.vim), [colorizer (hex and rgb color codes)](https://github.com/lilydjwg/colorizer)
 * bash
-* zsh
 * [sxhkd](https://github.com/baskerville/sxhkd) - simple X hotkey daemon, a program for keybindings
 * dunst - a lightweight notification daemon
 * [i3lock-color](https://github.com/PandorasFox/i3lock-color) - improved i3 lockscreen

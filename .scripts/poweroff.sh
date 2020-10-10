@@ -11,7 +11,6 @@ case $action in
 		systemctl reboot
 	;;
 	'suspend')
-		$SCRIPTS/lock.sh &
 		systemctl 'suspend'
 	;;
 	'quit i3')

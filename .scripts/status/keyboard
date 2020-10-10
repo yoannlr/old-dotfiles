@@ -1,0 +1,22 @@
+#!/bin/sh
+
+default='fr'
+others=('us' 'de')
+current="$(setxkbmap -query | grep 'layout' | cut -d: -f2 | tr -d ' ')"
+
+switch() {
+	if [ "$current" = "$default" ]
+	then
+		new="$(printf '%s\n' "${others[@]}" | dmenu -p '⌨ Select layout: ')"
+		[ ! -z $new ] && setxkbmap "$new"
+	else
+		setxkbmap "$default"
+	fi
+	pkill -SIGRTMIN+9 i3blocks
+}
+
+case $BLOCK_BUTTON in
+	1) switch;;
+esac
+
+[ "$current" != "$default" ] && echo "⌨ $current"

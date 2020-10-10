@@ -56,7 +56,8 @@ wget,download from command line
 maim,screenshot tool
 python-pywal,generate colorscheme from wallpaper
 noto-fonts,noto font
-noto-fonts-emoji,noto font
+noto-fonts-emoji,noto font (emoji)
+noto-fonts-cjk,noto font (cjk)
 jack2,jack audio server
 ardour,ardour daw
 gparted,partition editor
@@ -76,3 +77,5 @@ aur:lowdown,markdown compiler
 baobab,disk usage analyzer
 pulseaudio,pulseaudio
 qrencode,create qr codes
+qt5ct,configure qt applications
+xss-lock,set screen locker program

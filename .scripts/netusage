@@ -4,9 +4,10 @@ intf=${1}
 [ -z ${intf} ] || [ "${intf}" = "auto" ] && intf=$(ip route | grep default | grep -o -e 'dev [a-z0-9]*' | cut -d' ' -f2)
 [ ! -d "/sys/class/net/${intf}" ] && echo "No such interface" && exit 1
 
-received=$(numfmt --to=iec-i $(cat /sys/class/net/${intf}/statistics/rx_bytes))
-sent=$(numfmt --to=iec-i $(cat /sys/class/net/${intf}/statistics/tx_bytes))
+received=$(cat /sys/class/net/${intf}/statistics/rx_bytes)
+sent=$(cat /sys/class/net/${intf}/statistics/tx_bytes)
 
 echo "Network usage statistics for interface $intf"
-echo "Received: $received"
-echo "Sent: $sent"
+echo "Received: $(numfmt --to=iec-i $received)"
+echo "Sent: $(numfmt --to=iec-i $sent)"
+echo "Total: $(numfmt --to=iec-i $((received + sent)))"

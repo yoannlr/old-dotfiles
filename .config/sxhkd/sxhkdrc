@@ -35,9 +35,7 @@ control + Print
 control + shift + Print
 	$SCRIPTS/screenshot.sh ac &
 super + l
-	$SCRIPTS/lock.sh
-super + shift + l
-	$SCRIPTS/lock.sh full
+	loginctl lock-session
 super + shift + q
 	$SCRIPTS/poweroff.sh
 super + w
@@ -53,11 +51,11 @@ super + m
 super + shift + m
 	multimc
 XF86AudioPlay
-	audacious -t
+	audacious -t; pkill --signal SIGRTMIN+7 i3blocks
 XF86AudioPrev
-	audacious -r
+	audacious -r; pkill --signal SIGRTMIN+7 i3blocks
 XF86AudioNext
-	audacious -f
+	audacious -f; pkill --signal SIGRTMIN+7 i3blocks
 shift + XF86AudioPlay
 	audacious -j
 XF86AudioRaiseVolume
@@ -72,3 +70,7 @@ super + e
 	$SCRIPTS/emojipick.sh
 super + space
 	rofi -show run -theme gruvbox-dark
+super + i
+	$SYSINFO
+alt + k
+	BLOCK_BUTTON=1 $SCRIPTS/status/keyboard

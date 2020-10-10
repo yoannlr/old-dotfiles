@@ -6,5 +6,6 @@ case $BLOCK_BUTTON in
 esac
 
 state="$(sed "s/down/❎/;s/up/🌐/" /sys/class/net/e*/operstate 2>/dev/null)"
+[ "$state" = "❎" ] && state="$(sed "s/down/❎/;s/up/🌐/" /sys/class/net/w*/operstate 2>/dev/null)"
 [ "$state" = "🌐" ] && state="$state $(hostname -i)"
 echo $state
