@@ -1,6 +1,7 @@
 #!/bin/sh
 
 file="$HOME/pics/screens/"
+[ ! -d "$file" ] && mkdir "$file"
 now="$(date '+%Y-%m-%d_%H%M%S')"
 
 case ${1} in
