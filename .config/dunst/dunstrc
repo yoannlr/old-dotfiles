@@ -1,27 +1,37 @@
 [global]
 	geometry = "260x5-20+40"
-	follow = keyboard
+	follow = mouse
 	font = Monospace 10
-	padding = 2
-	horizontal_padding = 2
-	separator_height = 2
+	padding = 8
+	horizontal_padding = 8
+	separator_height = 8
 	separator_color = auto
 
 	ignore_newline = no
 	word_wrap = yes
-
-	stack_duplicate = true
+	show_indicators = no
 
 	markup = full
-	show_indicators = yes
+	format = "<b>%a</b>\n%s"
+
+	icon_position = left
+	min_icon_size = 22
+	max_icon_size = 22
+	icon_path = "$HOME/.local/share/icons/Vimix-dark/:/usr/share/icons/default/"
+
 	history_length = 50
-	dmenu = /usr/bin/dmenu -p dunst:
-	browser = /usr/bin/firefox -new-tab
+	dmenu = /usr/bin/dmenu
+	browser = $BROWSER
 
 	class = Dunst
-	transparency = 10
+	title = Dunst
 
+	transparency = 10
 	idle_treshold = 120
+
+	mouse_left_click = do_action, close_current
+	mouse_right_click = close_current
+	mouse_middle_click = close_all
 
 [shortcuts]
 	close = ctrl+space

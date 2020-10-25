@@ -25,7 +25,7 @@
 	<unique-id>1597867715145157-1</unique-id>
 	<command>$SCRIPTS/thunar_uca/fontinstall.sh %F</command>
 	<description>Installs the selected font file</description>
-	<patterns>*.ttf;*.otf</patterns>
+	<patterns>*.ttf;*.otf;*.TTF;*.OTF</patterns>
 	<other-files/>
 </action>
 </actions>
