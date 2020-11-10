@@ -2,10 +2,12 @@
 	geometry = "260x5-20+40"
 	follow = mouse
 	font = Monospace 10
+	transparency = 1
 	padding = 8
 	horizontal_padding = 8
 	separator_height = 8
-	separator_color = auto
+	separator_color = #00000000
+	indicate_hidden = yes
 
 	ignore_newline = no
 	word_wrap = yes
@@ -26,7 +28,6 @@
 	class = Dunst
 	title = Dunst
 
-	transparency = 10
 	idle_treshold = 120
 
 	mouse_left_click = do_action, close_current
@@ -40,16 +41,16 @@
 	context = ctrl+shift+c
 
 [urgency_low]
-	background = "#282828"
+	background = "#282828dd"
 	foreground = "#eeeeee"
 	timeout = 5
 
 [urgency_normal]
-	background = "#000000"
+	background = "#000000dd"
 	foreground = "#eeeeee"
 	timeout = 5
 
 [urgency_critical]
-	background = "#cc2421"
+	background = "#cc2421dd"
 	foreground = "#eeeeee"
 	timeout = 0

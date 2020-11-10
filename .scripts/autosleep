@@ -1,0 +1,8 @@
+#!/bin/sh
+time=300
+[ ! -z ${1} ] && time=${1}
+xset dpms 0 0 "$time"
+msg="Blank screen delay is now $time seconds"
+[ ${time} -eq 0 ] && msg="Blank screen is now disabled"
+echo "$msg"
+notify-send "$msg"

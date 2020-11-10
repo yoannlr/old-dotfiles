@@ -74,3 +74,5 @@ super + i
 	$SYSINFO
 alt + k
 	BLOCK_BUTTON=1 $SCRIPTS/status/keyboard
+F9
+	pgrep obs || obs --scene Mc --startrecording --minimize-to-tray

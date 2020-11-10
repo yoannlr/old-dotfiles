@@ -24,11 +24,14 @@ interval=once
 [battery]
 interval=10
 
-[disk /]
-interval=60
+#[disk /]
+#interval=60
 
-[disk /home]
-interval=60
+#[disk /home]
+#interval=60
+
+[temperature]
+interval=5
 
 [ram]
 interval=5
