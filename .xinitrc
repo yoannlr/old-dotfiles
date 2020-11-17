@@ -20,7 +20,7 @@ xset dpms 0 0 300
 exec xss-lock --transfer-sleep-lock -- $SCRIPTS/lock.sh &
 pgrep redshift || exec redshift -l 48:2 -t 6500:3000 &
 xrdb -merge $HOME/.cache/wal/colors.Xresources
-exec xwallpaper --no-randr --zoom $HOME/pics/walls/wall &
+mode='Same on each monitor' $SCRIPTS/setwall.sh "$(readlink $HOME/pics/walls/wall)"
 exec numlockx &
 exec sxhkd -m 1 &
 exec dunst &

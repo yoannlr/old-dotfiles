@@ -1,0 +1,24 @@
+#!/bin/sh
+reminders="$HOME/.local/reminders"
+[ ! -d "$reminders" ] && mkdir "$reminders"
+
+if [ $# -lt 1 ]
+then
+	for f in $(find "$reminders" -type f)
+	do
+		echo "$(basename $f) ➡ $(cat "$f")"
+	done
+elif [ "$1" = "dismiss" ]
+then
+	if [ ! -e "$reminders/$2" ]
+	then
+		echo "$2 ➡ no such reminder"
+	else
+		rm "$reminders/$2"
+	fi
+else
+	reminder="$reminders/$1"
+	shift
+	echo "$@" >> "$reminder"
+	notify-send "Reminder created"
+fi

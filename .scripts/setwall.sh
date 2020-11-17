@@ -5,14 +5,23 @@ if [ -z $wall ]
 then
 	setsid -f sxiv -t $HOME/pics/walls/*.{jpg,jpeg,png}
 else
-	ln -s -f "$wall" "$HOME/pics/walls/wall"
-	mode=$(echo -e 'Extend to all monitors\nSame on each monitor' | dmenu -p 'Wallpaper options')
+	[ -z "$mode" ] && mode=$(echo -e 'Extend to all monitors\nSame on each monitor' | dmenu -p 'Wallpaper options')
+	[ -z "$mode" ] && exit
+
+	[ "$(readlink $HOME/pics/walls/wall)" = "$wall" ] && samefile=1
+	[ -z "$samefile" ] && ln -s -f "$wall" "$HOME/pics/walls/wall"
+
 	if [ "$mode" = "Same on each monitor" ]
 	then
 		xwallpaper --zoom $HOME/pics/walls/wall
 	else
 		xwallpaper --no-randr --zoom $HOME/pics/walls/wall
 	fi
-	wal -c
-	wal -qtn -i $HOME/pics/walls/wall
+
+	if [ -z "$samefile" ]
+	then
+		echo "Updating color scheme"
+		wal -c
+		wal -qtn -i $HOME/pics/walls/wall
+	fi
 fi

@@ -13,5 +13,5 @@ openterminal() {
 	cd $1 && $TERMINAL
 }
 
-loc=$(dmenu -i -l 20 -p "$2" < $SCRIPTS/"$1")
+loc=$(dmenu -i -l 20 -p "$2" < "$1")
 [ ! -z "$loc" ] && "${3}" "$loc"

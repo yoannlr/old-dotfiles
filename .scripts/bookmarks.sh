@@ -2,8 +2,8 @@
 
 # this script is executed as source (in order to use the cd command), so I use return instead of exit
 
-[ "${1}" == "list" ] && cat $SCRIPTS/bookmarks && return
-[ "${1}" == "add" ] && echo "${2}" >> $SCRIPTS/bookmarks && return
+[ "${1}" == "list" ] && cat $HOME/.local/bookmarks && return
+[ "${1}" == "add" ] && echo "${2}" >> $HOME/.local/bookmarks && return
 
-loc=$(fzf --reverse --color bw < "$SCRIPTS/bookmarks")
+loc=$(fzf --reverse --color bw < "$HOME/.local/bookmarks")
 [ ! -z "$loc" ] && cd "$loc"

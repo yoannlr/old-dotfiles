@@ -5,11 +5,11 @@ super + d
 super + shift + d
 	discord
 super + b
-	$SCRIPTS/bookmarks_dmenu.sh bookmarks "Open in file manager" openfolder
+	$SCRIPTS/bookmarks_dmenu.sh $HOME/.local/bookmarks "Open in file manager" openfolder
 super + shift + b
-	$SCRIPTS/bookmarks_dmenu.sh bookmarks "Open in terminal" openterminal
+	$SCRIPTS/bookmarks_dmenu.sh $HOME/.local/bookmarks "Open in terminal" openterminal
 super + alt + b
-	$SCRIPTS/bookmarks_dmenu.sh websites "Open link" openlink
+	$SCRIPTS/bookmarks_dmenu.sh $HOME/.local/websites "Open link" openlink
 super + u
 	$SCRIPTS/mountdrives.sh
 super + shift + u

@@ -28,4 +28,22 @@
 	<patterns>*.ttf;*.otf;*.TTF;*.OTF</patterns>
 	<other-files/>
 </action>
+<action>
+	<icon>image-x-generic</icon>
+	<name>Resize image</name>
+	<unique-id>1605599718372199-1</unique-id>
+	<command>$SCRIPTS/resizeimage.sh %f</command>
+	<description>Resize image</description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>preferences-desktop-wallpaper</icon>
+	<name>Set wallpaper (my script)</name>
+	<unique-id>1605599927196575-1</unique-id>
+	<command>$SCRIPTS/setwall.sh %f</command>
+	<description>Set image as wallpaper</description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
 </actions>

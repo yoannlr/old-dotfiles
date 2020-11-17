@@ -26,7 +26,7 @@ ytdl() {
 bookmark() {
 	url="$1"
 	name=$(dmenu -p "Name of this bookmark: " <&- | tr -d ':')
-	echo "${name}@$url" >> "$SCRIPTS/websites"
+	echo "${name}@$url" >> "$HOME/.local/websites"
 	notify-send "Bookmarked $name"
 }
 
