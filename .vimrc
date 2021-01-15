@@ -4,6 +4,8 @@ set ignorecase smartcase
 set timeoutlen=1000 ttimeoutlen=0
 set nocompatible
 
+let g:colorizer_maxlines=500
+
 map te :tabe<Space>
 map tp :tabp<Return>
 map tn :tabn<Return>

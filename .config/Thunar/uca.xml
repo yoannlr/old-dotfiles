@@ -11,6 +11,15 @@
 	<directories/>
 </action>
 <action>
+	<icon>run-build</icon>
+	<name>Execute</name>
+	<unique-id>1606597723395567-1</unique-id>
+	<command>cd %d &amp;&amp; ./%n</command>
+	<description>Execute program</description>
+	<patterns>*</patterns>
+	<other-files/>
+</action>
+<action>
 	<icon>disk-usage-analyzer</icon>
 	<name>Analyse disk usage</name>
 	<unique-id>1597864370339722-1</unique-id>

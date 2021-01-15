@@ -5,8 +5,6 @@
 	transparency = 1
 	padding = 8
 	horizontal_padding = 8
-	separator_height = 8
-	separator_color = #00000000
 	indicate_hidden = yes
 
 	ignore_newline = no

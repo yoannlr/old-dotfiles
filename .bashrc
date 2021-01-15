@@ -23,4 +23,15 @@ bind 'set show-all-if-ambiguous on'
 # restores wal colorscheme
 (cat $HOME/.cache/wal/sequences &)
 
-PS1='\u : \W $ '
+prompt() {
+	local CODE="$?"
+	if [ $CODE -eq 0 ]
+	then
+		PS1="\u : \W $ "
+	else
+		PS1="${CODE} | \u : \W $ "
+	fi
+}
+
+# PS1='\u : \W $ '
+PROMPT_COMMAND=prompt
