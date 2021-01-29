@@ -1,3 +1,6 @@
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias bm="source $SCRIPTS/bookmarks.sh"
+alias \
+	ls='ls --color=auto' \
+	grep='grep --color=auto' \
+	bm="source $SCRIPTS/bookmarks.sh" \
+	news='newsboat -r' \
+	mpv='mpv --no-resume-playback'

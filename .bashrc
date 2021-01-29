@@ -21,7 +21,7 @@ bind 'set show-all-if-ambiguous on'
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
 # restores wal colorscheme
-(cat $HOME/.cache/wal/sequences &)
+#(cat $HOME/.cache/wal/sequences &)
 
 prompt() {
 	local CODE="$?"

@@ -41,7 +41,7 @@
 	<icon>image-x-generic</icon>
 	<name>Resize image</name>
 	<unique-id>1605599718372199-1</unique-id>
-	<command>$SCRIPTS/resizeimage.sh %f</command>
+	<command>$SCRIPTS/resizeimage.sh %F</command>
 	<description>Resize image</description>
 	<patterns>*</patterns>
 	<image-files/>

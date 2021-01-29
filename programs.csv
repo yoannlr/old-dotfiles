@@ -79,3 +79,13 @@ pulseaudio,pulseaudio
 qrencode,create qr codes
 qt5ct,configure qt applications
 xss-lock,set screen locker program
+abook,address book
+android-tools,android debug bridge and fastboot
+bashtop,fully-featured bash top
+bat,cat with syntax highlight
+filezilla,ftp client
+graphviz,graph visualization software
+mumble,voice chat
+newsboat,rss feeds reader
+vimb,vim web browser
+zbar,qr/barcodes reader
