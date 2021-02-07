@@ -10,7 +10,7 @@ My goal is to get things done: no fancy stuff here, just a lightweight yet funct
 
 * i3 (i3-gaps) - a tiling window manager
 * i3blocks - a status bar for i3
-* vim - a text editor, plugins : [goyo.vim (distraction free writing)](https://github.com/junegunn/goyo.vim), [colorizer (hex and rgb color codes)](https://github.com/lilydjwg/colorizer)
+* vim - a text editor
 * bash
 * [sxhkd](https://github.com/baskerville/sxhkd) - simple X hotkey daemon, a program for keybindings
 * dunst - a lightweight notification daemon
@@ -36,6 +36,13 @@ My goal is to get things done: no fancy stuff here, just a lightweight yet funct
 * [simple-mtpfs](https://github.com/phatina/simple-mtpfs) - mount android phones
 * [fontpreview](https://github.com/sdushantha/fontpreview) - view fonts
 
+## Vim plugins
+
+* [goyo.vim (distraction free writing)](https://github.com/junegunn/goyo.vim)
+* [colorizer (hex and rgb color codes)](https://github.com/lilydjwg/colorizer)
+* [emmet-vim (much, much easier html development)](https://github.com/mattn/emmet-vim)
+
 ## References
 
 * [Luke Smith's Dotfiles](https://github.com/lukesmithxyz/voidrice) and [Luke Smith's YouTube channel](https://youtube.com/c/lukesmithxyz) were great references for me to learn how to tweak my Linux desktop
+* [Mental Outlaw's YouTube channel](https://www.youtube.com/channel/UC7YOGHUfC1Tb6E4pudI9STA)

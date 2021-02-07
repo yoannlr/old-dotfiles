@@ -15,3 +15,7 @@ map <S-F12> :ColorToggle<Return>
 
 autocmd BufWritePost *.todo !sorttodo.sh %
 autocmd! User GoyoLeave source $HOME/.vimrc
+
+let g:user_emmet_leader_key = ','
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
