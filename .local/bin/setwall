@@ -3,7 +3,7 @@
 wall=${1}
 if [ -z $wall ]
 then
-	setsid -f sxiv -t $HOME/pics/walls/*.{jpg,jpeg,png}
+	setsid -f sxiv -t $WALLPAPERS/*.{jpg,jpeg,png}
 else
 	[ -z "$mode" ] && mode=$(echo -e 'Extend to all monitors\nSame on each monitor' | dmenu -p 'Wallpaper options')
 	[ -z "$mode" ] && exit

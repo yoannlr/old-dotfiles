@@ -10,7 +10,6 @@ numlockx,enable numlock
 redshift,reduce amount of blue light
 i3-gaps,window manager
 i3blocks,status bar
-i3lock-color,locker
 dmenu,dmenu
 arandr,screen layout configuration
 xcompmgr,windows transparency
@@ -36,7 +35,7 @@ thunar,graphical files manager
 thunar-archive-plugin,manage archives from thunar
 thunar-media-tags-plugin,audio and video file infos from thunar
 gvfs,mount virtual filesystems
-xfce4-terminal,terminal
+alacritty,terminal
 aur:brave-bin,web browser
 galculator,calculator
 gimp,image manipulation program
@@ -89,3 +88,15 @@ mumble,voice chat
 newsboat,rss feeds reader
 vimb,vim web browser
 zbar,qr/barcodes reader
+moreutils,moreutils
+entr,run command when files changes
+xfce4-battery-plugin,xfce battery indicator
+xfce4-datetime-plugin,xfce date indicator
+xfce4-panel,xfce panel
+xfce4-power-manager,xfce power manager
+xfce4-pulseaudio-plugin,xfce audio indicator
+xfce4-taskmanager,xfce task manager
+xfwm4,xfce window manager
+slock,slock lock screen
+lynx,lynx terminal web browser
+rofi,rofi menu

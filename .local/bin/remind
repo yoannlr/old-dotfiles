@@ -20,5 +20,6 @@ else
 	reminder="$reminders/$1"
 	shift
 	echo "$@" >> "$reminder"
+	echo "Reminder '$reminder' created."
 	notify-send "Reminder created"
 fi

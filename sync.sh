@@ -2,7 +2,7 @@
 
 # this script is only used to synchronize the files in use to the local repository
 
-cp -vr ~/.scripts/* .scripts/
+cp -vr ~/.local/bin/* .local/bin/
 cp -v ~/.config/i3blocks/config .config/i3blocks/config
 cp -v ~/.config/i3/config .config/i3/config
 cp -v ~/.config/i3status/config .config/i3status/config
@@ -16,5 +16,5 @@ cp -v ~/.xinitrc .xinitrc
 cp -v ~/.profile .profile
 cp -v ~/.screenlayout/* .screenlayout/
 cp -v ~/.config/sxiv/exec/key-handler .config/sxiv/exec/
-cp -v ~/.config/xfce4/terminal/terminalrc .config/xfce4/terminal/
 cp -v ~/.config/Thunar/uca.xml .config/Thunar/
+cp -v ~/.config/alacritty.yml .config/alacritty.yml

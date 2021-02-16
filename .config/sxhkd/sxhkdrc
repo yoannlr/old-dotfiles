@@ -5,74 +5,70 @@ super + d
 super + shift + d
 	discord
 super + b
-	$SCRIPTS/bookmarks_dmenu.sh $HOME/.local/bookmarks "Open in file manager" openfolder
+	bookmarks_menu $HOME/.local/bookmarks "Open in file manager" openfolder
 super + shift + b
-	$SCRIPTS/bookmarks_dmenu.sh $HOME/.local/bookmarks "Open in terminal" openterminal
+	bookmarks_menu $HOME/.local/bookmarks "Open in terminal" openterminal
 super + alt + b
-	$SCRIPTS/bookmarks_dmenu.sh $HOME/.local/websites "Open link" openlink
-super + u
-	$SCRIPTS/mountdrives.sh
-super + shift + u
-	$SCRIPTS/umountdrives.sh
+	bookmarks_menu $HOME/.local/websites "Open link" openlink
 super + shift + s
 	pavucontrol
 super + shift + a
 	arandr
 super + shift + p
-	$SCRIPTS/displays.sh
+	displays_menu
 super + alt + w
-	$SCRIPTS/setwall.sh
+	setwall
 super + a
-	$SCRIPTS/primaryactions.sh
+	primary_menu
 super + c
-	galculator
+	gnome-calculator
 Print
-	$SCRIPTS/screenshot.sh f &
+	screenshot f &
 shift + Print
-	$SCRIPTS/screenshot.sh a &
+	screenshot a &
 control + Print
-	$SCRIPTS/screenshot.sh fc &
+	screenshot fc &
 control + shift + Print
-	$SCRIPTS/screenshot.sh ac &
+	screenshot ac &
 super + l
 	loginctl lock-session
 super + shift + q
-	$SCRIPTS/poweroff.sh
+	power_menu
 super + w
 	$BROWSER
 super + shift + w
 	$BROWSER --incognito
 super + x
 	$FILE
-super + shift + x
-	lxtask
 super + m
 	audacious -m
 super + shift + m
 	multimc
 XF86AudioPlay
-	audacious -t; pkill --signal SIGRTMIN+7 i3blocks
+	audacious -t
 XF86AudioPrev
-	audacious -r; pkill --signal SIGRTMIN+7 i3blocks
+	audacious -r
 XF86AudioNext
-	audacious -f; pkill --signal SIGRTMIN+7 i3blocks
+	audacious -f
 shift + XF86AudioPlay
 	audacious -j
 XF86AudioRaiseVolume
-	$SCRIPTS/volume.sh inc
+	volume_ctl inc
 XF86AudioLowerVolume
-	$SCRIPTS/volume.sh dec
+	volume_ctl dec
 XF86AudioMute
-	$SCRIPTS/volume.sh mute
+	volume_ctl mute
 XF86AudioMicMute
-	$SCRIPTS/volume.sh mutemic
+	volume_ctl mutemic
 super + e
-	$SCRIPTS/emojipick.sh
+	emoji_menu
 super + space
 	rofi -show run -theme gruvbox-dark
 super + i
 	$SYSINFO
-alt + k
-	BLOCK_BUTTON=1 $SCRIPTS/status/keyboard
 F9
 	pgrep obs || obs --scene Mc --startrecording --minimize-to-tray
+alt + Tab
+	rofi -show window -theme gruvbox-dark
+super + Tab
+	pgrep skippy-xd || skippy-xd

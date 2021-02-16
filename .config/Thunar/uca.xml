@@ -4,7 +4,7 @@
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
 	<unique-id>1572290734863847-1</unique-id>
-	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<command>$TERMINAL --working-directory %f</command>
 	<description>Example for a custom action</description>
 	<patterns>*</patterns>
 	<startup-notify/>
@@ -41,7 +41,7 @@
 	<icon>image-x-generic</icon>
 	<name>Resize image</name>
 	<unique-id>1605599718372199-1</unique-id>
-	<command>$SCRIPTS/resizeimage.sh %F</command>
+	<command>$SCRIPTS/thunar_uca/resizeimage.sh %F</command>
 	<description>Resize image</description>
 	<patterns>*</patterns>
 	<image-files/>

@@ -1,0 +1,29 @@
+window:
+  dynamic_title: true
+
+padding:
+  x: 4
+  y: 4
+
+scrolling:
+  history: 10000
+
+font:
+  size: 14.0
+
+key_bindings:
+  - {key: Plus, mods: Control|Shift, action: IncreaseFontSize}
+  - {key: Minus, mods: Control, action: DecreaseFontSize}
+  - {key: Home, mods: Control, action: ResetFontSize}
+
+mouse:
+  url:
+    launcher:
+      program: xdg-open
+      args: []
+
+  selection:
+    save_to_clipboard: true
+
+  mouse_bindings:
+    - {mouse: Middle, action: PasteSelection}

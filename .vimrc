@@ -13,7 +13,7 @@ map tn :tabn<Return>
 map <S-F11> :Goyo<Return>
 map <S-F12> :ColorToggle<Return>
 
-autocmd BufWritePost *.todo !sorttodo.sh %
+autocmd BufWritePost *.todo !sorttodo %
 autocmd! User GoyoLeave source $HOME/.vimrc
 
 let g:user_emmet_leader_key = ','
