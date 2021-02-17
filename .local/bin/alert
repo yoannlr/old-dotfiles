@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# "$@" ; notify-send "$1 finished"
+"$@"
+if [ $? -eq 0 ]
+then
+	notify-send "$1 finished."
+else
+	notify-send -u critical "$1 failed."
+fi
