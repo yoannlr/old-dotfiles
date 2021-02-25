@@ -7,6 +7,7 @@ export WALLPAPERS="$HOME/pics/walls/"
 
 $SCREENLAYOUTS/default
 
+xinput set-prop 'DELL086F:00 06CB:7E92 Touchpad' 'libinput Tapping Enabled' 1
 setxkbmap fr
 xset dpms 0 0 300
 exec xss-lock --transfer-sleep-lock -- slock &
@@ -15,7 +16,7 @@ mode='Same on each monitor' setwall "$(readlink $WALLPAPERS/wall)"
 
 numlockx &
 exec sxhkd -m 1 &
-exec dunst &
+exec /usr/lib/xfce4/notifyd/xfce4-notifyd &
 exec nm-applet &
 exec xfce4-panel &
 exec xfwm4
