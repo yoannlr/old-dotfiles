@@ -4,7 +4,7 @@ case "$1" in
 	"C-w")
 		while read file
 		do
-			$SCRIPTS/setwall.sh "$file"
+			setwall "$file"
 			exit
 		done
 	;;

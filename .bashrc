@@ -20,14 +20,20 @@ bind 'set show-all-if-ambiguous on'
 
 trap 'echo -ne "\033]0;$BASH_COMMAND\007"' DEBUG
 
+txt_red="$(tput setaf 1)"
+txt_green="$(tput setaf 2)"
+txt_bold="$(tput bold)"
+txt_reset="$(tput sgr0)"
+
 prompt() {
 	local CODE="$?"
 	if [ $CODE -eq 0 ]
 	then
-		PS1="\033]0;\u : \W\007\u : \W $ "
+		PS1="${txt_green}${txt_bold}\u : \W $ ${txt_reset}"
 	else
-		PS1="\033]0;\u : \W\007${CODE} | \u : \W $ "
+		PS1="${txt_red}${CODE} | ${txt_bold}\u : \W $ ${txt_reset}"
 	fi
+	echo -ne "\033]0;${USER} : $(basename ${PWD})\007"
 }
 
 PROMPT_COMMAND=prompt

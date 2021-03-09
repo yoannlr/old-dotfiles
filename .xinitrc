@@ -1,4 +1,4 @@
-export SCREENLAYOUTS="$HOME/.screenlayout"
+export SCREENLAYOUTS="$HOME/.local/screenlayout"
 export TERMINAL='alacritty'
 export BROWSER='brave'
 export FILE='thunar'
