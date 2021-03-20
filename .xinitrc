@@ -12,11 +12,13 @@ setxkbmap fr
 xset dpms 0 0 300
 exec xss-lock --transfer-sleep-lock -- slock &
 pgrep redshift || exec redshift -l 48:2 -t 6500:3000 &
-mode='Same on each monitor' setwall "$(readlink $WALLPAPERS/wall)"
+# mode='Same on each monitor' setwall "$(readlink $WALLPAPERS/wall)"
 
 numlockx &
 exec sxhkd -m 1 &
 exec /usr/lib/xfce4/notifyd/xfce4-notifyd &
+exec thunar --daemon &
 exec nm-applet &
+exec xfdesktop &
 exec xfce4-panel &
 exec xfwm4

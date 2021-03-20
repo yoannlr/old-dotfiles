@@ -2,7 +2,6 @@
 
 HISTFILE="$HOME/.cache/bash_history"
 HISTSIZE= HISTFILESIZE=
-HISTTIMEFORMAT="%Y-%m-%d %T "
 
 # history from multiple sessions at the same time
 shopt -s histappend
@@ -33,7 +32,7 @@ prompt() {
 	else
 		PS1="${txt_red}${CODE} | ${txt_bold}\u : \W $ ${txt_reset}"
 	fi
-	echo -ne "\033]0;${USER} : $(basename ${PWD})\007"
+	echo -ne "\033]0;$(basename ${PWD})\007"
 }
 
 PROMPT_COMMAND=prompt

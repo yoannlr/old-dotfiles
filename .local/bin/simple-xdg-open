@@ -1,0 +1,18 @@
+#!/bin/sh
+
+CONFIG="${XDG_CONFIG_HOME}/xdg-open.conf"
+
+usage() {
+	echo "Usage: ${0} <file>"
+}
+
+[ ${#} -lt 1 ] && usage && exit 1
+
+mimetype="$(file -b --mime-type ${1})"
+run="$(grep -m 1 ${mimetype} ${CONFIG})"
+
+[ ! $? -eq 0 ] && echo "No such config for ${mimetype} in ${CONFIG}." && exit 1
+
+run="$(echo ${run} | cut -d= -f2) ${1}"
+$run &
+exit 0

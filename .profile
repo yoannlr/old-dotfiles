@@ -1,7 +1,7 @@
 export LESSHISTFILE='-'
 export EDITOR='vim'
 export SCRIPTS="$HOME/.local/bin"
-export PATH="$PATH:$HOME/bin:$SCRIPTS"
+export PATH="$SCRIPTS:$HOME/bin:$PATH"
 
 # xdg directories
 export XDG_CONFIG_HOME="$HOME/.config"

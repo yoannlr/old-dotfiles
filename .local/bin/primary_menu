@@ -5,7 +5,7 @@
 # $3 : command options
 ytdl() {
 	cd "$2"
-	notify-send -u low "$(echo -e "Download started to $2\n$1")"
+	notify-send -u low "Download started" "$1 to $2"
 	if [ -z "$3" ]
 	then
 		youtube-dl --restrict-filenames "$1"
@@ -15,51 +15,51 @@ ytdl() {
 	fi
 	if [ $? -eq 0 ]
 	then
-		notify-send -u low "$(echo -e "Download finished\n$1")"
+		notify-send -u low "Download finished" "$1 to $2"
 		mpv "$SCRIPTS/success.m4a" &
 	else
-		notify-send "Failed to download $1"
+		notify-send "Download failed" "$1 to $2"
 	fi
 	pkill -SIGRTMIN+8 i3blocks
 }
 
 bookmark() {
 	url="$1"
-	name=$(dmenu -p "Name of this bookmark: " <&- | tr -d ':')
+	name=$(dmenu -p "Bookmark's label" <&- | tr -d ':')
 	echo "${name}@$url" >> "$HOME/.local/websites"
-	notify-send "Bookmarked $name"
+	notify-send "Bookmarks" "Bookmarked $name"
 }
 
 primary=$(xclip -o)
-actions="copy\nqrencode"
+actions="Copy\nCreate QR-Code"
 
-[ -z $primary ] && notify-send 'Empty' && exit 0
+[ -z $primary ] && notify-send "Empty" "Nothing selected" && exit 0
 
-echo "$primary" | egrep '^https?:\/\/' && actions="bookmark\n$actions"
-echo "$primary" | egrep '^(https?:\/\/)?(www\.)?(youtube\.com\/watch|youtu.be)' && actions="youtube-dl\nyoutube-dl (to music)\nyoutube-dl (audio)\n$actions"
-echo "$primary" | egrep '^(https?:\/\/)?(www\.)?soundcloud\.com' && actions="youtube-dl (to music)\nyoutube-dl (audio)\n$actions"
-echo "$primary" | egrep '^(https?:\/\/)?(.*\.)?bandcamp.com' && actions="youtube-dl (to music)\nyoutube-dl (audio)\n$actions"
+echo "$primary" | egrep '^https?:\/\/' && actions="Bookmark\n$actions"
+echo "$primary" | egrep '^(https?:\/\/)?(www\.)?(youtube\.com\/watch|youtu.be)' && actions="Download\nDownload to Music\nDownload audio\n$actions"
+echo "$primary" | egrep '^(https?:\/\/)?(www\.)?soundcloud\.com' && actions="Download to Music\nDownload audio\n$actions"
+echo "$primary" | egrep '^(https?:\/\/)?(.*\.)?bandcamp.com' && actions="Download to Music\nDownload audio\n$actions"
 
-action=$(echo -e "$actions" | dmenu -i -p "$(echo $primary | colrm 30): ")
+action=$(echo -e "$actions" | dmenu -i -p "$(echo $primary | colrm 30)")
 case $action in
-	'copy')
+	'Copy')
 		echo "$primary" | xclip -i -selection clipboard
 	;;
-	'qrencode')
+	'Create QR-Code')
 		qrencode "$primary" -s 20 -o /tmp/qr.png && sxiv /tmp/qr.png
 	;;
-	'bookmark')
+	'Bookmark')
 		bookmark "$primary"
 	;;
-	'youtube-dl')
+	'Download')
 		ytdl "$primary" "$HOME/vids" "--add-metadata" # --embed-thumbnail
 	;;
-	'youtube-dl (audio)')
+	'Download audio')
 		ytdl "$primary" "$HOME/" "-f bestaudio"
 	;;
-	'youtube-dl (to music)')
+	'Download to Music')
 		playlist="$HOME/music/$(date +%Y_%m)"
-		[ ! -d "$playlist" ] && mkdir "$playlist" && notify-send "Created new monthly playlist"
+		[ ! -d "$playlist" ] && mkdir "$playlist" && notify-send "Monthly playlists" "Created new monthly playlist"
 		ytdl "$primary" "$playlist" "--add-metadata -f bestaudio --no-playlist" # --embed-thumbnail
 	;;
 esac

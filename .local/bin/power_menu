@@ -1,23 +1,23 @@
 #!/bin/sh
-action=$(echo -e 'cancel\nquit i3\npoweroff\nreboot\nsuspend\nupdate and shutdown' | dmenu -p 'power options')
+action=$(echo -e 'Cancel\nQuit X\nPower off\nReboot\nSuspend\nUpdate and power off' | dmenu -i -p 'Power options')
 
 [ -z "$action" ] && exit 0
 
 case $action in
-	'poweroff')
+	'Power off')
 		systemctl poweroff
 	;;
-	'reboot')
+	'Reboot')
 		systemctl reboot
 	;;
-	'suspend')
+	'Suspend')
 		systemctl 'suspend'
 	;;
-	'quit i3')
-		i3-msg exit
+	'Quit X')
+		killall -u "$USER" Xorg
 	;;
-	'update and shutdown')
-		xfce4-terminal -e 'sudo pacman -Syu' -T "Updating system"
+	'Update and power off')
+		$TERMINAL -e 'sudo pacman -Syu'
 		systemctl poweroff
 	;;
 	*)
