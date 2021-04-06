@@ -1,9 +1,8 @@
 window:
   dynamic_title: true
-
-padding:
-  x: 4
-  y: 4
+  padding:
+    x: 4
+    y: 4
 
 scrolling:
   history: 10000

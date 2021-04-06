@@ -9,4 +9,4 @@ do
 	cp "$arg" "$FONTSDIR/"
 done
 
-notify-send '📂 Fonts installed'
+notify-send '📂 Fonts installed' "Copied fonts to $FONTSDIR"

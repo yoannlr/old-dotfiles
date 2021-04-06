@@ -21,4 +21,5 @@ exec thunar --daemon &
 exec nm-applet &
 exec xfdesktop &
 exec xfce4-panel &
+exec xpad &
 exec xfwm4

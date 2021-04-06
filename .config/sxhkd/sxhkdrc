@@ -68,7 +68,5 @@ super + i
 	$SYSINFO
 F9
 	pgrep obs || obs --scene Mc --startrecording --minimize-to-tray
-alt + Tab
-	rofi -show window -theme gruvbox-dark
 super + Tab
 	pgrep skippy-xd || skippy-xd

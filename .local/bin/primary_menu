@@ -59,7 +59,7 @@ case $action in
 	;;
 	'Download to Music')
 		playlist="$HOME/music/$(date +%Y_%m)"
-		[ ! -d "$playlist" ] && mkdir "$playlist" && notify-send "Monthly playlists" "Created new monthly playlist"
+		[ ! -d "$playlist" ] && mkdir "$playlist" && notify-send "Monthly playlists" "Created new monthly playlist $playlist"
 		ytdl "$primary" "$playlist" "--add-metadata -f bestaudio --no-playlist" # --embed-thumbnail
 	;;
 esac

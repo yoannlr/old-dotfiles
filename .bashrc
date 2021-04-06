@@ -17,22 +17,28 @@ bind 'set show-all-if-ambiguous on'
 
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
-trap 'echo -ne "\033]0;$BASH_COMMAND\007"' DEBUG
+txt_reset='\[\e[0m\]'
+txt_red='\[\e[0;31m\]'
+txt_green='\[\e[0;32m\]'
 
-txt_red="$(tput setaf 1)"
-txt_green="$(tput setaf 2)"
-txt_bold="$(tput bold)"
-txt_reset="$(tput sgr0)"
+# prompt command, with color and return code
+promptcommand() {
+	local code="$?"
 
-prompt() {
-	local CODE="$?"
-	if [ $CODE -eq 0 ]
+	# echo this special string to set the window title
+	case ${TERM} in
+		alacritty)
+			printf "\033]0;%s\007" "${PWD/#$HOME/\~}"
+		;;
+	esac
+
+	PS1=""
+	if [ $code -eq 0 ]
 	then
-		PS1="${txt_green}${txt_bold}\u : \W $ ${txt_reset}"
+		PS1+="${txt_green}[\W]${txt_reset} "
 	else
-		PS1="${txt_red}${CODE} | ${txt_bold}\u : \W $ ${txt_reset}"
+		PS1+="${txt_red}[${code} | \W]${txt_reset} "
 	fi
-	echo -ne "\033]0;$(basename ${PWD})\007"
 }
 
-PROMPT_COMMAND=prompt
+export PROMPT_COMMAND=promptcommand
