@@ -55,4 +55,18 @@
 	<patterns>*</patterns>
 	<image-files/>
 </action>
+<action>
+	<icon>emblem-symbolic-link</icon>
+	<name>Create Link</name>
+	<unique-id>1618144769327816-1</unique-id>
+	<command>ln -s %f Link\ to\ %n</command>
+	<description>Creates a Symlink to selected item</description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
 </actions>

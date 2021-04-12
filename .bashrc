@@ -1,7 +1,10 @@
 [[ $- != *i* ]] && return
 
+# history
 HISTFILE="$HOME/.cache/bash_history"
 HISTSIZE= HISTFILESIZE=
+HISTCONTROL=ignoreboth
+HISTTIMEFORMAT="%y-%m-%d_%T "
 
 # history from multiple sessions at the same time
 shopt -s histappend

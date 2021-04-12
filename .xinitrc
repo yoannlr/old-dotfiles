@@ -22,4 +22,11 @@ exec nm-applet &
 exec xfdesktop &
 exec xfce4-panel &
 exec xpad &
+
+# reminders
+remind | while read r
+do
+	notify-send "Remineder" "$r"
+done
+
 exec xfwm4

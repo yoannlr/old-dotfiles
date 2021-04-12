@@ -14,7 +14,7 @@ case $action in
 		systemctl 'suspend'
 	;;
 	'Quit X')
-		killall -u "$USER" Xorg
+		killall -u "$USER" --signal SIGTERM Xorg
 	;;
 	'Update and power off')
 		$TERMINAL -e 'sudo pacman -Syu'

@@ -1,2 +1,6 @@
-.scripts/bookmarks
-.scripts/websites
+.local/bin/lf
+.local/bin/minecraft
+.local/bin/multimc
+.local/bin/discord
+.local/bin/simple-cron
+.local/bin/simple-xdg-open
