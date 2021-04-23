@@ -1,5 +1,5 @@
 export SCREENLAYOUTS="$HOME/.local/screenlayout"
-export TERMINAL='alacritty'
+export TERMINAL='xfce4-terminal'
 export BROWSER='brave'
 export FILE='thunar'
 export SYSINFO='gnome-system-monitor'

@@ -3,4 +3,5 @@ alias \
 	grep='grep --color=auto' \
 	bm="source bookmarks" \
 	news='newsboat -r' \
-	mpv='mpv --no-resume-playback'
+	mpv='mpv --no-resume-playback' \
+	youtube-dl='youtube-dl --restrict-filenames'

@@ -1,3 +1,5 @@
+super + shift + Escape
+	pkill -USR1 -x -u "$USER" sxhkd
 super + Return
 	$TERMINAL
 super + d
@@ -62,6 +64,8 @@ XF86AudioMicMute
 	volume_ctl mutemic
 super + e
 	emoji_menu
+super + u
+	unicode_menu
 super + space
 	rofi -show run -theme gruvbox-dark
 super + i
