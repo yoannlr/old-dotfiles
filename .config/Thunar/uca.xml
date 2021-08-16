@@ -69,4 +69,44 @@
 	<text-files/>
 	<video-files/>
 </action>
+<action>
+	<icon>folder-saved-search</icon>
+	<name>Open Catfish here</name>
+	<unique-id>1619781952989646-1</unique-id>
+	<command>catfish %f</command>
+	<description>Open Catfish here</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>variety-slideshow</icon>
+	<name>View images</name>
+	<unique-id>1624642194262121-1</unique-id>
+	<command>sxiv -t *</command>
+	<description>Open all images in sxiv</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>audacious</icon>
+	<name>Play music</name>
+	<unique-id>1627039260914033-1</unique-id>
+	<command>audacious --enqueue-to-temp %f/*</command>
+	<description>Plays all the songs in the selected folder with Audacious</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>edit-delete</icon>
+	<name>Shred (remove) files</name>
+	<unique-id>1627937922928252-1</unique-id>
+	<command>zenity --title &quot;Confirmation&quot; --question --text &quot;Wipe selected files?&quot; &amp;&amp; shred -u %F &amp;&amp; notify-send &quot;Files shredded&quot;</command>
+	<description></description>
+	<patterns>*</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
 </actions>

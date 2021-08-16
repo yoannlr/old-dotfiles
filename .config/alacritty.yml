@@ -16,7 +16,7 @@ key_bindings:
   - {key: Home, mods: Control, action: ResetFontSize}
 
 mouse:
-  url:
+  hints:
     launcher:
       program: xdg-open
       args: []

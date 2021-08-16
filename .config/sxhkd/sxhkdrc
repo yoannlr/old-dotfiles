@@ -73,4 +73,6 @@ super + i
 F9
 	pgrep obs || obs --scene Mc --startrecording --minimize-to-tray
 super + Tab
-	pgrep skippy-xd || skippy-xd
+	skippy-xd --toggle-window-picker
+XF86Explorer
+	skippy-xd --toggle-window-picker

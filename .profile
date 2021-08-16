@@ -14,7 +14,7 @@ export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 
 # ssh keyring
 eval $(ssh-agent -s)
-ssh-add "$HOME/.ssh/github-rsa-g3"
+# ssh-add "$HOME/.ssh/github-rsa-g3"
 
 # if bash, run bashrc
 echo "$0" | grep "bash$" > /dev/null && [ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"

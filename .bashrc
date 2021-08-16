@@ -30,7 +30,7 @@ promptcommand() {
 
 	# echo this special string to set the window title
 	case ${TERM} in
-		alacritty)
+		alacritty|xterm*)
 			printf "\033]0;%s\007" "${PWD/#$HOME/\~}"
 		;;
 	esac
