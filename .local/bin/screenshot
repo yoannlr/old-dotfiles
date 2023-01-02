@@ -1,8 +1,8 @@
 #!/bin/sh
 
-file="$HOME/pics/screens/"
+file="$HOME/pics/Screenshots/"
 [ ! -d "$file" ] && mkdir "$file"
-now="$(date '+%Y-%m-%d_%H%M%S')"
+now="$(date '+%Y-%m-%d_%H.%M.%S')"
 
 case ${1} in
 	"f")

@@ -1,0 +1,5 @@
+#!/bin/sh
+ret=''
+pgrep youtube-dl && ret="youtube-dl ($(pgrep youtube-dl | wc -l) instances)\n${ret}"
+[ -z "$ret" ] && exit 0
+zenity --question --title 'Programs are running!' --text "Some important programs are still running, quit anyways?\nPrograms:\n${ret}" --width 400

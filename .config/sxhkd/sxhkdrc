@@ -1,5 +1,6 @@
 super + shift + Escape
-	pkill -USR1 -x -u "$USER" sxhkd
+	pkill -USR1 -x -u "$USER" sxhkd ; \
+	notify-send 'Keys reloaded'
 super + Return
 	$TERMINAL
 super + d
@@ -18,12 +19,14 @@ super + shift + a
 	arandr
 super + shift + p
 	displays_menu
+super + shift + alt + p
+	$SCREENLAYOUTS/default
 super + alt + w
 	setwall
 super + a
 	primary_menu
 super + c
-	gnome-calculator
+	mate-calculator
 Print
 	screenshot f &
 shift + Print
@@ -43,25 +46,22 @@ super + shift + w
 super + x
 	$FILE
 super + m
-	audacious -m
+	$TERMINAL -e 'ncmpcpp'
+	#focus_or_launch ymuse.Ymuse ymuse
 super + shift + m
 	multimc
-XF86AudioPlay
-	audacious -t
-XF86AudioPrev
-	audacious -r
-XF86AudioNext
-	audacious -f
-shift + XF86AudioPlay
-	audacious -j
-XF86AudioRaiseVolume
-	volume_ctl inc
-XF86AudioLowerVolume
-	volume_ctl dec
+{XF86AudioPlay,XF86AudioPrev,XF86AudioNext}
+	mpc {toggle,prev,next}
+{XF86AudioRaiseVolume,XF86AudioLowerVolume}
+	volume_ctl {inc,dec}
+control + {XF86AudioRaiseVolume,XF86AudioLowerVolume}
+	mpc volume {+,-}5
 XF86AudioMute
 	volume_ctl mute
 XF86AudioMicMute
 	volume_ctl mutemic
+{XF86MonBrightnessUp,XF86MonBrightnessDown}
+	backlight {+,-}5%
 super + e
 	emoji_menu
 super + u
@@ -70,9 +70,23 @@ super + space
 	rofi -show run -theme gruvbox-dark
 super + i
 	$SYSINFO
-F9
-	pgrep obs || obs --scene Mc --startrecording --minimize-to-tray
 super + Tab
 	skippy-xd --toggle-window-picker
 XF86Explorer
 	skippy-xd --toggle-window-picker
+super + alt + p
+	passmenu -l 10
+super + t
+	pluma
+super + shift + t
+	scr_ocr
+super + alt + f
+	fmenu
+XF86Search
+	mate-search-tool
+super + Insert
+	typebookmark
+super + k
+	killall screenkey || screenkey
+super + shift + k
+	killall highlight-pointer || ~/.local/bin/highlight-pointer/highlight-pointer

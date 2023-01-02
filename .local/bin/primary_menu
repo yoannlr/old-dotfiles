@@ -18,7 +18,7 @@ ytdl() {
 		notify-send -u low "Download finished" "$1 to $2"
 		mpv "$SCRIPTS/success.m4a" &
 	else
-		notify-send "Download failed" "$1 to $2"
+		notify-send -u critical "Download failed" "$1 to $2"
 	fi
 	pkill -SIGRTMIN+8 i3blocks
 }
@@ -31,35 +31,40 @@ bookmark() {
 }
 
 primary=$(xclip -o)
-actions="Copy\nCreate QR-Code"
+actions="Copy\nShare via QR-Code"
 
 [ -z $primary ] && notify-send "Empty" "Nothing selected" && exit 0
 
 echo "$primary" | egrep '^https?:\/\/' && actions="Bookmark\n$actions"
-echo "$primary" | egrep '^(https?:\/\/)?(www\.)?(youtube\.com\/watch|youtu.be)' && actions="Download\nDownload to Music\nDownload audio\n$actions"
+echo "$primary" | egrep '^(https?:\/\/)?(www\.)?(youtube\.com\/watch|youtu.be)' && actions="Download\nDownload to Music\nDownload audio\nDownload (low quality)\n$actions"
 echo "$primary" | egrep '^(https?:\/\/)?(www\.)?soundcloud\.com' && actions="Download to Music\nDownload audio\n$actions"
 echo "$primary" | egrep '^(https?:\/\/)?(.*\.)?bandcamp.com' && actions="Download to Music\nDownload audio\n$actions"
+
+logfile="${XDG_CACHE_HOME:-$HOME/.cache}/ytdl_$(date '+%Y-%m-%d_%H.%M.%S').log"
 
 action=$(echo -e "$actions" | dmenu -i -p "$(echo $primary | colrm 30)")
 case $action in
 	'Copy')
 		echo "$primary" | xclip -i -selection clipboard
 	;;
-	'Create QR-Code')
-		qrencode "$primary" -s 20 -o /tmp/qr.png && sxiv /tmp/qr.png
+	'Share via QR-Code')
+		qrencode "$primary" -s 20 -o /tmp/qr.png && sxiv /tmp/qr.png && shred -u /tmp/qr.png
 	;;
 	'Bookmark')
 		bookmark "$primary"
 	;;
 	'Download')
-		ytdl "$primary" "$HOME/vids" "--add-metadata" # --embed-thumbnail
+		ytdl "$primary" "$HOME/vids" "--add-metadata" > "${logfile}" # --embed-thumbnail
 	;;
 	'Download audio')
-		ytdl "$primary" "$HOME/" "-f bestaudio"
+		ytdl "$primary" "$HOME/" "-f bestaudio" > "${logfile}"
+	;;
+	'Download (low quality)')
+		ytdl "$primary" "$HOME/vids" "-f 18" > "${logfile}"
 	;;
 	'Download to Music')
 		playlist="$HOME/music/$(date +%Y_%m)"
 		[ ! -d "$playlist" ] && mkdir "$playlist" && notify-send "Monthly playlists" "Created new monthly playlist $playlist"
-		ytdl "$primary" "$playlist" "--add-metadata -f bestaudio --no-playlist" # --embed-thumbnail
+		ytdl "$primary" "$playlist" "--add-metadata --format m4a --no-playlist" > "${logfile}" # --embed-thumbnail
 	;;
 esac

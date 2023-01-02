@@ -12,19 +12,16 @@
 # 9 - forward
 
 case $BLOCK_BUTTON in
-	1) audtool --mainwin-show ;;
-	3) audtool --playback-playpause ;;
-	4) audtool --set-volume +5 ;;
-	5) audtool --set-volume -5 ;;
-	8) audtool --playlist-reverse ;;
-	9) audtool --playlist-advance ;;
+	1) focus_or_launch ymuse.Ymuse ymuse ;;
+	3) mpc toggle ;;
+	4) mpc volume +5 ;;
+	5) mpc volume -5 ;;
+	8) mpc prev ;;
+	9) mpc next ;;
 esac
 
 pgrep audacious > /dev/null || exit
 
-song=$(audtool --current-song-tuple-data title)
-artist=$(audtool --current-song-tuple-data artist)
-[ ! -z "$artist" ] && song="$artist - $song"
-song=$(echo "$song" | tr -d '&')
-[ ! "$(audtool --playback-status)" = "playing" ] && song="<i>$song</i>"
+song=$(mpc -f '%artist% - %title%' | head -1 | tr -d '&')
+[ ! "$(mpc status '%state%')" = "playing" ] && song="<i>$song</i>"
 echo "$song 🎸"

@@ -1,7 +1,0 @@
-#!/bin/sh
-if [ $# -lt 1 ]
-then
-	cat "$HOME/.local/thoughts"
-else
-	echo "$(date '+%d %m %Y') $@" >> "$HOME/.local/thoughts"
-fi

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+OCR_DIR="$XDG_CACHE_HOME/ocr"
+[ ! -d "$OCR_DIR" ] && mkdir -p "$OCR_DIR"
+
+screenshot=$(mktemp --suffix=".png")
+maim -su > "${screenshot}" || exit 1
+text="${OCR_DIR}/ocr-$(date '+%Y-%m-%d_%H.%M.%S')"
+notify-send '⏳ Processing...'
+tesseract -l fra "${screenshot}" "${text}"
+rm "${screenshot}"
+pluma --new-window "${text}.txt"

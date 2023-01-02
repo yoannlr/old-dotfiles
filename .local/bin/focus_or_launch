@@ -1,0 +1,42 @@
+#!/bin/sh
+
+usage() {
+	echo "usage: focus_or_launch <window_class> <command> \
+or focus_or_launch <window_class=command>"
+	exit 1
+}
+
+deps() {
+	echo "wmctrl is required for focus_or_launch to work \
+please install wmctrl."
+	exit 1
+}
+
+which wmctrl &> /dev/null || deps
+
+class=
+cmd=
+
+[ $# -lt 1 ] && usage
+if [ $# -eq 1 ]
+then
+	class="$1"
+	cmd="$1"
+elif [ $# -eq 2 ]
+then
+	class="$1"
+	cmd="$2"
+fi
+
+echo "class=$class"
+echo "cmd=$cmd"
+
+focus=$(wmctrl -lx | awk -v wclass="$class" '$3 == wclass' | cut -d' ' -f1)
+echo "focus=$focus"
+if [ -z "$focus" ]
+then
+	eval "$cmd &"
+	disown %1
+else
+	wmctrl -a "$focus" -i
+fi

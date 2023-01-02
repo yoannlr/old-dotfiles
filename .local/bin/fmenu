@@ -1,0 +1,3 @@
+#!/bin/sh
+cd $HOME
+xargs -I {} echo '⭐ {}' < ${HOME}/.local/bookmarks | cat - "${XDG_CACHE_HOME:-$HOME/.cache}/index" | rofi -dmenu -p 'File' -i | cut -d' ' -f1 --complement | xargs -I {} xdg-open '{}'

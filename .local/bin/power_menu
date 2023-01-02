@@ -1,4 +1,5 @@
 #!/bin/sh
+check_session_quit || exit 1
 action=$(echo -e 'Cancel\nQuit X\nPower off\nReboot\nSuspend\nUpdate and power off' | dmenu -i -p 'Power options')
 
 [ -z "$action" ] && exit 0

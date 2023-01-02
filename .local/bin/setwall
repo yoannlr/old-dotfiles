@@ -1,27 +1,38 @@
 #!/bin/sh
 
-wall=${1}
-if [ -z $wall ]
+LINKFILE="${WALLPAPERS}/.wall"
+
+usage() {
+	echo "usage: $0 [-r, --restore | -R, --random | FILE]"
+	echo 'when no option is specified, launches sxiv to pick a wallpaper'
+	exit 1
+}
+
+setwallpaper() {
+	ln -s -f "$(readlink -f ${1})" "$LINKFILE"
+}
+
+restorewallpaper() {
+	xwallpaper --zoom "$LINKFILE"
+	# xwallpaper --no-randr --zoom file : extend to all monitors
+	wal -c
+	wal -sqtn -i "$LINKFILE"
+}
+
+[ "${1}" = "-h" ] && usage
+
+if [ "${1}" = "--random" ] || [ "${1}" = "-R" ]
 then
-	setsid -f sxiv -t $WALLPAPERS/*.{jpg,jpeg,png}
+	setwallpaper $(ls $WALLPAPERS/*.{jpg,jpeg,png} | shuf -n 1)
+	restorewallpaper
+elif [ "${1}" = "--restore" ] || [ "${1}" = "-r" ]
+then
+	restorewallpaper
+elif [ $# -eq 0 ]
+then
+	setsid -f sxiv -t $(ls -t $WALLPAPERS/*.{jpg,jpeg,png})
 else
-	[ -z "$mode" ] && mode=$(echo -e 'Extend to all monitors\nSame on each monitor' | dmenu -p 'Wallpaper options')
-	[ -z "$mode" ] && exit
-
-	[ "$(readlink $HOME/pics/walls/wall)" = "$wall" ] && samefile=1
-	[ -z "$samefile" ] && ln -s -f "$wall" "$HOME/pics/walls/wall"
-
-	if [ "$mode" = "Same on each monitor" ]
-	then
-		xwallpaper --zoom $HOME/pics/walls/wall
-	else
-		xwallpaper --no-randr --zoom $HOME/pics/walls/wall
-	fi
-
-	if [ -z "$samefile" ]
-	then
-		echo "Updating color scheme"
-		wal -c
-		wal -qtn -i $HOME/pics/walls/wall
-	fi
+	[ ! -f "${1}" ] && echo "File not found." && exit 1
+	setwallpaper "${1}"
+	restorewallpaper
 fi
