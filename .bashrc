@@ -45,3 +45,7 @@ promptcommand() {
 }
 
 export PROMPT_COMMAND=promptcommand
+
+hst() {
+	history | colrm 1 25 | sort | uniq | fzy | tr -d '\n' | xclip -selection clipboard
+}
