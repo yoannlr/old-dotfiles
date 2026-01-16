@@ -1,0 +1,6 @@
+#!/bin/sh
+
+../common/setup-java
+
+wget -O /tmp/idea.tar.gz https://download.jetbrains.com/idea/ideaIC-2025.2.6.1.tar.gz
+sudo tar -C /opt zxf /tmp/idea.tar.gz

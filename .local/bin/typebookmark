@@ -1,2 +1,0 @@
-#!/bin/sh
-xdotool type $(grep -v '^#' "$HOME/.local/websites" | dmenu -i -l 20 | cut -d@ -f2)

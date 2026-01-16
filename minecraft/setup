@@ -1,0 +1,20 @@
+#!/bin/sh
+
+../common/setup-java
+
+# prismlauncher 
+sudo wget https://prism-launcher-for-debian.github.io/repo/prismlauncher.gpg -O /usr/share/keyrings/prismlauncher-archive-keyring.gpg \
+  && echo "deb [signed-by=/usr/share/keyrings/prismlauncher-archive-keyring.gpg] https://prism-launcher-for-debian.github.io/repo $(. /etc/os-release; echo "${UBUNTU_CODENAME:-${DEBIAN_CODENAME:-${VERSION_CODENAME}}}") main" | sudo tee /etc/apt/sources.list.d/prismlauncher.list \
+  && sudo apt update \
+  && sudo apt install prismlauncher
+
+# blockbench
+wget -O /tmp/blockbench.deb https://github.com/JannisX11/blockbench/releases/download/v5.0.7/Blockbench_5.0.7.deb
+sudo apt install /tmp/blockbench.deb
+rm /tmp/blockbench.deb
+
+# unbted
+sudo wget -O /opt/unbted.jar https://git.sleeping.town/exa/unbted/releases/download/v1.2.2/unbted-1.2.2.jar
+if ! grep unbted /etc/bash.bashrc; then
+    echo "alias unbted='java -jar /opt/unbted.jar'" | sudo tee -a /etc/bash.bashrc > /dev/null
+fi

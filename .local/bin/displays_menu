@@ -1,9 +1,0 @@
-#!/bin/sh
-
-layout=$(ls $SCREENLAYOUTS | dmenu -p 'Select configuration')
-if [ ! -z $layout ]
-then
-	"${SCREENLAYOUTS}/${layout}"
-	sleep 1
-	setwall -r
-fi

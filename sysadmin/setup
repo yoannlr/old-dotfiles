@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sudo apt install jq iputils-ping bind9-dnsutils bind9-host fping iw minicom vim nmap ntfs-3g exfatprogs oathtool p7zip-full rsync rclone snmp sqlite3 mariadb-client tree ncdu gtkterm tcpdump wireshark ldap-utils git freerdp2-x11 curl wget tmux smbclient netcat-openbsd telnet openssh-client sshfs
+
+sudo usermod -aG wireshark $(whoami)

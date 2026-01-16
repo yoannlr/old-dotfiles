@@ -1,2 +1,0 @@
-#!/bin/sh
-zbarimg -q "$1" | cut -d: -f1 --complement | zenity --text-info --title='QR-Code'

@@ -1,5 +1,0 @@
-#!/bin/sh
-character=$(dmenu -i -l 10 < "$HOME/.local/bin/unicode" | cut -d' ' -f1)
-[ -z "$character" ] && exit
-echo -n "$character" | xclip -selection clipboard -i
-notify-send "$character copied to clipboard"

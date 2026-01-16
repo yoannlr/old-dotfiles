@@ -1,9 +1,0 @@
-#!/bin/sh
-
-case $BLOCK_BUTTON in
-	# 1) from https://github.com/LukeSmithxyz/voidrice
-	1) notify-send "Memory hogs" "$(ps axch -o cmd:15,%mem --sort=-%mem | head)" ;;
-	3) setsid -f gnome-system-monitor -p ;;
-esac
-
-free -h | awk '/Mem/{print "💻 " $3 " used, " $7 " available"}'

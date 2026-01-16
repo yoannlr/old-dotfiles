@@ -1,0 +1,9 @@
+[global]
+    notification_limit = 5
+    frame_width = 2
+    frame_color = "#222222"
+    font = Monospace 10
+    dmenu = /usr/bin/dmenu -fn Monospace:10 -p 'dunst'
+    # valid modifiers: ctrl, mod1, mod2, mod3, mod4
+    close = ctrl+space
+    context = ctrl+shift+space

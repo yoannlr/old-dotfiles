@@ -1,0 +1,7 @@
+#!/bin/sh
+
+sudo apt install qemu-system-x86 libvirt-daemon-system virtinst virt-manager virt-viewer ovmf swtpm qemu-utils guestfs-tools
+sudo systemctl enable libvirtd
+
+sudo usermod -aG libvirt $(whoami)
+sudo usermod -aG libvirt-qemu $(whoami)

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if ! command -v yt-dlp > /dev/null; then
+    sudo wget -O /usr/local/bin/yt-dlp https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp
+    sudo chmod +x /usr/local/bin/yt-dlp
+fi

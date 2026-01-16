@@ -1,2 +1,0 @@
-#!/bin/sh
-echo $(printf "%.1f°C" $(($(cat /sys/class/hwmon/hwmon3/temp1_input) / 1000)))

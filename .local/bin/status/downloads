@@ -1,4 +1,0 @@
-#!/bin/sh
-
-np=$(pgrep youtube-dl | wc -l)
-[ $np -gt 0 ] && echo "⏳ youtube-dl ($np)"

@@ -1,6 +1,0 @@
-#!/bin/sh
-cd $HOME
-PRUNE="( -path ./.config -o -path ./.cache -o -path ./.gradle -o -path ./prog/misc -o -name '*.git*' -o -path ./.local )"
-find . $PRUNE -prune -o -type d -print0 | xargs -0 -I {} echo '📁 {}' > "${XDG_CACHE_HOME:-$HOME/.cache}/index"
-find . $PRUNE -prune -o -type f -print0 | xargs -0 -I {} echo '📃 {}' >> "${XDG_CACHE_HOME:-$HOME/.cache}/index"
-notify-send 'Finised indexing homedir'

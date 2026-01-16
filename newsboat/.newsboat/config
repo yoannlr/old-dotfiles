@@ -1,0 +1,3 @@
+auto-reload no
+browser "flatpak run org.mozilla.firefox"
+macro v set browser "setsid -f mpv --ytdl-format='bv[height<=720]+ba' --really-quiet --no-terminal" ; open-in-browser ; set browser "flatpak run org.mozilla.firefox"

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+dpkg -l | grep pipewire-pulse && exit 0
+
+sudo apt install pipewire wireplumber pipewire-pulse pipewire-jack libspa-0.2-bluetooth pulseaudio-utils pulsemixer

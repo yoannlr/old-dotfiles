@@ -1,0 +1,5 @@
+#!/bin/sh
+
+dpkg -l | grep engrampa && exit 0
+
+sudo apt install engrampa eom caja caja-actions caja-admin caja-image-converter caja-open-terminal caja-rename gvfs-fuse mate-system-monitor mate-calc mate-utils atril

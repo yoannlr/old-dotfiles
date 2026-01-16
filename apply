@@ -1,0 +1,26 @@
+#!/bin/sh
+
+apply_package() {
+    pkg="$1"
+    [ "$pkg" = "common" ] && return
+    [ "$pkg" = "all" ] && return
+    stow -t "$HOME" --restow --ignore='setup' "$pkg"
+    if [ -x "${pkg}/setup" ]; then
+        "${pkg}/setup"
+    fi
+}
+
+if [ $# -lt 1 ]; then
+    echo 'usage: apply <pkg> [pkg2] [pkg3] [...]'
+fi
+
+if [ "$1" = "all" ]; then
+    for pkg in $(find . -mindepth 1 -maxdepth 1 -type d -not -name .git | xargs -I dir basename dir); do
+        apply_package "$pkg"
+    done
+else
+    while [ ! -z "$1" ]; do
+        apply_package "$1"
+        shift
+    done
+fi

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+../common/setup-flatpak
+../common/setup-yt-dlp
+
+sudo apt install gimp ffmpeg mpv imagemagick
+flatpak install flathub org.kde.kdenlive

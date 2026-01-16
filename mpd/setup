@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sudo apt install mpd mpc ncmpcpp mpdris2
+sudo systemctl disable --now mpd
+systemctl --user enable --now mpd mpDris2

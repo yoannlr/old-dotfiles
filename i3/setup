@@ -1,0 +1,6 @@
+#!/bin/sh
+
+sudo apt install xinit i3-wm arandr dunst dmenu alacritty xss-lock numlockx slock xcompmgr network-manager-gnome dex scrot rofi
+
+../common/setup-pipewire
+../common/setup-mate-utils

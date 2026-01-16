@@ -1,3 +1,0 @@
-#!/bin/sh
-date_now=$(date '+%Y-%m-%d_%H.%M.%S')
-tar cvf "bkpass-${date_now}.tar" "${PASSWORD_STORE_DIR}" "${HOME}/.gnupg" "${HOME}/.ssh"

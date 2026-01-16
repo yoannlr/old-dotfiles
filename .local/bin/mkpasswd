@@ -1,5 +1,0 @@
-#!/bin/sh
-sz=12
-[ ! -z "$1" ] && sz="$1"
-tr -cd '[:alnum:]' < /dev/urandom  | head -c "$sz"
-echo
