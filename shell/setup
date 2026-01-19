@@ -1,9 +1,5 @@
 #!/bin/sh
 
-sudo apt install vim nvim fzf git bash-completion wget bc
+sudo apt install vim nvim fzf git bash-completion wget bc rsync rclone git curl wget tree ncu
 
-if ! command -v lf > /dev/null; then
-    wget https://github.com/gokcehan/lf/releases/latest/download/lf-linux-amd64.tar.gz -O /tmp/lf.tar.gz
-    tar -C /usr/local/bin xzf /tmp/lf.tar.gz
-    rm /tmp/lf.tar.gz
-fi
+../common/setup-lf

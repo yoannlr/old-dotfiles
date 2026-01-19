@@ -1,0 +1,47 @@
+{
+    "policies": {
+        "Extensions": {
+            "Install": [
+                "https://addons.mozilla.org/firefox/downloads/file/4412673/ublock_origin-latest.xpi",
+                "https://addons.mozilla.org/firefox/downloads/file/4216095/istilldontcareaboutcookies-latest.xpi",
+                "https://addons.mozilla.org/firefox/downloads/file/4392113/decentraleyes-latest.xpi",
+                "https://addons.mozilla.org/firefox/downloads/file/4432106/clearurls-latest.xpi",
+                "https://addons.mozilla.org/firefox/downloads/file/4058188/url_to_qrcode-latest.xpi",
+                "https://addons.mozilla.org/firefox/downloads/file/4440363/bitwarden_password_manager-latest.xpi",
+                "https://addons.mozilla.org/firefox/downloads/file/4263531/youtube_recommended_videos-latest.xpi",
+                "https://addons.mozilla.org/firefox/downloads/file/4644570/sponsorblock-latest.xpi",
+                "https://addons.mozilla.org/firefox/downloads/file/3920533/skip_redirect-latest.xpi"
+            ]
+        },
+        "DisablePocket": true,
+        "DisableTelemetry": true,
+        "DontCheckDefaultBrowser": true,
+        "EnableTrackingProtection": {
+            "Value": true,
+            "Cryptomining": true,
+            "Fingerprinting": true,
+            "EmailTracking": true
+        },
+        "Homepage": {
+            "StartPage": "homepage"
+        },
+        "FirefoxHome": {
+            "Search": true,
+            "TopSites": false,
+            "SponsoredTopSites": false,
+            "Highlights": false,
+            "Pocket": false,
+            "SponsoredPocket": false,
+            "Snippets": false
+        },
+        "SearchEngines": {
+            "Default": "DuckDuckGo"
+        },
+        "NoDefaultBookmarks": true,
+        "EncryptedMediaExtensions": {
+            "Enabled": true
+        },
+        "OfferToSaveLogins": false,
+        "PasswordManagerEnabled": false
+    }
+}

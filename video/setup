@@ -2,6 +2,7 @@
 
 ../common/setup-flatpak
 ../common/setup-yt-dlp
+../common/setup-pipewire
 
-sudo apt install gimp ffmpeg mpv imagemagick
+sudo apt install gimp ffmpeg mpv imagemagick obs-studio obs-cli simplescreenrecorder
 flatpak install flathub org.kde.kdenlive

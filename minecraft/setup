@@ -1,6 +1,7 @@
 #!/bin/sh
 
 ../common/setup-java
+../common/setup-pipewire
 
 # prismlauncher 
 sudo wget https://prism-launcher-for-debian.github.io/repo/prismlauncher.gpg -O /usr/share/keyrings/prismlauncher-archive-keyring.gpg \
@@ -16,5 +17,5 @@ rm /tmp/blockbench.deb
 # unbted
 sudo wget -O /opt/unbted.jar https://git.sleeping.town/exa/unbted/releases/download/v1.2.2/unbted-1.2.2.jar
 if ! grep unbted /etc/bash.bashrc; then
-    echo "alias unbted='java -jar /opt/unbted.jar'" | sudo tee -a /etc/bash.bashrc > /dev/null
+    echo "[ -f /opt/unbted.jar ] && alias unbted='java -jar /opt/unbted.jar'" | sudo tee -a /etc/bash.bashrc > /dev/null
 fi

@@ -24,6 +24,9 @@ exec --no-startup-id numlockx
 # notifications
 exec --no-startup-id dunst
 
+# redshift (night light)
+exec --no-startup-id redshift -l 48:2 -t 6500:3500
+
 # volume and music
 set $refresh_i3status pkill -u $(whoami) -SIGRTMIN+10 i3blocks
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -41,6 +44,7 @@ bindsym $mod+w exec $webbrowser
 bindsym $mod+m exec $termexec ncmpcpp
 bindsym $mod+Shift+a exec arandr
 bindsym $mod+Shift+p exec password_menu
+bindsym $mod+p exec displayswitch
 bindsym $mod+x exec $termexec lf
 bindsym $mod+Shift+n exec $termexec newsboat
 

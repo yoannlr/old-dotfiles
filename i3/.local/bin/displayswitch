@@ -1,0 +1,81 @@
+#!/bin/sh
+
+getMonitors() {
+    xrandr --query | awk '/ connected/{print $1}' | tr '\n' ' '
+}
+
+getResolution() {
+    monitor="$1"
+    xrandr --query | awk "/${monitor}/{print}" | grep -Eo '[0-9]+x[0-9]+'
+}
+
+cloneAll() {
+    monitors=$(getMonitors)
+    mainMonitor=$(echo $monitors | cut -d ' ' -f 1)
+    others=$(echo $monitors | cut -d ' ' -f 1 --complement)
+    resolution=$(getResolution $mainMonitor)
+    cmd="xrandr --output $mainMonitor --primary --auto"
+    for mon in $others; do
+        cmd="$cmd --output $mon --auto --same-as $mainMonitor --scale-from $resolution"
+    done
+    echo $cmd
+    $cmd
+}
+
+mainOnly() {
+    monitors=$(getMonitors)
+    mainMonitor=$(echo $monitors | cut -d ' ' -f 1)
+    others=$(echo $monitors | cut -d ' ' -f 1 --complement)
+    cmd="xrandr --output $mainMonitor --primary --auto"
+    for mon in $others; do
+        cmd="$cmd --output $mon --off"
+    done
+    $cmd
+}
+
+extended() {
+    monitors=$(getMonitors)
+    mainMonitor=$(echo $monitors | cut -d ' ' -f 1)
+    others=$(echo $monitors | cut -d ' ' -f 1 --complement)
+    cmd="xrandr --output $mainMonitor --primary --auto"
+    prevMon=$mainMonitor
+    for mon in $others; do
+        cmd="$cmd --output $mon --auto --right-of $prevMon"
+        prevMon=$mon
+    done
+    $cmd
+}
+
+options='Extended\nClone\nMain/Laptop only'
+
+for layout in ${HOME}/.screenlayout/*; do
+    name="layout/$(basename $layout .sh)"
+    options="${options}\n${name}"
+done
+
+options="${options}\nOpen Arandr"
+
+choice=$(echo "$options" | rofi -dmenu -theme sidebar -p 'Select configuration' -i)
+
+[ -z "$choice" ] && exit 0
+
+case $choice in
+    "Extended")
+        mainOnly # required to reset available modes (avoid BadMatch error)
+        extended
+        ;;
+    "Clone")
+        mainOnly # required to reset available modes (avoid BadMatch error)
+        cloneAll
+        ;;
+    "Main/Laptop only")
+        mainOnly
+        ;;
+    "Open Arandr")
+        arandr
+        ;;
+    layout/*)
+        script="${HOME}/.screenlayout/$(echo $choice | sed 's|layout/||g').sh"
+        $script
+        ;;
+esac
