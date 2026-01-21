@@ -1,12 +1,18 @@
 #!/bin/sh
 
+if ! command -v stow > /dev/null; then
+    sudo apt install stow
+fi
+
 apply_package() {
     pkg="$1"
     [ "$pkg" = "common" ] && return
     [ "$pkg" = "all" ] && return
-    stow -t "$HOME" --restow --ignore='setup' "$pkg"
+    stow -t "$HOME" --restow --ignore='setup' --no-folding "$pkg"
     if [ -x "${pkg}/setup" ]; then
-        "${pkg}/setup"
+        cd "$pkg"
+        ./setup
+        cd -
     fi
 }
 

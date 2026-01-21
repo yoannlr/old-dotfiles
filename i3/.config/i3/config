@@ -1,7 +1,7 @@
 # programs
 set $term alacritty
 set $termexec alacritty -e
-set $webbrowser flatpak run org.mozilla.firefox
+set $webbrowser firefox
 
 set $mod Mod4
 
@@ -26,6 +26,9 @@ exec --no-startup-id dunst
 
 # redshift (night light)
 exec --no-startup-id redshift -l 48:2 -t 6500:3500
+
+# root password prompts
+exec --no-startup-id /usr/libexec/polkit-mate-authentication-agent-1
 
 # volume and music
 set $refresh_i3status pkill -u $(whoami) -SIGRTMIN+10 i3blocks

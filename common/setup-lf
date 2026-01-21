@@ -1,7 +1,0 @@
-#!/bin/sh
-
-if ! command -v lf > /dev/null; then
-    wget https://github.com/gokcehan/lf/releases/latest/download/lf-linux-amd64.tar.gz -O /tmp/lf.tar.gz
-    tar -C /usr/local/bin xzf /tmp/lf.tar.gz
-    rm /tmp/lf.tar.gz
-fi
