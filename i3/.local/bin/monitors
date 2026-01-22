@@ -1,0 +1,88 @@
+#!/bin/sh
+
+getMonitors() {
+    xrandr --query | awk '/ connected/{print $1}' | tr '\n' ' '
+}
+
+getResolution() {
+    monitor="$1"
+    xrandr --query | awk "/${monitor}/{print}" | grep -Eo '[0-9]+x[0-9]+'
+}
+
+cloneAll() {
+    monitors=$(getMonitors)
+    mainMonitor=$(echo $monitors | cut -d ' ' -f 1)
+    others=$(echo $monitors | cut -d ' ' -f 1 --complement)
+    resolution=$(getResolution $mainMonitor)
+    cmd="xrandr --output $mainMonitor --primary --auto"
+    for mon in $others; do
+        cmd="$cmd --output $mon --auto --same-as $mainMonitor --scale-from $resolution"
+    done
+    $cmd
+}
+
+mainOnly() {
+    monitors=$(getMonitors)
+    mainMonitor=$(echo $monitors | cut -d ' ' -f 1)
+    others=$(echo $monitors | cut -d ' ' -f 1 --complement)
+    cmd="xrandr --output $mainMonitor --primary --auto"
+    for mon in $others; do
+        cmd="$cmd --output $mon --off"
+    done
+    $cmd
+}
+
+extended() {
+    direction="$1"
+    if [ -z "$direction" ]; then
+        direction="right"
+    fi
+    dirArg="--right-of"
+    case "$direction" in
+        "left")
+            dirArg="--left-of"
+            ;;
+        "up")
+            dirArg="--above"
+            ;;
+        "down")
+            dirArg="--below"
+            ;;
+    esac
+    monitors=$(getMonitors)
+    mainMonitor=$(echo $monitors | cut -d ' ' -f 1)
+    others=$(echo $monitors | cut -d ' ' -f 1 --complement)
+    cmd="xrandr --output $mainMonitor --primary --auto"
+    prevMon=$mainMonitor
+    for mon in $others; do
+        cmd="$cmd --output $mon --auto $dirArg $prevMon"
+        prevMon=$mon
+    done
+    $cmd
+}
+
+usage() {
+    echo "$0 <clone|main_only|extended [left|right (default)|up|down]>"
+    exit 2
+}
+
+if [ $# -lt 1 ]; then
+    usage
+fi
+
+case "$1" in
+    "clone")
+        mainOnly # required to reset available modes (avoid BadMatch error)
+        cloneAll
+        ;;
+    "extended")
+        mainOnly # required to reset available modes (avoid BadMatch error)
+        extended "$2"
+        ;;
+    "main_only")
+        mainOnly
+        ;;
+    *)
+        usage
+        ;;
+esac

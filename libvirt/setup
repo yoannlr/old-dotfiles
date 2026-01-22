@@ -1,7 +1,11 @@
 #!/bin/sh
 
-sudo apt install qemu-system-x86 libvirt-daemon-system virtinst virt-manager virt-viewer ovmf swtpm qemu-utils guestfs-tools
+sudo apt install qemu-system-x86 libvirt-daemon-system virtinst virt-manager virt-viewer ovmf swtpm qemu-utils guestfs-tools libnss-libvirt
 sudo systemctl enable libvirtd
 
 sudo usermod -aG libvirt $(whoami)
 sudo usermod -aG libvirt-qemu $(whoami)
+
+if ! grep -qE '^hosts:.*libvirt' /etc/nsswitch.conf; then
+    sudo sed -iEe '/^hosts:/s/\bdns\b/libvirt libvirt_guests dns/g' /etc/nsswitch.conf
+fi
