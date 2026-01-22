@@ -46,7 +46,7 @@ bindsym $mod+space exec "rofi -modi drun,run -show drun"
 bindsym $mod+w exec $webbrowser
 bindsym $mod+m exec $termexec ncmpcpp
 bindsym $mod+Shift+a exec arandr
-bindsym $mod+Shift+p exec password_menu
+bindsym $mod+Mod1+p exec password_menu
 bindsym $mod+p exec displayswitch
 bindsym $mod+x exec $termexec lf
 bindsym $mod+Shift+n exec $termexec newsboat
