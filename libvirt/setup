@@ -7,5 +7,5 @@ sudo usermod -aG libvirt $(whoami)
 sudo usermod -aG libvirt-qemu $(whoami)
 
 if ! grep -qE '^hosts:.*libvirt' /etc/nsswitch.conf; then
-    sudo sed -iEe '/^hosts:/s/\bdns\b/libvirt libvirt_guests dns/g' /etc/nsswitch.conf
+    sudo sed -iEe '/^hosts:/s/\bdns\b/libvirt libvirt_guest dns/g' /etc/nsswitch.conf
 fi
