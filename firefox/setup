@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# some debian isos come with firefox-esr pre-installed
+if command -v firefox-esr > /dev/null; then
+    sudo cp policies.json /usr/lib/firefox-esr/distribution/policies.json
+    exit 0
+fi
+
 if command -v firefox > /dev/null; then
     exit 0
 fi

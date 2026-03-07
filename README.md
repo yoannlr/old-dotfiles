@@ -23,3 +23,4 @@ It is a simple alternative to using a more complex system such as chezmoi or Ans
 * video - sets up kdenlive, gimp and other useful video making programs
 * bin - sets up personal scripts
 * firefox - installs firefox with extensions
+* gnome - installs gnome extensions and configures gnome shell

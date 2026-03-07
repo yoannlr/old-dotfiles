@@ -1,6 +1,6 @@
 #!/bin/sh
 
-dpkg -l | grep flatpak && exit 0
+dpkg -L flatpak > /dev/null && exit 0
 
-sudo apt install flatpak
+sudo apt install flatpak flatseal
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo

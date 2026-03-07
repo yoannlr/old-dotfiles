@@ -1,0 +1,56 @@
+#!/bin/sh
+
+dpkg -L gnome-shell-extension-manager > /dev/null && exit 0
+
+sudo apt install gnome-shell-extension-manager gnome-shell-extension-appindicator gnome-shell-extension-caffeine gnome-shell-extension-gsconnect gnome-shell-extension-impatience gnome-shell-extension-no-annoyance gnome-pass-search-provider
+
+# morewaita icon theme
+git clone https://github.com/somepaulo/MoreWaita.git && cd MoreWaita && sudo ./install.sh
+gsettings set org.gnome.desktop.interface icon-theme "MoreWaita"
+
+# super to resize/move window with click
+gsettings set org.gnome.desktop.wm.preferences mouse-button-modifier '<Super>'
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
+
+gsettings set org.gnome.mutter attach-modal-dialogs false
+gsettings set org.gnome.mutter center-new-windows true
+
+# prevent mutter from maximizing windows which it thinks are "big enough"
+gsettings set org.gnome.mutter auto-maximize false
+
+# prevent "window not responding" popup
+gsettings set org.gnome.mutter check-alive-timeout 60000
+
+# enable night light
+gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
+
+# app shortcuts
+gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>x']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys calculator "['<Super>c']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys www "['<Super>w']"
+
+# close windows with super+q
+gsettings set org.gnome.desktop.wm.keybindings close "['<Super>q']"
+
+# fullscreen window with super+f
+gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
+
+# alt-tab = switch windows, not apps
+gsettings set org.gnome.desktop.wm.keybindings switch-applications "[]"
+gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "[]"
+gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
+
+# system monitor
+gsettings set org.gnome.gnome-system-monitor show-whose-processes all
+gsettings set org.gnome.gnome-system-monitor show-dependencies true
+gsettings set org.gnome.gnome-system-monitor current-tab resources
+gsettings set org.gnome.gnome-system-monitor show-all-fs true
+
+# no auto suspend
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type nothing
+
+# only show caffeine indicator when active
+dconf write /org/gnome/shell/extensions/caffeine/show-indicator "'only-active'"
+
+dconf write /org/gnome/shell/extensions/net/gfxmonk/impatience/speed-factor 0.5
