@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sudo cp -v /usr/share/X11/xkb/symbols/fr /usr/share/X11/xkb/symbols/fr.bak
+sudo cp -v fr /usr/share/X11/xkb/symbols/fr

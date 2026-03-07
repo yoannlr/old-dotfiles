@@ -24,3 +24,5 @@ It is a simple alternative to using a more complex system such as chezmoi or Ans
 * bin - sets up personal scripts
 * firefox - installs firefox with extensions
 * gnome - installs gnome extensions and configures gnome shell
+* aunamic - udev/modprobe rules for Auna Mic 900 microphone compatibility. if you're not me, you probably won't need this!
+* keyboard - custom keyboard layout (for french keyboards only!)

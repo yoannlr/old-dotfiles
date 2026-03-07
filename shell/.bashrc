@@ -64,7 +64,8 @@ export EDITOR=vim
 export MANPAGER='nvim +Man!'
 export LESSHISTFILE='-'
 
-alias rdp="xfreerdp /kbd:0x0000040C /dynamic-resolution /floatbar:sticky:on,default:visible,show:fullscreen /log-level:WARN"
+alias rdp="xfreerdp3 /kbd:unicode /dynamic-resolution /floatbar:sticky:on,default:visible,show:fullscreen /log-level:WARN"
+alias yt-dlp='yt-dlp --restrict-filenames'
 
 # lfcd
 if command -v lf > /dev/null; then

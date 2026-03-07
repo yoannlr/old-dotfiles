@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sudo cp -v aunamic.rules /etc/udev/rules.d/aunamic.rules
+sudo cp -v aunamic.conf /etc/modprobe.d/aunamic.conf

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# this script runs on session start
+
+"${HOME}/.local/bin/autodarkmode"
