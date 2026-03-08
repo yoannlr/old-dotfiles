@@ -12,6 +12,9 @@ gsettings set org.gnome.desktop.interface icon-theme "MoreWaita"
 gsettings set org.gnome.desktop.wm.preferences mouse-button-modifier '<Super>'
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
 
+# middle click to minimize window
+gsettings set org.gnome.desktop.wm.preferences action-middle-click-titlebar 'minimize'
+
 gsettings set org.gnome.mutter attach-modal-dialogs false
 gsettings set org.gnome.mutter center-new-windows true
 
