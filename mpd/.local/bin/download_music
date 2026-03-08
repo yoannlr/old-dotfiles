@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# abstract: downloads song(s) to the current monthly playlist and synchronizes mpd
+
+if [ $# -lt 1 ]; then
+    echo "usage: $0 <url_1> [url_2] [url_3] [...]"
+    exit 2
+fi
+
+cd "$(monthly_playlist)"
+yt-dlp -f bestaudio --restrict-filenames --add-metadata --no-playlist $@
+mpd_sync

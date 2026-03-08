@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# abstract: adds new songs to the current mpd playlist
+
+temp="/tmp/mpctmp.${USER}"
+
+mpc rescan
+mpc listall | sort > "$temp"
+mpc -f '%file%' playlist | sort | comm -13 - "$temp" | xargs -I path mpc add 'path'
+
+rm "$temp"

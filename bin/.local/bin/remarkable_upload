@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# abstract: uploads file to the most expensive notepad ever created
+
+SERVER_URL="http://10.11.99.1/upload"
+
+upload_file() {
+    local file_path="$1"
+    local filename=$(basename "$file_path")
+    
+    echo -n "Uploading $filename... "
+    
+    response=$(curl -s -w "%{http_code}" \
+        -X POST \
+        -F "file=@${file_path}" \
+        -H "Accept: */*" \
+        -H "Accept-Language: en-US,en;q=0.9,fr;q=0.8" \
+        -H "Cache-Control: no-cache" \
+        -H "Connection: keep-alive" \
+        -H "Pragma: no-cache" \
+        -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" \
+        "$SERVER_URL" 2>/dev/null)
+    
+    http_code="${response: -3}"
+    response_body="${response%???}"
+    
+    if [ "$http_code" = "200" ]; then
+        if echo "$response_body" | grep -q '"status":"Upload successful"'; then
+            echo "Success"
+            return 0
+        else
+            echo "Unexpected response: $response_body"
+            return 1
+        fi
+    else
+        echo "HTTP $http_code: $response_body"
+        return 1
+    fi
+}
+
+if [ $# -lt 1 ]; then
+    echo "usage: $0 [-u upload_url] <file>"
+    echo "default upload url: $SERVER_URL"
+    exit 1
+fi
+
+if [ "$1" = "-u" ]; then
+    shift
+    SERVER_URL="$1"
+    shift
+fi
+
+upload_file "$1"
+exit $?

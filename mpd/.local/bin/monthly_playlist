@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# abstract: gives the path to the current monthly playlist
+
+BASE="${XDG_MUSIC_DIR:-$HOME/Music}"
+playlist="${BASE}/$(date '+%Y_%m')"
+if [ ! -d "$playlist" ]; then
+    mkdir -p "$playlist"
+fi
+echo "$playlist"

@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# abstract: fixes ePub files detected as mere zip files
+# source: https://www.naff.dev/blog/fixing-epubs
+
+if ! command -v zip > /dev/null; then
+    echo "zip command not found. please install zip"
+    exit 1
+fi
+
+if ! command -v unzip > /dev/null; then
+    echo "unzip command not found. please install unzip"
+    exit 1
+fi
+
+if [ $# -lt 1 ]; then
+    echo "usage: $0 <epub file>"
+    exit 1
+fi
+
+DIR=$(mktemp -d)
+TMPOUT=$(mktemp -d)
+trap 'rm -rf "$DIR" "$TMPOUT"' EXIT
+
+unzip -d "$DIR" "$1"
+
+if [ -f "$DIR"/mimetype ]
+then
+    (cd "$DIR" && zip -X -0 "$TMPOUT"/out.zip mimetype)
+    rm -f "$DIR"/mimetype
+fi
+
+(cd "$DIR" && zip -X -9 -r "$TMPOUT"/out.zip .)
+mv "$TMPOUT"/out.zip "$1"

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# abstract: sum/substract timestamps
+# example: echo '01:02:03\n-00:05:00 | tscalc'
+
+epoch='jan 1 1970'
+sum='0'
+while read line
+do
+	in="$(echo "$line" | tr -d ' ')"
+	symbol="$(echo "$in" | tr -dc '+-' | colrm 2)"
+	[ -z "$symbol" ] && symbol='+'
+	value="$(echo "$in" | tr -dc '[:digit:]:')"
+	seconds="$(date -u -d "$epoch $value" '+%s')"
+	sum="$sum $symbol $seconds"
+done
+
+result="$(echo "$sum" | bc)"
+tsresult="$(date -d "@${result}" -u '+%H:%M:%S')"
+echo "$tsresult"
