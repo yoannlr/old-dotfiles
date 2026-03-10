@@ -1,5 +1,7 @@
 #!/bin/sh
 
+dpgk -L mpd > /dev/null && exit 0
+
 ../common/setup-pipewire
 
 sudo apt install mpd mpc ncmpcpp mpdris2
