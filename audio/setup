@@ -1,0 +1,12 @@
+#!/bin/sh
+
+../common/setup-pipewire
+
+sudo apt install pipewire-jack qpwgraph qtractor calf-plugins dragonfly-reverb-lv2 jalv lv2file x42-plugins zam-plugins
+
+# pipewire-jack = run jack programs as pipewire clients with `pw-jack program`
+# jalv = lv2 plugin as standalone program
+# lv2file = apply lv2 plugin to audio file
+
+# run qtractor with pw-jack
+sudo sed -iEe 's/^Exec=qtractor/Exec=pw-jack qtractor/g' /usr/share/applications/org.rncbc.qtractor.desktop

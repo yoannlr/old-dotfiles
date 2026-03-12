@@ -1,12 +1,12 @@
 #!/bin/sh
 
-if ls /opt | grep -qi idea-IC; then
+if ls /opt | grep -qi idea; then
     exit 0
 fi
 
 ../common/setup-java
 
-wget -O /tmp/idea.tar.gz https://download.jetbrains.com/idea/ideaIC-2025.2.6.1.tar.gz
+wget -O /tmp/idea.tar.gz https://download-cdn.jetbrains.com/idea/idea-2025.3.3.tar.gz
 sudo tar -C /opt -zxf /tmp/idea.tar.gz
 
 # required to be able to create the desktop entry from intellij
