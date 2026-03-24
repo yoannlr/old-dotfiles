@@ -7,7 +7,7 @@ sudo apt update
 sudo apt install virtualbox-7.2 vboxmanage-bash-completion
 sudo usermod -aG vboxusers "$(whoami)"
 
-# since linux 6.2, kvm grabs vt-x/vd-d in bios at boot which prevents virtualbox from start vms
+# since linux 6.2, kvm grabs vt-x/vd-d at boot which prevents virtualbox from starting vms (VERR_VMX_IN_VMX_ROOT_MODE)
 # this kernel parameter instructs kvm to only use virtualization when it needs it
 if ! grep -q 'kvm.enable_virt_at_load=0' /etc/default/grub; then
     sudo sed -ie 's/GRUB_CMDLINE_LINUX_DEFAULT="/GRUB_CMDLINE_LINUX_DEFAULT="kvm.enable_virt_at_load=0 /g' /etc/default/grub

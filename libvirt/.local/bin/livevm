@@ -7,6 +7,6 @@ qemu-system-x86_64 \
 	-device ich9-ahci,id=sata \
 	-device ich9-intel-hda -device hda-output \
 	-netdev user,id=net0 \
-	-device e1000-82545em,netdev=net0,id=net0,mac=aa:bb:cc:dd:ee:ff \
+	-device "e1000-82545em,netdev=net0,id=net0,mac=$(randmac)" \
 	-vga std \
 	-cdrom "$1" \
