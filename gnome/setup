@@ -2,7 +2,8 @@
 
 dpkg -L gnome-shell-extension-manager > /dev/null && exit 0
 
-sudo apt install gnome-shell-extension-manager gnome-shell-extension-appindicator gnome-shell-extension-caffeine gnome-shell-extension-gsconnect gnome-shell-extension-impatience gnome-shell-extension-no-annoyance gnome-pass-search-provider gnome-firmware
+sudo apt install gnome-shell-extension-manager gnome-shell-extension-appindicator gnome-shell-extension-caffeine gnome-shell-extension-gsconnect gnome-shell-extension-impatience gnome-shell-extension-no-annoyance gnome-pass-search-provider gnome-firmware fprintd libpam-fprintd
+# fprintd libpam-fprintd = fingerprint login
 
 ../common/setup-flatpak
 flatpak install flathub org.gnome.World.PikaBackup
