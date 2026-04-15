@@ -39,8 +39,8 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # host specific bash aliases
-if [ -f ~/.bash_local_aliases ]; then
-    . ~/.bash_local_aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
 fi
 
 # bash completion
@@ -145,3 +145,6 @@ fi
 
 # prevent ansible messages from being displayed by cows when cowsay is installed
 export ANSIBLE_NOCOWS=1
+
+# rr - cd to git repo root
+alias rr='cd $(git rev-parse --show-toplevel)'

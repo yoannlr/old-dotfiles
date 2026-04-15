@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# debloat debian gnome iso
+# sudo apt purge --autoremove anthy debian-reference-es debian-reference-it 'fcitx*' 'fortunes*' hdate-applet goldendict-ng uim mozc-server xiterm+thai mozc-utils-gui 'libreoffice-l10n-*' evolution
+# sudo apt install libreoffice-l10n-fr
+
 dpkg -L gnome-shell-extension-manager > /dev/null && exit 0
 
 sudo apt install gnome-shell-extension-manager gnome-shell-extension-appindicator gnome-shell-extension-caffeine gnome-shell-extension-gsconnect gnome-shell-extension-impatience gnome-shell-extension-no-annoyance gnome-pass-search-provider gnome-firmware fprintd libpam-fprintd
