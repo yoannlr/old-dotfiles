@@ -1,0 +1,29 @@
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Plus"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Home"
+mods = "Control"
+
+[font]
+size = 14.0
+
+[scrolling]
+history = 10000
+
+[window]
+dynamic_title = true
+
+[window.padding]
+x = 4
+y = 4
+
+[keyboard]

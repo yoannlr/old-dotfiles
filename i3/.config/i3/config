@@ -5,6 +5,11 @@ set $webbrowser firefox
 
 set $mod Mod4
 
+# hybrid graphics freeze workaround
+# https://forums.developer.nvidia.com/t/external-monitor-freezes-when-using-dedicated-gpu/265406/
+# https://wiki.debian.org/NVIDIA%20Optimus#Using_NVIDIA_GPU_as_the_primary_GPU
+exec --no-startup-id dpkg -l | grep -q nvidia-driver && xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto
+
 # xdg autostart (.desktop files) with dex
 exec --no-startup-id dex --autostart --environment i3
 
