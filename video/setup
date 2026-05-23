@@ -2,7 +2,8 @@
 
 ../common/setup-flatpak
 ../common/setup-yt-dlp
-../common/setup-pipewire
+
+../apply audio
 
 sudo apt install gimp ffmpeg mpv imagemagick obs-studio obs-cli simplescreenrecorder obs-pipewire-audio-capture obs-retro-effects obs-vintage-filter
 flatpak install flathub org.kde.kdenlive

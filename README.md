@@ -17,7 +17,7 @@ It is a simple alternative to using a more complex system such as chezmoi or Ans
 * sysadmin - installs common system/network administration utilities
 * libvirt - sets up virtualization environment based on qemu/kvm + installs utils
 * minecraft - sets up java, PrismLauncher, Blockbench and unbted
-* intellij - sets up java and IntelliJ IDEA Community Edition
+* intellij - sets up java and IntelliJ IDEA
 * codium - installs VSCodium
 * mutt - installs mutt-wizard and useful mail related programs
 * video - sets up kdenlive, gimp and other useful video making programs
@@ -26,3 +26,5 @@ It is a simple alternative to using a more complex system such as chezmoi or Ans
 * gnome - installs gnome extensions and configures gnome shell
 * aunamic - udev/modprobe rules for Auna Mic 900 microphone compatibility. if you're not me, you probably won't need this!
 * keyboard - custom keyboard layout (for french keyboards only!)
+* audio - installs pipewire, qtractor and other utilities. sets up pipewire to avoid audio crackling with high cpu usage (e.g. wine game + discord)
+* nvidia-laptop - installs nvidia drivers and sets the nvidia gpu as the default gpu for X sessions instead of using hybrid graphics (mitigates [this bug](https://forums.developer.nvidia.com/t/external-monitor-freezes-when-using-dedicated-gpu/265406/82), reference [here](https://wiki.debian.org/NVIDIA%20Optimus#Using_NVIDIA_GPU_as_the_primary_GPU))

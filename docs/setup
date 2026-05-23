@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# marp - markdown to presentation
+if ! command -v marp > /dev/null 2>&1 ; then
+    wget -O /tmp/marp.tar.gz https://github.com/marp-team/marp-cli/releases/download/v4.4.0/marp-cli-v4.4.0-linux.tar.gz
+    sudo tar -C /usr/local/bin -zxf /tmp/marp.tar.gz
+    rm /tmp/marp.tar.gz
+fi

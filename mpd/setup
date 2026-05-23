@@ -2,7 +2,7 @@
 
 dpgk -L mpd > /dev/null && exit 0
 
-../common/setup-pipewire
+../apply audio
 
 sudo apt install mpd mpc ncmpcpp mpdris2
 sudo systemctl disable --now mpd

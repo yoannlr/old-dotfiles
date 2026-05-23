@@ -3,4 +3,4 @@
 # this script runs on session start
 
 "${HOME}/.local/bin/autodarkmode"
-"${HOME}/.local/bin/randomwall"
+#"${HOME}/.local/bin/randomwall"

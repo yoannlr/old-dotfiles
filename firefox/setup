@@ -23,4 +23,4 @@ sudo apt update && sudo apt install firefox
 
 sudo cp policies.json /usr/lib/firefox/distribution/policies.json
 
-../common/setup-pipewire
+../apply audio

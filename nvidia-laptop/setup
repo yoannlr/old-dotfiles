@@ -1,0 +1,44 @@
+#!/bin/sh
+
+if dkpg -l | grep -q nvidia-driver; then
+    exit 0
+fi
+
+if ! lspci | grep -qi nvidia; then
+    echo "No NVIDIA GPU found, skipping"
+    exit 0
+fi
+
+# add non-free, contrib and non-free-firmware repos
+
+if grep -qE 'deb http://deb.debian.org/debian/ trixie main$' /etc/apt/sources.list; then
+    # not quite safe and dirty way to add the repos...
+    # but `add-apt-repository` (software-properties) was removed in trixie
+    sudo sed -i -E -e 's/main$/main non-free contrib non-free-firmware/g' /etc/apt/sources.list
+    sudo apt update
+fi
+
+# install nvidia driver
+
+sudo apt install nvidia-driver nvidia-smi nvidia-settings
+
+# the following is a workaround to mitigate frequent 1-3 seconds freezes/hangs
+# when opening/closing/full-screening windows while using hybrid graphics
+# 
+# https://forums.developer.nvidia.com/t/external-monitor-freezes-when-using-dedicated-gpu/265406/
+# https://wiki.debian.org/NVIDIA%20Optimus#Using_NVIDIA_GPU_as_the_primary_GPU
+#
+# time on battery is decreased... but system is usable
+#
+# many other workarounds were tried (opengl/mutter env vars, nvidia settings...)
+# this is the only one that actually works
+
+# force Xorg to use nvidia driver
+
+sudo cp xorg.conf /etc/X11/xorg.conf.d/nvidia-only.conf
+
+# if gdm is installed, create gdm init script to use nvidia as the default gpu on laptop
+
+if [ -d /usr/share/gdm/greeter/ ]; then
+    sudo cp optimus.desktop /usr/share/gdm/greeter/autostart/
+fi

@@ -1,8 +1,8 @@
 #!/bin/sh
 
-../common/setup-pipewire
+dpkg -L pulsemixer > /dev/null && exit 0
 
-sudo apt install pipewire-jack qpwgraph qtractor calf-plugins dragonfly-reverb-lv2 jalv lv2file x42-plugins zam-plugins
+sudo apt install pipewire wireplumber pipewire-pulse pipewire-jack libspa-0.2-bluetooth pulseaudio-utils pulsemixer qpwgraph qtractor calf-plugins dragonfly-reverb-lv2 jalv lv2file x42-plugins zam-plugins
 
 # pipewire-jack = run jack programs as pipewire clients with `pw-jack program`
 # jalv = lv2 plugin as standalone program
