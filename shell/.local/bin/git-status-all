@@ -1,0 +1,25 @@
+#!/bin/sh
+
+if [ -z "$GIT_REPOS" ]; then
+    GIT_REPOS="${HOME}/git"
+fi
+
+txtGreen='\033[01;32m'
+txtRed='\033[01;31m'
+txtReset='\033[00m'
+
+if [ "$1" = "-f" ] || [ "$1" = "--full" ]; then
+    full=1
+fi
+
+find "$GIT_REPOS" -mindepth 2 -maxdepth 2 -type d -name '.git' | sed -e 's/\/\.git$//g' | sort | while read repo
+do
+	if [ $(git -C "${repo}" status -s | wc -l) -gt 0 ]; then
+        echo "$(basename ${repo}): ${txtRed}dirty${txtReset}"
+        if [ ! -z "$full" ]; then
+            git -C "$repo" status -s | awk '{print " | " $0}'
+        fi
+    else
+        echo "$(basename ${repo}): ${txtGreen}clean${txtReset}"
+    fi
+done

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ -z "$GIT_REPOS" ]; then
+    GIT_REPOS="${HOME}/git"
+fi
+
+find "$GIT_REPOS" -mindepth 2 -maxdepth 2 -type d -name '.git' | sed -e 's/\/\.git$//g' | sort | while read repo
+do
+	echo -n "${repo}: "
+	git -C "${repo}" pull --ff-only
+done

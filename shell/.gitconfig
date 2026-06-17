@@ -1,0 +1,11 @@
+[init]
+	defaultBranch = main
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	pull-all = !git-pull-all
+    pa = !git-pull-all
+	status-all = !git-status-all
+    sa = !git-status-all
