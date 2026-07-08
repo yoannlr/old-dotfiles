@@ -5,7 +5,5 @@
 [difftool]
 	prompt = false
 [alias]
-	pull-all = !git-pull-all
-    pa = !git-pull-all
-	status-all = !git-status-all
-    sa = !git-status-all
+	sync = !git-pull-all
+	dirty = !git-status-all
