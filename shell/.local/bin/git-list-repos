@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -z "$GIT_REPOS_PATH" ]; then
+    GIT_REPOS_PATH="${HOME}/git"
+fi
+
+for gitRoot in $(echo "$GIT_REPOS_PATH" | tr ':' ' '); do
+    find "$gitRoot" -mindepth 2 -maxdepth 2 -type d -name '.git' 2>/dev/null
+done | sed -e 's/\/\.git$//g' | sort

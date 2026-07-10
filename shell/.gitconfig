@@ -1,9 +1,10 @@
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [diff]
-	tool = vimdiff
+    tool = vimdiff
 [difftool]
-	prompt = false
+    prompt = false
 [alias]
-	sync = !git-pull-all
-	dirty = !git-status-all
+    sync = !git-pull-all
+    dirty = !git-status-all
+    repos = !git-list-repos
