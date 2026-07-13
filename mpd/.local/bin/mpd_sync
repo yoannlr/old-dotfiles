@@ -5,7 +5,9 @@
 temp="/tmp/mpctmp.${USER}"
 
 mpc rescan
+sleep 2
 mpc listall | sort > "$temp"
-mpc -f '%file%' playlist | sort | comm -13 - "$temp" | xargs -I path mpc add 'path'
+sleep 2
+mpc -f '%file%' playlist | sort | comm -13 - "$temp" | xargs -I path mpc --verbose add 'path'
 
 rm "$temp"

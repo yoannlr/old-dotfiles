@@ -15,5 +15,5 @@ while read line; do
 	[ ! -d "$dst" ] && { echo "destination '$dst' does not exist, skipping"; continue; }
 	[ ! -d "$src" ] && { echo "source '$src' does not exist, skipping"; continue; }
 
-	rsync -avS --delete "$src" "$dst" $args
+	rsync -avS "$src" "$dst" $args
 done < "$conf"
