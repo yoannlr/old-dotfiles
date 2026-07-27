@@ -3,17 +3,26 @@
 
 conf="${XDG_CONFIG_HOME:-$HOME/.config}/backups"
 
+# always start backup from home
+cd
+
 while read line; do
-    if echo "$line" | grep -qE '^#'; then
+    if echo "$line" | grep -qE '(^#|^$)'; then
         continue
     fi
 
 	src=$(echo "$line" | awk '{print $1}')
 	dst=$(echo "$line" | awk '{print $2}')
-	args=$(echo "$line" | awk '{print $3}')
+    keep=$(echo "$line" | awk '{print $3}')
+    args='--delete'
+    if [ "$keep" = "keep" ]; then
+        args=
+    fi
 
 	[ ! -d "$dst" ] && { echo "destination '$dst' does not exist, skipping"; continue; }
 	[ ! -d "$src" ] && { echo "source '$src' does not exist, skipping"; continue; }
 
 	rsync -avS "$src" "$dst" $args
 done < "$conf"
+
+cd -

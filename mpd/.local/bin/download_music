@@ -8,5 +8,6 @@ if [ $# -lt 1 ]; then
 fi
 
 cd "$(monthly_playlist)"
-yt-dlp -f bestaudio --restrict-filenames --add-metadata --no-playlist $@
-mpd_sync
+downloadedFile=$(yt-dlp -f bestaudio --restrict-filenames --add-metadata --no-playlist --get-filename --no-simulate $@)
+sleep 10 # attempt to make mpc add reliable...
+mpc --verbose add "$(basename ${PWD})/$downloadedFile"
