@@ -66,6 +66,9 @@ export LESSHISTFILE='-'
 
 alias rdp="xfreerdp3 /kbd:unicode /dynamic-resolution /floatbar:sticky:on,default:visible,show:fullscreen /log-level:WARN"
 alias yt-dlp='yt-dlp --restrict-filenames'
+alias gi='grep -i'
+alias pkg='apt search --names-only'
+alias drop='blopdrop -f immediate'
 
 # lfcd
 if command -v lf > /dev/null; then
