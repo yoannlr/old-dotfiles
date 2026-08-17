@@ -7,27 +7,37 @@ for layout in ${HOME}/.screenlayout/*; do
     options="${options}\n${name}"
 done
 
+restoreLayout="${HOME}/.config/screenlayout"
+
 options="${options}\nOpen Arandr"
 
-choice=$(echo "$options" | rofi -dmenu -theme sidebar -p 'Select configuration' -i)
+choice=$(echo "$options" | fzf --prompt 'Select configuration: ' -i)
 
 [ -z "$choice" ] && exit 0
 
 case $choice in
     "Extended")
         monitors extended right
+        echo "monitors extended right" > "$restoreLayout"
         ;;
     "Clone")
         monitors clone
+        echo "monitors clone" > "$restoreLayout"
         ;;
     "Main/Laptop only")
         monitors main_only
+        echo "monitors main_only" > "$restoreLayout"
         ;;
     "Open Arandr")
         arandr
         ;;
     layout/*)
         script="${HOME}/.screenlayout/$(echo $choice | sed 's|layout/||g').sh"
+        echo "$script" > "$restoreLayout"
         $script
         ;;
 esac
+
+if [ ! -x "$restoreLayout" ]; then
+    chmod u+x "$restoreLayout"
+fi

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo apt install vim neovim fzf git bash-completion wget bc rsync rclone git curl wget tree ncdu lf libfuse2
+sudo apt install vim neovim fzf git bash-completion wget bc rsync rclone git curl wget tree gdu lf libfuse2

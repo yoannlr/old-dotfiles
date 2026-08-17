@@ -1,6 +1,7 @@
 # programs
 set $term alacritty
 set $termexec alacritty -e
+set $termmenu alacritty --class TermMenu -e
 set $webbrowser firefox
 
 set $mod Mod4
@@ -35,6 +36,12 @@ exec --no-startup-id redshift -l 48:2 -t 6500:3500
 # root password prompts
 exec --no-startup-id /usr/libexec/polkit-mate-authentication-agent-1
 
+# restore previous monitor config
+exec --no-startup-id test -x ~/.config/screenlayout && ~/.config/screenlayout
+
+# wallpaper
+exec --no-startup-id test -e ~/.wall && feh --no-fehbg --bg-fill ~/.wall
+
 # volume and music
 set $refresh_i3status pkill -u $(whoami) -SIGRTMIN+10 i3blocks
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -49,12 +56,13 @@ bindsym XF86AudioNext exec --no-startup-id mpc next
 bindsym $mod+Return exec $term
 bindsym $mod+space exec "rofi -modi drun,run -show drun"
 bindsym $mod+w exec $webbrowser
-bindsym $mod+m exec $termexec ncmpcpp
+bindsym $mod+Shift+m exec $termexec ncmpcpp
 bindsym $mod+Shift+a exec arandr
 bindsym $mod+Mod1+p exec password_menu
-bindsym $mod+p exec displayswitch
+bindsym $mod+p exec $termmenu displayswitch
 bindsym $mod+x exec $termexec lf
 bindsym $mod+Shift+n exec $termexec newsboat
+bindsym $mod+Escape exec $termexec htop
 
 # screenshot (automatically copied to clipboard)
 bindsym --release Print exec --no-startup-id scrot ~/screenshot.png -e 'xclip -selection clipboard -target image/png -i $f'
@@ -67,6 +75,7 @@ bindsym --release Shift+Print exec --no-startup-id scrot --select ~/screenshot.p
 
 # window rules
 for_window [class="Arandr"] floating enable, resize set 600 400, move position center
+for_window [class="TermMenu"] floating enable, resize set 400 600, move position mouse
 
 # appearance
 default_border pixel 2

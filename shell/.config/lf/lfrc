@@ -1,0 +1,6 @@
+cmd drop ${{
+    set -f
+    blopdrop -f immediate $fx
+}}
+
+map D drop

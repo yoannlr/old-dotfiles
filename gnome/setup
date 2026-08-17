@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # debloat debian gnome iso
-# sudo apt purge --autoremove anthy debian-reference-es debian-reference-it 'fcitx*' 'fortunes*' hdate-applet goldendict-ng uim mozc-server xiterm+thai mozc-utils-gui 'libreoffice-l10n-*' evolution
+# sudo apt purge --autoremove anthy debian-reference-es debian-reference-it 'fcitx*' 'fortunes*' hdate-applet goldendict-ng uim mozc-server xiterm+thai mozc-utils-gui 'libreoffice-l10n-*' evolution gnome-software
 # sudo apt install libreoffice-l10n-fr
 
 dpkg -L gnome-shell-extension-manager > /dev/null && exit 0

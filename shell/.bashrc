@@ -68,7 +68,21 @@ alias rdp="xfreerdp3 /kbd:unicode /dynamic-resolution /floatbar:sticky:on,defaul
 alias yt-dlp='yt-dlp --restrict-filenames'
 alias gi='grep -i'
 alias pkg='apt search --names-only'
-alias drop='blopdrop -f immediate'
+
+# drag n drop from cli
+if command -v blopdrop > /dev/null; then
+    drop() {
+        # -t 0 = check if stdin is a terminal
+        # when true we're not connected to a pipe
+        if [ -t 0 ]; then
+            # using args only
+            blopdrop -f immediate $@
+        else
+            # reading file from pipe
+            cat - | xargs blopdrop -f immediate $@
+        fi
+    }
+fi
 
 # lfcd
 if command -v lf > /dev/null; then
